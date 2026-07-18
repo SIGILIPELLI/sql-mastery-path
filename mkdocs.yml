@@ -1,0 +1,100 @@
+site_name: SQL Mastery Path
+site_description: A structured, module-wise SQL training program from entry level to master level.
+site_url: https://sigilipelli.github.io/sql-mastery-path/
+repo_url: https://github.com/SIGILIPELLI/sql-mastery-path
+repo_name: sql-mastery-path
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Privacy Policy: privacy.md
+  - "Level 1 · Entry":
+      - Overview: level-1/index.md
+      - "01 · Setup & First Queries": level-1/01-setup-first-queries.md
+      - "02 · SELECT Basics & Data Types": level-1/02-select-basics-data-types.md
+      - "03 · Filtering with WHERE": level-1/03-filtering-where.md
+      - "04 · Sorting & Limiting Results": level-1/04-sorting-limiting.md
+      - "05 · Aggregate Functions & GROUP BY": level-1/05-aggregates-group-by.md
+      - "06 · Joins Basics": level-1/06-joins-basics.md
+      - "07 · Working with NULL": level-1/07-working-with-null.md
+      - "08 · Creating Tables": level-1/08-creating-tables.md
+      - "09 · Inserting, Updating, Deleting Data": level-1/09-insert-update-delete.md
+      - "10 · Project — Library/Bookstore Database": level-1/10-project-library-database.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · Advanced Joins": level-2/01-advanced-joins.md
+      - "02 · Subqueries": level-2/02-subqueries.md
+      - "03 · Set Operations": level-2/03-set-operations.md
+      - "04 · String & Date Functions": level-2/04-string-date-functions.md
+      - "05 · CASE Expressions": level-2/05-case-expressions.md
+      - "06 · Views": level-2/06-views.md
+      - "07 · Indexes Basics": level-2/07-indexes-basics.md
+      - "08 · Constraints": level-2/08-constraints.md
+      - "09 · Transactions & ACID Basics": level-2/09-transactions-acid.md
+      - "10 · Project — E-commerce Reporting": level-2/10-project-ecommerce-reporting.md
+  - "Level 3 · Advanced":
+      - Overview: level-3/index.md
+      - "01 · Window Functions": level-3/01-window-functions.md
+      - "02 · CTEs & Recursive Queries": level-3/02-ctes-recursive-queries.md
+      - "03 · Query Optimization & EXPLAIN QUERY PLAN": level-3/03-query-optimization-explain.md
+      - "04 · Stored Procedures/Functions Concepts": level-3/04-stored-procedures-concepts.md
+      - "05 · Triggers": level-3/05-triggers.md
+      - "06 · Normalization & Schema Design": level-3/06-normalization-schema-design.md
+      - "07 · Working with JSON in SQL": level-3/07-json-in-sql.md
+      - "08 · Full-Text Search Basics": level-3/08-full-text-search.md
+      - "09 · Data Migration Patterns": level-3/09-data-migration-patterns.md
+      - "10 · Project — Normalized Schema & Analytics": level-3/10-project-normalized-schema-analytics.md
+  - "Level 4 · Master":
+      - Overview: level-4/index.md
+      - "01 · Advanced Indexing Strategies": level-4/01-advanced-indexing-strategies.md
+      - "02 · Query Performance Tuning at Scale": level-4/02-performance-tuning-at-scale.md
+      - "03 · Partitioning Concepts": level-4/03-partitioning-concepts.md
+      - "04 · Replication & Backup Concepts": level-4/04-replication-backup-concepts.md
+      - "05 · Security & SQL Injection Prevention": level-4/05-security-sql-injection.md
+      - "06 · NoSQL vs SQL Considerations": level-4/06-nosql-vs-sql.md
+      - "07 · SQL from Application Code": level-4/07-sql-from-application-code.md
+      - "08 · Data Warehousing Concepts": level-4/08-data-warehousing-concepts.md
+      - "09 · Testing Database Code": level-4/09-testing-database-code.md
+      - "10 · Capstone Project": level-4/10-capstone-project.md
