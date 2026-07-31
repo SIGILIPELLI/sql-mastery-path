@@ -15,9 +15,9 @@ and a hands-on project at the end of each level.
 | Level | Focus | Modules |
 |-------|-------|---------|
 | [Level 1 · Entry](level-1/index.md) | Query foundations | 9 topics + 1 project |
-| [Level 2 · Intermediate](level-2/index.md) | Joins, views, transactions | 9 topics + 1 project |
-| [Level 3 · Advanced](level-3/index.md) | Window functions, CTEs, schema design | 9 topics + 1 project |
-| [Level 4 · Master](level-4/index.md) | Performance, security, architecture | 9 topics + 1 capstone |
+| Level 2 · Intermediate (coming soon) | Joins, views, transactions | 9 topics + 1 project |
+| Level 3 · Advanced (coming soon) | Window functions, CTEs, schema design | 9 topics + 1 project |
+| Level 4 · Master (coming soon) | Performance, security, architecture | 9 topics + 1 capstone |
 
 ## How to use this site
 
