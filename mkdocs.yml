@@ -62,8 +62,19 @@ nav:
       - "08 · Creating Tables": level-1/08-creating-tables.md
       - "09 · Inserting, Updating, Deleting Data": level-1/09-insert-update-delete.md
       - "10 · Project — Library/Bookstore Database": level-1/10-project-library-database.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · Advanced Joins": level-2/01-advanced-joins.md
+      - "02 · Subqueries": level-2/02-subqueries.md
+      - "03 · Set Operations": level-2/03-set-operations.md
+      - "04 · String & Date Functions": level-2/04-string-date-functions.md
+      - "05 · CASE Expressions": level-2/05-case-expressions.md
+      - "06 · Views": level-2/06-views.md
+      - "07 · Indexes Basics": level-2/07-indexes-basics.md
+      - "08 · Constraints": level-2/08-constraints.md
+      - "09 · Transactions & ACID Basics": level-2/09-transactions-acid.md
+      - "10 · Project — E-commerce Reporting": level-2/10-project-ecommerce-reporting.md
 # --- auto-pruned stub levels (see AdSense low-value-content fix) ---
 exclude_docs: |
-  level-2/*.md
   level-3/*.md
   level-4/*.md
