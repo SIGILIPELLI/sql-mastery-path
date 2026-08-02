@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://sigilipelli.github.io/sql-mastery-path/level-1/07-working-with-null/">
+        <link rel="canonical" href="https://sigilipelli.github.io/sql-mastery-path/level-2/09-transactions-acid/">
       
       
-        <link rel="prev" href="../06-joins-basics/">
+        <link rel="prev" href="../08-constraints/">
       
       
-        <link rel="next" href="../08-creating-tables/">
+        <link rel="next" href="../10-project-ecommerce-reporting/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>07 · Working with NULL - SQL Mastery Path</title>
+        <title>09 · Transactions & ACID Basics - SQL Mastery Path</title>
       
     
     
@@ -64,11 +64,11 @@
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SQL Mastery Path">
-  <meta property="og:title" content="07 · Working with NULL">
+  <meta property="og:title" content="09 · Transactions & ACID Basics">
   <meta property="og:description" content="A structured, module-wise SQL training program from entry level to master level — free, with runnable queries in every module.">
-  <meta property="og:url" content="https://sigilipelli.github.io/sql-mastery-path/level-1/07-working-with-null/">
+  <meta property="og:url" content="https://sigilipelli.github.io/sql-mastery-path/level-2/09-transactions-acid/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="07 · Working with NULL">
+  <meta name="twitter:title" content="09 · Transactions & ACID Basics">
   <meta name="twitter:description" content="A structured, module-wise SQL training program from entry level to master level — free, with runnable queries in every module.">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
      crossorigin="anonymous"></script>
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#07-working-with-null" class="md-skip">
+        <a href="#09-transactions-acid-basics" class="md-skip">
           Skip to content
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07 · Working with NULL
+              09 · Transactions & ACID Basics
             
           </span>
         </div>
@@ -275,13 +275,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../level-1/" class="md-tabs__link">
           
   
   
@@ -299,11 +297,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../level-2/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -420,6 +420,380 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/01-setup-first-queries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & First Queries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/02-select-basics-data-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · SELECT Basics & Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/03-filtering-where/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Filtering with WHERE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/04-sorting-limiting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Sorting & Limiting Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/05-aggregates-group-by/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Aggregate Functions & GROUP BY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/06-joins-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Joins Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/07-working-with-null/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Working with NULL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/08-creating-tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Creating Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/09-insert-update-delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Inserting, Updating, Deleting Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/10-project-library-database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Library/Bookstore Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -467,7 +841,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -478,7 +852,7 @@
   <span class="md-ellipsis">
     
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
     
@@ -489,18 +863,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Level 1 · Entry
+    Level 2 · Intermediate
   
 
           </label>
@@ -515,14 +889,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-setup-first-queries/" class="md-nav__link">
+      <a href="../01-advanced-joins/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    01 · Setup & First Queries
+    01 · Advanced Joins
   
 
     
@@ -543,14 +917,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-select-basics-data-types/" class="md-nav__link">
+      <a href="../02-subqueries/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    02 · SELECT Basics & Data Types
+    02 · Subqueries
   
 
     
@@ -571,14 +945,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-filtering-where/" class="md-nav__link">
+      <a href="../03-set-operations/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    03 · Filtering with WHERE
+    03 · Set Operations
   
 
     
@@ -599,14 +973,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-sorting-limiting/" class="md-nav__link">
+      <a href="../04-string-date-functions/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    04 · Sorting & Limiting Results
+    04 · String & Date Functions
   
 
     
@@ -627,14 +1001,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-aggregates-group-by/" class="md-nav__link">
+      <a href="../05-case-expressions/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    05 · Aggregate Functions & GROUP BY
+    05 · CASE Expressions
   
 
     
@@ -655,14 +1029,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-joins-basics/" class="md-nav__link">
+      <a href="../06-views/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    06 · Joins Basics
+    06 · Views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-indexes-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Indexes Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Constraints
   
 
     
@@ -699,7 +1129,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Working with NULL
+    09 · Transactions & ACID Basics
   
 
     
@@ -717,7 +1147,7 @@
   <span class="md-ellipsis">
     
   
-    07 · Working with NULL
+    09 · Transactions & ACID Basics
   
 
     
@@ -743,10 +1173,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#null-is-not-equal-to-anything-including-itself" class="md-nav__link">
+  <a href="#sample-schema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULL is not equal to anything, including itself
+        Sample schema
       
     </span>
   </a>
@@ -754,10 +1184,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#is-null-and-is-not-null-the-correct-check" class="md-nav__link">
+  <a href="#begin-commit-grouping-statements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IS NULL and IS NOT NULL — the correct check
+        BEGIN / COMMIT — grouping statements
       
     </span>
   </a>
@@ -765,10 +1195,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#coalesce-first-non-null-value" class="md-nav__link">
+  <a href="#rollback-undoing-an-in-progress-transaction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        COALESCE — first non-NULL value
+        ROLLBACK — undoing an in-progress transaction
       
     </span>
   </a>
@@ -776,10 +1206,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#null-in-arithmetic-and-aggregates" class="md-nav__link">
+  <a href="#atomicity-in-practice-a-failing-statement-doesnt-auto-rollback" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULL in arithmetic and aggregates
+        Atomicity in practice — a failing statement doesn't auto-rollback
       
     </span>
   </a>
@@ -787,10 +1217,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#null-in-order-by" class="md-nav__link">
+  <a href="#acid-briefly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULL in ORDER BY
+        ACID, briefly
       
     </span>
   </a>
@@ -798,10 +1228,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nullif-turn-a-specific-value-into-null" class="md-nav__link">
+  <a href="#isolation-levels-how-much-concurrency-you-allow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULLIF — turn a specific value into NULL
+        Isolation levels — how much concurrency you allow
       
     </span>
   </a>
@@ -846,437 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-creating-tables/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 · Creating Tables
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-insert-update-delete/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 · Inserting, Updating, Deleting Data
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-project-library-database/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10 · Project — Library/Bookstore Database
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../level-2/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 2 · Intermediate
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Level 2 · Intermediate
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/01-advanced-joins/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 · Advanced Joins
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/02-subqueries/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 · Subqueries
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/03-set-operations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 · Set Operations
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/04-string-date-functions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 · String & Date Functions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/05-case-expressions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 · CASE Expressions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/06-views/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    06 · Views
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/07-indexes-basics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    07 · Indexes Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/08-constraints/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 · Constraints
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/09-transactions-acid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 · Transactions & ACID Basics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../level-2/10-project-ecommerce-reporting/" class="md-nav__link">
+      <a href="../10-project-ecommerce-reporting/" class="md-nav__link">
         
   
   
@@ -1331,10 +1331,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#null-is-not-equal-to-anything-including-itself" class="md-nav__link">
+  <a href="#sample-schema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULL is not equal to anything, including itself
+        Sample schema
       
     </span>
   </a>
@@ -1342,10 +1342,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#is-null-and-is-not-null-the-correct-check" class="md-nav__link">
+  <a href="#begin-commit-grouping-statements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IS NULL and IS NOT NULL — the correct check
+        BEGIN / COMMIT — grouping statements
       
     </span>
   </a>
@@ -1353,10 +1353,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#coalesce-first-non-null-value" class="md-nav__link">
+  <a href="#rollback-undoing-an-in-progress-transaction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        COALESCE — first non-NULL value
+        ROLLBACK — undoing an in-progress transaction
       
     </span>
   </a>
@@ -1364,10 +1364,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#null-in-arithmetic-and-aggregates" class="md-nav__link">
+  <a href="#atomicity-in-practice-a-failing-statement-doesnt-auto-rollback" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULL in arithmetic and aggregates
+        Atomicity in practice — a failing statement doesn't auto-rollback
       
     </span>
   </a>
@@ -1375,10 +1375,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#null-in-order-by" class="md-nav__link">
+  <a href="#acid-briefly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULL in ORDER BY
+        ACID, briefly
       
     </span>
   </a>
@@ -1386,10 +1386,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nullif-turn-a-specific-value-into-null" class="md-nav__link">
+  <a href="#isolation-levels-how-much-concurrency-you-allow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NULLIF — turn a specific value into NULL
+        Isolation levels — how much concurrency you allow
       
     </span>
   </a>
@@ -1438,134 +1438,194 @@
   
 
 
-<h1 id="07-working-with-null">07 · Working with NULL<a class="headerlink" href="#07-working-with-null" title="Permanent link">&para;</a></h1>
-<p><code>NULL</code> represents "unknown" or "absent" — it is not the same as zero, an
-empty string, or false. It has special comparison rules that trip up almost
-everyone the first time.</p>
-<h2 id="null-is-not-equal-to-anything-including-itself">NULL is not equal to anything, including itself<a class="headerlink" href="#null-is-not-equal-to-anything-including-itself" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="p">(</span>
+<h1 id="09-transactions-acid-basics">09 · Transactions &amp; ACID Basics<a class="headerlink" href="#09-transactions-acid-basics" title="Permanent link">&para;</a></h1>
+<p>A transaction groups multiple statements into a single all-or-nothing unit
+of work. Without transactions, a crash or error halfway through a multi-step
+change (like moving money between two accounts) can leave your data in an
+inconsistent state — money debited from one account but never credited to
+the other. Transactions exist specifically to prevent that.</p>
+<h2 id="sample-schema">Sample schema<a class="headerlink" href="#sample-schema" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">price</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">discontinued_reason</span><span class="w"> </span><span class="nb">TEXT</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">);</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">discontinued_reason</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Dune&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">),</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Old Title&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;out of print&#39;</span><span class="p">),</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Another Old One&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">    </span><span class="c1">-- returns ZERO rows, always</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">   </span><span class="c1">-- also returns ZERO rows, always</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">owner</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="p">(</span><span class="k">owner</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span>
 </code></pre></div>
-<p>Both queries above are silently wrong but produce no error — <code>= NULL</code> and <code>!=
-NULL</code> never match anything because comparing "unknown" to anything, even
-<code>NULL</code> itself, yields "unknown" (which SQL treats as not-true). This is one
-of the most common real-world SQL bugs.</p>
-<h2 id="is-null-and-is-not-null-the-correct-check">IS NULL and IS NOT NULL — the correct check<a class="headerlink" href="#is-null-and-is-not-null-the-correct-check" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<h2 id="begin-commit-grouping-statements">BEGIN / COMMIT — grouping statements<a class="headerlink" href="#begin-commit-grouping-statements" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">BEGIN</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">COMMIT</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">accounts</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>id  title             price  discontinued_reason
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--  ----------------  -----  --------------------
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>2   Old Title         NULL   out of print
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>3   Another Old One   NULL   NULL
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>id  owner  balance
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--  -----  -------
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>1   Alice  300.0
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>2   Bob    300.0
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<p><code>BEGIN</code> starts a transaction; every statement after it is provisional until
+<code>COMMIT</code> makes them permanent together. Outside an explicit <code>BEGIN</code>, SQLite
+(like most databases) runs each statement in its own implicit
+one-statement transaction — fine for single updates, insufficient for a
+multi-step change like this transfer that must succeed or fail as a unit.</p>
+<h2 id="rollback-undoing-an-in-progress-transaction">ROLLBACK — undoing an in-progress transaction<a class="headerlink" href="#rollback-undoing-an-in-progress-transaction" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">BEGIN</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">accounts</span><span class="p">;</span><span class="w">   </span><span class="c1">-- mid-transaction, before rollback</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>id  title  price  discontinued_reason
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--  -----  -----  --------------------
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>1   Dune   9.99   NULL
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>id  owner  balance
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--  -----  -------
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>1   Alice  200.0
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>2   Bob    300.0
 </code></pre></div>
-<h2 id="coalesce-first-non-null-value">COALESCE — first non-NULL value<a class="headerlink" href="#coalesce-first-non-null-value" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">discontinued_reason</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;still in print&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">ROLLBACK</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">accounts</span><span class="p">;</span><span class="w">   </span><span class="c1">-- after rollback</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>title             status
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>----------------  --------------
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Dune              still in print
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Old Title         out of print
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Another Old One   still in print
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>id  owner  balance
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--  -----  -------
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>1   Alice  300.0
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>2   Bob    300.0
 </code></pre></div>
-<p><code>COALESCE(a, b, c, ...)</code> returns the first argument that isn't <code>NULL</code> — the
-standard way to provide a fallback/default display value.</p>
-<h2 id="null-in-arithmetic-and-aggregates">NULL in arithmetic and aggregates<a class="headerlink" href="#null-in-arithmetic-and-aggregates" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Old Title&#39;</span><span class="p">;</span><span class="w">   </span><span class="c1">-- NULL, not 1</span>
+<p><code>ROLLBACK</code> discards every change made since <code>BEGIN</code>, as if the transaction
+never happened. Note that other connections to the same database can't see
+Alice's <code>200.0</code> balance during the open transaction either — SQLite doesn't
+expose uncommitted changes to other readers.</p>
+<h2 id="atomicity-in-practice-a-failing-statement-doesnt-auto-rollback">Atomicity in practice — a failing statement doesn't auto-rollback<a class="headerlink" href="#atomicity-in-practice-a-failing-statement-doesnt-auto-rollback" title="Permanent link">&para;</a></h2>
+<p>This is a real trap: a constraint violation mid-transaction does <strong>not</strong>
+automatically undo the transaction in SQLite's default mode — it aborts just
+the failing statement, leaving the transaction open with earlier changes
+still pending.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">BEGIN</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">;</span><span class="w">   </span><span class="c1">-- succeeds</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">;</span><span class="w">   </span><span class="c1">-- fails</span>
 </code></pre></div>
-<p>Any arithmetic expression involving <code>NULL</code> produces <code>NULL</code> — it propagates
-through calculations rather than being treated as zero.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">all_rows</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rows_with_price</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_price</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Error: CHECK constraint failed: balance &gt;= 0
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>all_rows  rows_with_price  avg_price
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>--------  ---------------  ---------
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>3         1                9.99
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">accounts</span><span class="p">;</span><span class="w">   </span><span class="c1">-- still inside the open transaction</span>
 </code></pre></div>
-<p><code>COUNT(*)</code> counts every row. <code>COUNT(column)</code> and aggregate functions like
-<code>AVG</code>, <code>SUM</code>, <code>MIN</code>, <code>MAX</code> all silently <strong>skip</strong> <code>NULL</code> values rather than
-erroring or counting them as zero — <code>AVG(price)</code> here is <code>9.99</code>, not <code>3.33</code>.</p>
-<h2 id="null-in-order-by">NULL in ORDER BY<a class="headerlink" href="#null-in-order-by" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>id  owner  balance
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>--  -----  -------
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>1   Alice  300.0
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>2   Bob    250.0
 </code></pre></div>
-<p>In SQLite, <code>NULL</code> sorts first in ascending order (before any real number) and
-last in descending order. Other databases vary on this default (Postgres also
-puts <code>NULL</code> last on <code>DESC</code>, but treats it as largest by default on some
-configurations) — always check your specific engine's docs, or force it
-explicitly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">-- non-NULL prices first (in ascending order), NULLs pushed to the end</span>
+<p>Bob's debit is still sitting there, uncommitted but not undone either. If
+your application code doesn't catch the error and explicitly issue
+<code>ROLLBACK</code>, that transaction can be left open indefinitely, or accidentally
+<code>COMMIT</code>'d with only half the intended change applied — silently breaking
+the atomicity guarantee the transaction was supposed to provide. <strong>Always
+wrap transactional code so that any error triggers an explicit <code>ROLLBACK</code>.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">ROLLBACK</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">accounts</span><span class="p">;</span><span class="w">   </span><span class="c1">-- Bob&#39;s debit is gone too, as intended</span>
 </code></pre></div>
-<h2 id="nullif-turn-a-specific-value-into-null">NULLIF — turn a specific value into NULL<a class="headerlink" href="#nullif-turn-a-specific-value-into-null" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">NULLIF</span><span class="p">(</span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">price_or_null</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>id  owner  balance
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>--  -----  -------
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>1   Alice  300.0
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>2   Bob    300.0
 </code></pre></div>
-<p><code>NULLIF(a, b)</code> returns <code>NULL</code> if <code>a</code> equals <code>b</code>, otherwise returns <code>a</code> —
-useful for turning sentinel values like <code>0</code> or <code>''</code> into a proper <code>NULL</code>
-before further processing (e.g. before passing into <code>AVG</code>, so a placeholder
-zero doesn't wrongly drag down the average).</p>
-<h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
+<h2 id="acid-briefly">ACID, briefly<a class="headerlink" href="#acid-briefly" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Task</th>
-<th>Correct approach</th>
+<th>Property</th>
+<th>Meaning</th>
+<th>Seen above</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Check for NULL</td>
-<td><code>WHERE col IS NULL</code> (never <code>= NULL</code>)</td>
+<td><strong>Atomicity</strong></td>
+<td>A transaction's statements all succeed or all fail together</td>
+<td>The transfer example — but only if you remember to <code>ROLLBACK</code> on error</td>
 </tr>
 <tr>
-<td>Check for NOT NULL</td>
-<td><code>WHERE col IS NOT NULL</code></td>
+<td><strong>Consistency</strong></td>
+<td>The database moves from one valid state to another, never violating constraints</td>
+<td>The <code>CHECK (balance &gt;= 0)</code> constraint blocking an overdraft</td>
 </tr>
 <tr>
-<td>Provide a default</td>
-<td><code>COALESCE(col, 'default')</code></td>
+<td><strong>Isolation</strong></td>
+<td>Concurrent transactions don't see each other's uncommitted changes</td>
+<td>Other connections can't see Alice's <code>200.0</code> mid-transaction</td>
 </tr>
 <tr>
-<td>Turn a sentinel into NULL</td>
-<td><code>NULLIF(col, sentinel_value)</code></td>
+<td><strong>Durability</strong></td>
+<td>Once committed, changes survive a crash or power loss</td>
+<td>SQLite's rollback journal / WAL file, <code>fsync</code>'d to disk on <code>COMMIT</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="isolation-levels-how-much-concurrency-you-allow">Isolation levels — how much concurrency you allow<a class="headerlink" href="#isolation-levels-how-much-concurrency-you-allow" title="Permanent link">&para;</a></h2>
+<p>Isolation is a spectrum, not a single switch. From loosest to strictest:</p>
+<ul>
+<li><strong>Read uncommitted</strong> — can see other transactions' uncommitted changes
+  ("dirty reads"). Rare in practice; SQLite doesn't support this.</li>
+<li><strong>Read committed</strong> — only sees committed data, but a value re-read within
+  the same transaction can change if another transaction commits in between
+  ("non-repeatable reads"). PostgreSQL's default.</li>
+<li><strong>Repeatable read</strong> — the same row read twice within a transaction is
+  guaranteed to return the same value, but new rows matching a range query
+  can still appear ("phantom reads").</li>
+<li><strong>Serializable</strong> — transactions behave as if run one at a time in some
+  order, no exceptions. SQLite's default: a writer takes an exclusive lock on
+  the whole database file for the duration of the transaction, which
+  sidesteps concurrency anomalies entirely at the cost of write concurrency
+  (only one writer at a time, though <code>WAL</code> journal mode lets readers proceed
+  unblocked).</li>
+</ul>
+<p>Stricter isolation means fewer surprises but less concurrency — the right
+level depends on whether your application needs many simultaneous writers or
+mainly needs correctness guarantees.</p>
+<h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BEGIN</code></td>
+<td>Start an explicit transaction</td>
 </tr>
 <tr>
-<td>Count non-NULL values</td>
-<td><code>COUNT(col)</code> (not <code>COUNT(*)</code>)</td>
+<td><code>COMMIT</code></td>
+<td>Make all changes since <code>BEGIN</code> permanent</td>
 </tr>
 <tr>
-<td>NULLs in aggregates</td>
-<td>Silently skipped, not treated as 0</td>
+<td><code>ROLLBACK</code></td>
+<td>Discard all changes since <code>BEGIN</code></td>
 </tr>
 <tr>
-<td>NULLs in arithmetic</td>
-<td>Any operation with NULL produces NULL</td>
+<td>Implicit transaction</td>
+<td>Each standalone statement outside <code>BEGIN</code>/<code>COMMIT</code> is its own transaction</td>
+</tr>
+<tr>
+<td>Failed statement mid-transaction (SQLite)</td>
+<td>Aborts that statement only — you must <code>ROLLBACK</code> explicitly to undo the whole transaction</td>
 </tr>
 </tbody>
 </table>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
-<p>Using the <code>books</code> table above: write a query using <code>COALESCE</code> that shows each
-book's price, defaulting to <code>0.00</code> when the price is <code>NULL</code>. Then write a
-query that counts how many books have a <code>NULL</code> price using <code>IS NULL</code>, and a
-separate query using <code>NULLIF</code> that treats a price of exactly <code>0</code> the same as
-<code>NULL</code> when computing the average price.</p>
+<p>Using the <code>accounts</code> schema above:</p>
+<ol>
+<li>Write a transaction that transfers <code>150</code> from Bob to Alice, and confirm
+   both balances update correctly after <code>COMMIT</code>.</li>
+<li>Write a transaction that would overdraw an account (violating the <code>CHECK</code>
+   constraint), observe the error, then confirm with <code>SELECT</code> that an
+   explicit <code>ROLLBACK</code> is required to fully undo any earlier successful
+   statement in that same transaction.</li>
+<li>Research (or check your SQLite version's docs) what <code>PRAGMA journal_mode
+   = WAL;</code> changes about concurrent readers and writers compared to the
+   default rollback-journal mode.</li>
+</ol>
 
 
 

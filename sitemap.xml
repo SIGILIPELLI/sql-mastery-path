@@ -52,4 +52,48 @@
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/10-project-library-database/</loc>
          <lastmod>2026-08-02</lastmod>
     </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/01-advanced-joins/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/02-subqueries/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/03-set-operations/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/04-string-date-functions/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/05-case-expressions/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/06-views/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/07-indexes-basics/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/08-constraints/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/09-transactions-acid/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
+    <url>
+         <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/10-project-ecommerce-reporting/</loc>
+         <lastmod>2026-08-02</lastmod>
+    </url>
 </urlset>
