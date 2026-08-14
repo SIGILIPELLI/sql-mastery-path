@@ -2,98 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/privacy/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/01-setup-first-queries/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/02-select-basics-data-types/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/03-filtering-where/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/04-sorting-limiting/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/05-aggregates-group-by/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/06-joins-basics/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/07-working-with-null/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/08-creating-tables/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/09-insert-update-delete/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-1/10-project-library-database/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/01-advanced-joins/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/02-subqueries/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/03-set-operations/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/04-string-date-functions/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/05-case-expressions/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/06-views/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/07-indexes-basics/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/08-constraints/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/09-transactions-acid/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
     <url>
          <loc>https://sigilipelli.github.io/sql-mastery-path/level-2/10-project-ecommerce-reporting/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-14</lastmod>
     </url>
 </urlset>
