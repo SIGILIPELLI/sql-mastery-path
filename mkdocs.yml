@@ -1,8 +1,8 @@
 site_name: SQL Mastery Path
 site_description: A structured, module-wise SQL training program from entry level to master level.
-site_url: https://sigilipelli.github.io/sql-skillmastery/
-repo_url: https://github.com/SIGILIPELLI/sql-skillmastery
-repo_name: sql-skillmastery
+site_url: https://sigilipelli.github.io/sql-mastery-path/
+repo_url: https://github.com/SIGILIPELLI/sql-mastery-path
+repo_name: sql-mastery-path
 
 theme:
   name: material
