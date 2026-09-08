@@ -167,6 +167,27 @@ mainly needs correctness guarantees.
 | Implicit transaction | Each standalone statement outside `BEGIN`/`COMMIT` is its own transaction |
 | Failed statement mid-transaction (SQLite) | Aborts that statement only — you must `ROLLBACK` explicitly to undo the whole transaction |
 
+## How It Actually Works
+
+SQLite guarantees **atomicity** and **durability** primarily through its
+rollback journal (or WAL) mechanism: on `BEGIN`, no journal exists yet;
+on the first write, SQLite copies original page images to the journal file
+*before* modifying the live page cache; on `COMMIT`, it calls `fsync()` to
+force the journal to durable storage, then writes the actual dirty pages to
+the main database file, `fsync()`s again, and finally deletes (or truncates)
+the journal — that final deletion is the atomic "commit point." If the
+process or machine crashes at any point before that deletion, the next
+connection to open the file finds a stale journal and automatically replays
+it to roll back the incomplete transaction, restoring exactly the pre-transaction
+state — this is what gives you atomicity without a separate log-replay
+service. **Isolation** in SQLite's default (non-WAL) mode is coarse: a writer
+holds an exclusive lock on the *entire database file* for the whole
+transaction, so concurrent writers simply block/fail with `SQLITE_BUSY`
+rather than being interleaved — there's no per-row locking or MVCC snapshot
+isolation unless you switch to `PRAGMA journal_mode=WAL`, which lets readers
+see a consistent snapshot from the WAL file while a single writer appends
+new pages concurrently.
+
 ## Exercise
 
 Using the `accounts` schema above:

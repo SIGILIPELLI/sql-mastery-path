@@ -149,6 +149,26 @@ For a larger test suite:
 | Test constraints independently of app logic | A test that violates the constraint directly, bypassing your code |
 | Avoid mocking the database itself | Real (in-memory) database > mocked cursor — catches real constraint/transaction bugs |
 
+## How It Actually Works
+
+A common pattern — wrapping each test in a transaction and rolling it back
+at the end instead of truncating tables — works specifically because of the
+rollback journal mechanism covered earlier in this course: `ROLLBACK`
+doesn't undo changes by executing inverse SQL statements, it restores the
+*original page images* that were copied into the journal before any write
+happened, which is why it's essentially instantaneous regardless of how much
+data the test modified — there's no re-computation, just discarding the
+dirty pages and reverting to the pre-transaction page set. Using an
+in-memory database (`:memory:`) for tests skips file I/O and `fsync()`
+entirely — pages live only in the process's memory-mapped page cache with no
+disk-backed durability guarantee needed, which is exactly why it's
+dramatically faster for test suites that don't need persistence across
+runs. Testing query correctness against `EXPLAIN QUERY PLAN` output (not
+just result rows) is a legitimate technique for catching performance
+regressions in CI — asserting a query still produces a `SEARCH USING INDEX`
+rather than a `SCAN` is a stronger guarantee than eyeballing manual runs
+after a schema or index change.
+
 ## Exercise
 
 1. Add a test `test_transfer_to_nonexistent_owner_rolls_back` that calls

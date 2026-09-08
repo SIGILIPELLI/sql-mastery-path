@@ -250,6 +250,25 @@ be three full table scans.
 | 4 | Query plan verification | Query 5 |
 | 4 | Security | Every query above uses parameters when given user input, not string concatenation |
 
+## How It Actually Works
+
+The capstone should force you to justify, mechanism by mechanism, every
+schema and index decision you make: which columns get B-tree indexes and
+why (based on actual `WHERE`/`JOIN`/`ORDER BY` usage, verified with `EXPLAIN
+QUERY PLAN`, not guesswork); which tables benefit from `WITHOUT ROWID`
+because their natural key is already unique and would otherwise cost a
+redundant secondary index; whether `WAL` mode's concurrent-reader/single-writer
+model fits your access pattern better than the default rollback journal's
+whole-file locking; and where triggers versus application-level transaction
+logic is the right place to enforce an invariant, given that triggers fire
+per-row inside the same atomic transaction while application code runs
+outside it entirely. A strong capstone review means actually running
+`ANALYZE`, checking `sqlite_stat1` for realistic cardinality once you've
+loaded representative data volumes, and confirming the planner's chosen join
+order and access paths in `EXPLAIN QUERY PLAN` match what you intended —
+rather than assuming a query is fast just because it returns correct results
+quickly on a small test dataset.
+
 ## Stretch goals
 
 1. Add a `refunds` table and a trigger that, on `orders.status` moving to

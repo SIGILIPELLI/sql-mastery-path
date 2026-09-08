@@ -171,6 +171,25 @@ you're accepting the anomaly risk in exchange for read speed.
 | Updating one fact requires touching many rows | Sign of a normalization gap — that fact belongs in its own table |
 | Read-heavy reporting query, source data static | Deliberate denormalization can be acceptable — document the trade-off |
 
+## How It Actually Works
+
+Normalization rules aren't just tidiness conventions — each normal form
+directly targets a specific storage/consistency mechanism. Violating 1NF
+(repeating groups in one column) forces every query to parse and re-parse a
+packed string at read time since the engine has no way to index or type
+individual sub-values inside one TEXT cell. Violating 2NF/3NF (partial or
+transitive dependencies, e.g. storing a customer's city on every order row
+instead of a `customer_id` foreign key) means every update-anomaly turns into
+literal duplicated B-tree entries — updating "customer moved cities" now
+requires rewriting every order row for that customer instead of one row in
+a `customers` table, multiplying write I/O and creating windows where the
+data is inconsistent between the rewrite of row 1 and row 10,000. On the flip
+side, **over-normalizing** has a real, measurable cost too: every additional
+join you introduce to satisfy a stricter normal form adds another nested-loop
+pass and another B-tree seek per outer row at query time — which is exactly
+the tradeoff **denormalization** deliberately accepts, trading write-time
+consistency risk for fewer joins at read time.
+
 ## Exercise
 
 Using the `orders_unnormalized` table above:

@@ -160,6 +160,26 @@ index type stretches to cover what other engines split across index types.
 | Expression | `CREATE INDEX ix ON t(expr(col))` | Queries always filter using that exact expression |
 | Leftmost-prefix rule | — | A composite index only helps if the query's filter starts with the index's first column |
 
+## How It Actually Works
+
+A **covering index** eliminates a step other indexes can't: normally, once a
+`SEARCH` finds a matching key in a secondary index's B-tree leaf, it still
+has to follow that leaf's rowid pointer back into the *table's own* B-tree to
+fetch any columns not present in the index itself — a second B-tree
+traversal per matching row. If every column the query needs (both filtered
+and selected) is already present in the index's leaf entries, the planner
+can skip that lookup entirely and answer straight from the index — you'll
+see this as `SEARCH ... USING COVERING INDEX` in `EXPLAIN QUERY PLAN`,
+roughly halving the I/O for lookup-heavy queries. A **partial index**
+(`CREATE INDEX ... WHERE status = 'active'`) is smaller and cheaper to
+maintain precisely because its B-tree only contains entries for rows
+matching the predicate — writes to rows outside that predicate never touch
+the index at all, and the planner can only use it for queries whose `WHERE`
+clause provably implies the partial index's condition. An **expression
+index** stores the *computed* value as the B-tree key rather than a raw
+column, which is the only way to make a function-wrapped predicate
+(`WHERE lower(email) = ?`) seekable instead of forcing a full scan.
+
 ## Exercise
 
 Using the `employees` table above:

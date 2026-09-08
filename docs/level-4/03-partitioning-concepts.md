@@ -129,6 +129,24 @@ of a slow bulk `DELETE`.
 | Routing new rows | Automatic | Application logic or a trigger |
 | Cross-partition constraints | Supported (with caveats) | Not enforced — application's responsibility |
 
+## How It Actually Works
+
+SQLite has no built-in table partitioning (unlike Postgres's declarative
+partitioning or MySQL's `PARTITION BY`), so the concept has to be
+implemented manually — typically as separate physical tables (e.g.
+`orders_2026_01`, `orders_2026_02`) unioned by a view, or as separate
+database *files* attached together with `ATTACH DATABASE`. The mechanical
+benefit partitioning provides elsewhere — letting the planner prune entire
+partitions out of a scan based on a `WHERE` predicate on the partition key —
+has to be recreated here by application logic choosing which physical table
+to query, since SQLite's planner has no native concept of a partition key to
+prune by. What you *do* get for free is smaller individual B-trees per
+partition: a query against just `orders_2026_01` walks a B-tree a fraction
+of the size of one holding all history, which is the same underlying
+performance win real partitioning delivers (smaller trees, shallower
+traversals, better cache locality), just achieved by physically splitting
+the data rather than through a query-planner feature.
+
 ## Exercise
 
 1. Extend the pattern above to a third table `events_2025_03` and update

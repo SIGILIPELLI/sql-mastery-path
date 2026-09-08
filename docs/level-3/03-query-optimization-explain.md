@@ -197,6 +197,25 @@ lead to worse plans than no statistics at all.
 | Wrapping a column (`col + 0`, `lower(col)`) | Disables index use on that column |
 | `ANALYZE` | Refreshes planner statistics in `sqlite_stat1` |
 
+## How It Actually Works
+
+`EXPLAIN QUERY PLAN` doesn't run your query — it asks the query planner to
+report the access strategy it *would* choose, based on cost estimates derived
+from table/index metadata and, if you've run `ANALYZE`, real column
+cardinality statistics stored in `sqlite_stat1`. Without `ANALYZE` data, the
+planner falls back to rough heuristics (assuming, e.g., that an indexed
+equality lookup returns very few rows) that can be wrong for skewed data —
+this is why `ANALYZE` matters: it lets the cost model distinguish "this
+column has 2 distinct values" from "this column is nearly unique," which
+directly changes whether the planner picks an index seek or a full scan for
+borderline cases. The planner's cost function is a rough proxy for total page
+reads: a `SCAN` costs roughly proportional to table size; a `SEARCH` costs
+roughly `log(n)` for the B-tree descent plus the number of matching rows
+retrieved. For joins, it estimates the cost of *every* candidate join order
+(bounded by a search-space cap) and picks the cheapest, which is why adding
+or removing an index can silently change which table becomes the outer loop
+in a multi-way join, not just whether one particular filter uses an index.
+
 ## Exercise
 
 Using the `orders`/`customers` schema above:

@@ -139,6 +139,27 @@ though SQLite's own cost for it is much lower.
 | Explicit cursor, memory-safe iteration | `cur = conn.cursor(); for row in cur:` |
 | Manual transaction control | `conn.execute("BEGIN")` / `conn.commit()` / `conn.rollback()` |
 
+## How It Actually Works
+
+When application code opens a "connection" to SQLite, the driver is really
+just opening file descriptors and initializing an in-process VDBE runtime —
+there's no network handshake or server-side session state to establish,
+which is why SQLite connections are cheap to open compared to a networked
+database, but also why a **connection pool** (common wisdom for Postgres/
+MySQL) is largely unnecessary and can even hurt: multiple connections to the
+same SQLite file still ultimately serialize on the same file-level lock for
+writes, and pooling just adds overhead without parallelizing anything a
+single connection couldn't already do. **Prepared statement caching**
+(reusing a compiled `sqlite3_stmt` across calls instead of re-preparing the
+same SQL text) matters more here than connection pooling does, because it
+skips the parse-and-plan phase (tokenizing, building the parse tree, cost-based
+planning) and reuses the already-compiled VDBE bytecode, only re-binding
+parameter values — this is the single biggest win an ORM or driver can give
+you for a hot-path query executed thousands of times. An ORM's lazy-loading
+pattern is a classic source of the N+1 query problem precisely because each
+lazy access issues its own fresh statement (and often its own fresh nested-loop
+plan) instead of one join.
+
 ## Exercise
 
 1. Write a function `add_task(conn, title)` that inserts a task and returns

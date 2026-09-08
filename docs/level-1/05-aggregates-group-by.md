@@ -180,6 +180,23 @@ Cyberpunk  2          8.88
 1950` drops it, leaving only `The Fellowship of the Ring` — one row, filtered
 out by `HAVING COUNT(*) > 1`.)
 
+## How It Actually Works
+
+`GROUP BY` needs rows with equal keys adjacent to each other so it can
+accumulate aggregates. SQLite does this one of two ways: if there's a B-tree
+index (or a table's own rowid-implicit ordering) already sorted by the
+`GROUP BY` columns, it streams rows in that order and simply resets the
+accumulator every time the key changes — no extra data structure needed. If
+not, it builds an ephemeral B-tree keyed by the group columns (same mechanism
+as a sort), inserts every row, then walks it in sorted order — you'll see
+`USE TEMP B-TREE FOR GROUP BY`. Each aggregate function (`COUNT`, `SUM`,
+`AVG`, `MAX`) keeps a tiny running accumulator per group: `SUM` and `COUNT`
+are single running totals updated per row; `AVG` internally tracks both a sum
+and a count and divides only at the end; `MAX`/`MIN` just compare-and-replace.
+`HAVING` runs *after* grouping is complete, filtering finished accumulator
+rows — which is exactly why it can reference aggregate results that `WHERE`
+(evaluated per-row, before grouping) cannot.
+
 ## Exercise
 
 Using the `books` table:

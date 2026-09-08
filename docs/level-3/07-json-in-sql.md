@@ -154,6 +154,25 @@ scale.
 | `json_group_array(col)` / `json_group_object(k, v)` | Aggregate rows into a JSON array/object |
 | `CREATE INDEX ix ON t(col ->> '$.path')` | Index a specific JSON path for fast filtering |
 
+## How It Actually Works
+
+SQLite has no native JSON storage type — a JSON column is just TEXT, stored
+and read like any other string, and `json_extract()`/`->`/`->>` parse that
+text *at query time, on every row*, walking the JSON document's structure
+character by character to find the requested path. This means JSON access is
+inherently more expensive than a real column: there's no B-tree seek into a
+JSON field, only linear parsing cost proportional to how deep the path is and
+how large the document is, repeated for every row scanned. You can recover
+index-like performance with a **generated column plus expression index**:
+`ALTER TABLE t ADD COLUMN status_gen TEXT GENERATED ALWAYS AS
+(json_extract(data,'$.status'))`, then `CREATE INDEX` on that generated
+column — SQLite now maintains a real B-tree keyed on the extracted value,
+updated automatically whenever the JSON payload changes, letting the planner
+seek instead of scan-and-parse. Without that, any `WHERE json_extract(...) =
+?` predicate is function-wrapped and therefore forces a full table scan for
+the same reason wrapping any indexed column in a function does elsewhere in
+this course.
+
 ## Exercise
 
 Using the `events` table above:

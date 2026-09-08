@@ -187,6 +187,24 @@ Dave
 | `EXISTS` | True/false per outer row | "At least one related row" checks — safe with `NULL` |
 | `NOT IN` with a nullable list | — | **Avoid** — a `NULL` in the list breaks the whole query; use `NOT EXISTS` instead |
 
+## How It Actually Works
+
+Not all subqueries execute the same way. A **scalar subquery** in the
+`SELECT` list or `WHERE` clause is typically evaluated once per outer row (or
+cached if it's uncorrelated) — the VDBE compiles it as a nested sub-program
+it calls repeatedly, which is why a correlated scalar subquery in a
+`SELECT` list can be as slow as a join if it isn't optimized away. A subquery
+used with `IN (SELECT ...)` is often **flattened** by the query planner into
+an equivalent join or semi-join when it can prove it's safe to do so — this
+optimization (query flattening) rewrites `WHERE x IN (SELECT y FROM t2)` into
+something closer to `EXISTS`-style semantics using an ephemeral index over
+the subquery's results, avoiding re-running the subquery per outer row. A
+subquery in the `FROM` clause materializes as a genuine **ephemeral B-tree
+table** the outer query then scans or seeks into like any real table — you
+can see this in `EXPLAIN QUERY PLAN` as `SCAN <subquery>`. `EXISTS` is
+usually cheapest of all because the VDBE can stop at the very first matching
+row instead of counting or collecting every match.
+
 ## Exercise
 
 Using the `customers`/`orders` schema above:

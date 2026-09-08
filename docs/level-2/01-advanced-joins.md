@@ -213,6 +213,24 @@ using `LEFT JOIN` throughout the chain.
 | `RIGHT JOIN` | Keep everything from the right table (or swap table order and use `LEFT JOIN`) |
 | `FULL OUTER JOIN` | Keep everything from both tables; emulate with `LEFT JOIN ... UNION ... LEFT JOIN` if unsupported |
 
+## How It Actually Works
+
+SQLite implements `RIGHT JOIN` and `FULL OUTER JOIN` (in modern versions) by
+still walking a nested-loop plan, but it has to track "was this inner-table
+row matched by *any* outer row" across the entire loop, not just per current
+row — which is why full outer joins are noticeably more expensive: the
+engine effectively runs the equivalent of a left join sweep, then a second
+pass to emit unmatched rows from the other side padded with NULLs. A
+self-join (`t1 JOIN t1 AS t2`) is not special-cased at all — the planner
+treats the aliased table exactly like a second physical table and can even
+choose a different index/access path for each alias independently, based on
+which columns are filtered or joined on each side. Multi-table joins with 3+
+tables force the planner to solve a mini combinatorial optimization problem —
+choosing join *order* — because nested-loop cost compounds multiplicatively;
+SQLite uses a greedy cost-based heuristic (not exhaustive search past ~8
+tables) that estimates row counts from any `ANALYZE`-collected statistics to
+decide which table should anchor the outermost loop.
+
 ## Exercise
 
 Using the `employees` and `departments` schema above:

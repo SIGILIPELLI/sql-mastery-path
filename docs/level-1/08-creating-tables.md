@@ -144,6 +144,22 @@ DROP TABLE IF EXISTS temp_import;   -- IF EXISTS avoids an error if it's already
 | `ALTER TABLE ... ADD COLUMN` | Add a new column to an existing table |
 | `DROP TABLE IF EXISTS` | Delete a table, without erroring if it's already gone |
 
+## How It Actually Works
+
+`CREATE TABLE` doesn't just register metadata — it allocates a brand-new
+B-tree in the database file (SQLite calls each table and each index a
+separate B-tree, keyed by a **root page number** stored in `sqlite_master`).
+A freshly created table is a single leaf page waiting for rows. Every table
+is physically a B-tree keyed by `rowid` (an implicit 64-bit integer) unless
+you declare `WITHOUT ROWID`, in which case the primary key you specify
+becomes the B-tree's own key directly, avoiding a secondary lookup. This is
+also why `INTEGER PRIMARY KEY` is special in SQLite: it's not a separate
+index sitting beside the table — it *is* the rowid, so it's a free, zero-cost
+unique key with no extra storage. Declaring `id INTEGER PRIMARY KEY` literally
+aliases the column to the table's own B-tree key; any other column type used
+as "primary key" gets a real, separate unique index built and maintained
+alongside the table's rowid B-tree, doubling the write cost for every insert.
+
 ## Exercise
 
 Create a `students` table with: an auto-incrementing `id`, a required `name`,

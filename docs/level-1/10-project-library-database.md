@@ -113,6 +113,23 @@ and `Haruki Murakami` each have exactly 2 as well, so all four authors
 should actually appear; if you seeded fewer rows for one of them, recheck
 your `INSERT` statements above.
 
+## How It Actually Works
+
+This project ties every earlier mechanism together in one schema: each
+`CREATE TABLE` allocates its own B-tree; each foreign key column you join on
+is only fast if it's actually indexed (SQLite does **not** auto-index foreign
+key columns — only the referenced primary key side is indexed by default);
+and every multi-table query you write compiles down to nested-loop joins
+executed by the VDBE, row by row. If you run `EXPLAIN QUERY PLAN` on your
+book/author/loan queries here, you'll typically see one `SEARCH` per indexed
+join and a `SCAN` on any table you're filtering by a non-indexed column —
+that's the planner telling you exactly which lookups are O(log n) versus
+O(n). A good sanity check for this project: add `PRAGMA case_sensitive_like`
+aside, try `.eqp on` in the `sqlite3` CLI (short for "explain query plan") to
+see the plan automatically before every query you type, and confirm your
+join and filter columns are backed by indexes rather than triggering full
+scans on a larger dataset.
+
 ## Stretch goals
 
 - Add a `reviews` table (`book_id`, `rating`, `comment`) and write a query

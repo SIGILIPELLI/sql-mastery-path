@@ -149,6 +149,23 @@ Clause order in a query is fixed: `SELECT ... FROM ... WHERE ... ORDER BY ...
 LIMIT ...` — `WHERE` always comes before `ORDER BY`, which always comes before
 `LIMIT`.
 
+## How It Actually Works
+
+`ORDER BY` needs the *entire* candidate result set materialized before it can
+guarantee order, unless the rows already arrive in that order for free. If
+there's a B-tree index on the sort column, SQLite can walk the index's leaf
+pages directly (they're stored in sorted key order) and stream rows out
+without ever building a temporary sort structure — you'll see `USING INDEX
+... (SCAN)` with no separate sort step in `EXPLAIN QUERY PLAN`. Without such
+an index, SQLite allocates a temporary B-tree (in memory, spilling to a
+temp file on disk if it exceeds `PRAGMA cache_size` / `temp_store` limits),
+inserts every row into it keyed by the sort expression, then reads it back in
+order — an O(n log n) operation you'll see reported as `USE TEMP B-TREE FOR
+ORDER BY`. `LIMIT` is applied *after* sorting logically, but the VDBE is
+smart enough to short-circuit: if there's no `ORDER BY`, it simply stops
+pulling rows from the scan once the limit counter hits zero, saving the cost
+of visiting the rest of the table entirely.
+
 ## Exercise
 
 Using the `books` table:

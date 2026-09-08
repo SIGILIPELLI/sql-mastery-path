@@ -172,6 +172,24 @@ student 1 can't enroll in course 101 twice. Neither column alone is `UNIQUE`.
 | `CHECK (expr)` | Any custom boolean rule | Can reference multiple columns in the same row |
 | `NOT NULL` | Column must always have a value | |
 
+## How It Actually Works
+
+`PRIMARY KEY`, `UNIQUE`, and `FOREIGN KEY` aren't just documentation — each
+one triggers real enforcement machinery. `UNIQUE` (and non-rowid
+`PRIMARY KEY`) constraints are backed by an actual auto-created index; every
+insert or update must do a B-tree seek into that index *before* completing,
+to check whether the new key already exists — a genuine extra lookup on
+every write, not a free label. `FOREIGN KEY` enforcement (when `PRAGMA
+foreign_keys = ON`) works by running an implicit existence check — effectively
+a small `SELECT ... WHERE parent_key = ?` — against the referenced table on
+every insert/update to the child, and again on every delete/update to the
+parent to make sure no orphaned children exist; if that lookup isn't backed
+by an index on the parent side you get a full scan per write. `CHECK`
+constraints are evaluated as a boolean expression against the *new* row
+values at write time, entirely in-memory, with no additional I/O — but they
+run on every single write to the table, so an expensive `CHECK` expression is
+paid repeatedly, not once.
+
 ## Exercise
 
 Using the schemas above:

@@ -152,6 +152,24 @@ for the rest of the data.
 | Prefix match | `MATCH 'prefix*'` |
 | Keep FTS in sync with a real table | Triggers on the source table's INSERT/UPDATE/DELETE |
 
+## How It Actually Works
+
+FTS5 (SQLite's full-text search extension) is not a B-tree index at all —
+it's a completely separate storage structure called an **inverted index**.
+Instead of mapping a sorted key to a row, it maps every distinct *token*
+(word) to the list of rows (and positions within those rows) that contain it.
+When you insert a row into an FTS5 virtual table, the tokenizer splits the
+text into terms, and for each term the engine appends an entry to that term's
+posting list, batched into segments and periodically merged (similar in
+spirit to an LSM-tree) rather than updated in place like a B-tree, because
+inverted indexes are optimized for append-heavy write patterns and
+term-lookup reads, not point updates. A `MATCH` query looks up each search
+term's posting list directly (O(matching term frequency), not O(table size))
+and intersects/unions them for multi-term queries — which is why full-text
+search on a `LIKE '%word%'` scan is dramatically slower at any real data
+volume: `LIKE` must decode and pattern-match every row's text, while `MATCH`
+jumps straight to the rows already known to contain that term.
+
 ## Exercise
 
 Using the `articles` table above:

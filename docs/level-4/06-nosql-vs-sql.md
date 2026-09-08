@@ -134,6 +134,26 @@ forcing every use case through pure relational tables.
 | Is horizontal scale across many servers a hard requirement? | Not the default strength | Often designed in from the start |
 | Do you need ad-hoc queries across many fields? | Yes, that's SQL's strength | Harder — often needs a specialized query layer |
 
+## How It Actually Works
+
+The core structural difference is what the storage engine assumes about
+your data's shape. A relational engine like SQLite's B-tree tables assume a
+fixed, known set of columns per row (even with flexible typing) and build
+secondary indexes as separate sorted structures over specific columns —
+which is exactly what makes ad-hoc, multi-column filtering and joins across
+tables efficient: the planner can always find *some* B-tree sorted the way
+a query needs. Document stores (MongoDB-style) instead default to storing
+each record as an opaque blob (often BSON) with no fixed schema, and
+typically build indexes only on paths you explicitly declare — querying an
+unindexed nested field means scanning and deserializing every document's
+full blob, similar to SQLite's `json_extract()` cost model but as the
+*primary* access pattern rather than an escape hatch. Wide-column stores
+(Cassandra-style) organize data by a partition key that determines physical
+placement across a cluster, trading SQL's flexible ad-hoc joins for
+horizontal write scalability — there is no cross-partition join operator at
+all, because the engine deliberately avoids the nested-loop-across-nodes cost
+that would require.
+
 ## Exercise
 
 1. Take the `customers`/`orders` example above and sketch what the same

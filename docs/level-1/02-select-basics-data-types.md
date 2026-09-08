@@ -174,6 +174,22 @@ as_int  as_text  truncated
 `CAST` is portable across nearly all SQL databases and is the safest way to
 convert types explicitly rather than relying on implicit coercion.
 
+## How It Actually Works
+
+SQLite uses **type affinity**, not rigid static typing like most databases.
+Each column has a declared type (`INTEGER`, `TEXT`, `REAL`, `BLOB`, `NUMERIC`)
+but that's a *hint* the storage engine uses to decide how to coerce a value
+before storing it — the value itself still carries its own storage class
+tag on disk. A column declared `TEXT` can still hold an integer if you insert
+one and it doesn't cleanly convert. Under the hood, every row is stored as a
+**record**: a header of varint-encoded serial types (one per column,
+describing exactly how many bytes and what class each value occupies) followed
+by the raw payload bytes, packed with no padding. This is why SQLite databases
+are often smaller than the equivalent Postgres/MySQL table — there's no fixed
+per-row slot size to pad out. When you `SELECT` a column, the VDBE walks the
+row's header varints to compute byte offsets, then reads only the bytes for
+the columns you asked for — it never deserializes columns you didn't request.
+
 ## Exercise
 
 Using the `books` table above:

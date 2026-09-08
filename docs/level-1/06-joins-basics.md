@@ -118,6 +118,24 @@ them left to right, each one narrowing or extending the row set.
 | `LEFT JOIN` | All left-side rows, `NULL`-filled right side if no match |
 | (SQLite 3.39+) `RIGHT JOIN` | All right-side rows, `NULL`-filled left side if no match — or just swap table order and use `LEFT JOIN`, which works everywhere |
 
+## How It Actually Works
+
+SQLite's query planner implements joins almost exclusively as **nested loop
+joins** (it doesn't have hash or sort-merge join operators like Postgres).
+For `A JOIN B ON A.id = B.a_id`, it picks one table as the "outer" loop
+(based on cost estimates) and, for every row in the outer table, seeks into
+the inner table's B-tree for matches. If `B.a_id` has an index, that seek is
+O(log n) per outer row via B-tree traversal — a `SEARCH` step in `EXPLAIN
+QUERY PLAN`. Without an index on the join column, the inner table is
+rescanned in full for *every single outer row*, making the join O(n×m) — this
+is the single most common performance disaster in SQL, and why "index your
+foreign keys" is not just a suggestion. `LEFT JOIN` uses the same nested-loop
+mechanism but the VDBE tracks whether any inner match was found for each
+outer row; if none was, it synthesizes a row of NULLs before moving to the
+next outer row instead of skipping it. The planner also chooses *which* table
+becomes the outer loop based on rough cardinality estimates, not necessarily
+the order you wrote them in.
+
 ## Exercise
 
 Using the `books`/`authors` schema above:

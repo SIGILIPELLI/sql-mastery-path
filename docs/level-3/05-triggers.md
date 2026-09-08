@@ -153,6 +153,25 @@ trigger writes to before adding another trigger on a table it touches.
 | Cancel + roll back | `SELECT RAISE(ABORT, 'msg')` | Only meaningful in `BEFORE` triggers |
 | Drop a trigger | `DROP TRIGGER name;` | — |
 
+## How It Actually Works
+
+A trigger is compiled into its own VDBE sub-program, attached to a specific
+table event (`BEFORE`/`AFTER` × `INSERT`/`UPDATE`/`DELETE`), and stored (like
+views) as text in `sqlite_master`. When the triggering statement executes,
+after the row-level operation completes (for `AFTER`) or before it's applied
+(for `BEFORE`), the VDBE jumps into the trigger's sub-program with the
+special `OLD` and `NEW` pseudo-row values bound as local registers pointing
+at the pre- and post-image of the affected row. Triggers fire **per row**,
+not once per statement — an `UPDATE` touching 10,000 rows invokes the
+trigger's sub-program 10,000 times, each with its own `OLD`/`NEW` bindings,
+which is a common performance trap when a trigger itself does expensive work
+like a lookup into another table. Triggers can cascade: a trigger's own
+`INSERT`/`UPDATE`/`DELETE` can fire other triggers, and SQLite enforces a
+recursion depth limit (`SQLITE_LIMIT_TRIGGER_DEPTH`) specifically to catch
+runaway cascades, since there's no built-in cycle detection otherwise — a
+poorly designed pair of triggers on two tables that each update the other
+can trigger infinite recursion.
+
 ## Exercise
 
 Using the `products`/`stock_log` schema above:

@@ -233,6 +233,26 @@ Two other common mistakes to watch for:
 | `UNION ALL` vs `UNION` | Always use `UNION ALL` in recursion — `UNION`'s deduplication is wasted work and can hide legitimate duplicate rows |
 | Multiple CTEs | Separate with commas: `WITH a AS (...), b AS (...) SELECT ...` |
 
+## How It Actually Works
+
+A non-recursive CTE (`WITH x AS (...)`) is handled much like a subquery: by
+default SQLite treats it as inlineable and may fold it directly into the
+outer query during planning (similar to view expansion) unless it's
+referenced multiple times or marked `MATERIALIZED`, in which case it's
+computed once into an ephemeral B-tree that later references reuse. A
+**recursive CTE** works completely differently and mirrors exactly how the
+SQL standard defines it operationally: the engine runs the "seed"
+(non-recursive) branch once, inserting its rows into a working ephemeral
+table; then it repeatedly re-runs the recursive branch *only against the
+newest batch of rows added in the previous iteration* (not the whole
+accumulated result), appending whatever it produces, until an iteration
+produces zero new rows. This is literally a fixed-point loop implemented with
+VDBE jump instructions back to the start of the recursive branch's
+sub-program — which is exactly why an unbounded recursive CTE (say, a
+cycle in a self-referential hierarchy with no termination condition) will
+spin forever rather than error out; SQLite has no automatic cycle detection
+unless you build it yourself with a "visited" tracking column.
+
 ## Exercise
 
 Using the `employees` schema above:

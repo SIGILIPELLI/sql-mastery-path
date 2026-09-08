@@ -232,6 +232,24 @@ FOR GROUP BY` shows the grouping needs its own sort step because the driving
 scan (`oi`) isn't already ordered by `customer_id`; on a much larger dataset
 that's the step worth watching if this query got slow.
 
+## How It Actually Works
+
+This capstone forces every mechanism from Level 3 to interact: recursive
+CTEs walking a normalized hierarchy will re-run their recursive branch once
+per newly discovered row batch (not the whole result so far); window
+functions computing running analytics require a full sort pass unless a
+composite index already matches the `PARTITION BY`/`ORDER BY` columns; and a
+properly normalized schema means your analytics queries pay for correctness
+with extra joins — each one a nested-loop pass the planner must cost and
+order. Use `EXPLAIN QUERY PLAN` liberally here: with several joined tables
+plus a CTE plus a window function in one query, the planner is solving a
+genuinely harder join-ordering problem, and a missing index on any one join
+column can silently degrade an otherwise well-designed query from
+milliseconds to seconds as row counts grow. Running `ANALYZE` after loading
+representative data volumes (not just a handful of test rows) is what gives
+the planner accurate enough statistics to make good join-order decisions on
+a schema this size.
+
 ## Stretch goals
 
 1. Add a `reviews` table (`product_id`, `customer_id`, `rating` 1-5,

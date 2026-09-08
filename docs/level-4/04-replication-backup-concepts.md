@@ -135,6 +135,25 @@ backups (not replication) are SQLite's actual resilience story.
 | Automatic failover | Not applicable | Replica promotion on primary failure |
 | Concurrent access on one machine | WAL mode + file locking | Built into the server's connection handling |
 
+## How It Actually Works
+
+SQLite's built-in **online backup API** (exposed via `.backup` in the CLI)
+works by copying pages directly at the storage layer — it iterates the
+source database's pages and copies each into the destination file, taking a
+lock only briefly per page (or per batch), so a backup can run concurrently
+with normal reads without requiring an exclusive lock for the whole
+operation, though it does need to handle pages that change mid-backup by
+retrying them. In WAL mode, a **checkpoint** is the mechanism that actually
+merges the write-ahead log's accumulated changes back into the main database
+file; a backup taken without accounting for an in-progress WAL can miss the
+most recent committed transactions if it only copies the main file and
+ignores the `-wal` file. True replication (multiple independent database
+copies staying in sync) isn't a SQLite-native concept at all — projects like
+Litestream or rqlite bolt it on by shipping the WAL file's append-only
+changes to replicas as they're written, essentially treating the WAL as a
+change-data-capture stream, since the WAL already is, structurally, an
+ordered log of page changes.
+
 ## Exercise
 
 1. Write a shell one-liner using `sqlite3 mydb.db ".backup backup-$(date +%F).db"` you could put in a cron job for nightly backups, and describe how you'd verify a given backup file is actually restorable.

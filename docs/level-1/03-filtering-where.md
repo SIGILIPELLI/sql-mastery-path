@@ -144,6 +144,24 @@ Dune         Frank Herbert    9.99   1965
 Foundation   Isaac Asimov     8.5    1951
 ```
 
+## How It Actually Works
+
+A `WHERE` clause without a supporting index forces SQLite into a **full table
+scan**: the query planner walks every leaf page of the table's B-tree in
+physical order, decodes each row's record, evaluates the predicate against
+it, and discards rows that don't match. You can watch this happen with
+`EXPLAIN QUERY PLAN SELECT ... WHERE ...` — a plan of `SCAN t` means every row
+is visited; `SEARCH t USING INDEX ...` means the planner found a B-tree it
+could seek into directly. `AND`-connected conditions are evaluated
+short-circuit, left to right as compiled, so cheap, selective conditions
+should come first if you're hand-tuning a hot query. `OR` is more expensive:
+unless every branch is separately indexed (letting SQLite use an OR-optimization
+that unions multiple index searches), an `OR` clause typically forces a full
+scan because no single B-tree ordering can satisfy both branches at once.
+`LIKE '%foo%'` (leading wildcard) can never use a plain index seek either,
+because a B-tree is sorted by prefix — only `LIKE 'foo%'` (anchored prefix)
+lets the planner binary-search into the tree.
+
 ## Exercise
 
 Using the `books` table above, write queries to find:

@@ -126,6 +126,26 @@ patching individual symptoms of it.
 | DB account permissions | App connects as an admin/superuser | App connects with only the privileges it needs |
 | Input validation | Trust the input's shape | Validate type/format before it reaches SQL |
 
+## How It Actually Works
+
+SQL injection happens because string concatenation blurs the line between
+*code* (the SQL statement) and *data* (user input) before the engine ever
+sees either — by the time your concatenated string reaches SQLite, the
+parser has no way to know which characters were meant as literal data and
+which were meant as syntax, because they're indistinguishable in the final
+text. **Parameterized queries** (`?` placeholders bound via the driver's API)
+fix this at a completely different layer: the SQL text is compiled into VDBE
+bytecode *first*, with the placeholder becoming a dedicated "load a bound
+parameter into this register" opcode — the actual value you bind afterward
+is inserted directly as a typed value into that register, never re-parsed as
+SQL text at all. This is why parameterization isn't just "safer
+escaping" — the user's input structurally cannot become new SQL syntax,
+because parsing already finished before the value exists in the plan. It's
+also why prepared statements are faster for repeated execution: the same
+compiled bytecode program is reused across calls, with only the bound
+register values changing, skipping the parse/plan step entirely on
+subsequent runs.
+
 ## Exercise
 
 1. Using the `login_vulnerable` function above, craft an injection string

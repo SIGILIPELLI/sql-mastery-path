@@ -325,6 +325,23 @@ order exists for a sale that never really happened. Skipping that `ROLLBACK`
 would have left a phantom `orders` row with no corresponding stock deducted,
 exactly the kind of inconsistency transactions are meant to prevent.
 
+## How It Actually Works
+
+A reporting workload like this one stresses exactly the mechanisms covered so
+far at once: multi-table nested-loop joins across orders/customers/products,
+aggregation via temporary B-trees for `GROUP BY`, and index seeks (or full
+scans, if you forgot an index) on every filter predicate. The biggest lever
+for report-query performance here is **composite covering indexes** — an
+index on `(customer_id, order_date)` for a query that filters by customer and
+sorts by date lets the planner satisfy both the `WHERE` and `ORDER BY` from a
+single ordered B-tree walk, skipping the separate temp-B-tree sort entirely.
+Run `EXPLAIN QUERY PLAN` on your heaviest report query here and look for
+`USE TEMP B-TREE FOR GROUP BY/ORDER BY` — that's your signal an index could
+eliminate a whole materialization step. Also watch for `SCAN` on any of the
+larger fact-like tables (orders, order_items): at real-world data volumes,
+an unindexed scan there is the difference between a report that returns in
+milliseconds and one that takes seconds.
+
 ## Stretch goals
 
 - Add a `reviews` table (`product_id`, `customer_id`, `rating`, `comment`)

@@ -133,6 +133,26 @@ data changes, not on demand) by triggers — see the next module.
 | Logic that fires automatically on INSERT/UPDATE/DELETE | Trigger calling a procedure | Native `CREATE TRIGGER` (see next module) |
 | Server-side execution, no round-trip | Yes — logic runs on the DB server | N/A — SQLite is embedded, there's no separate server |
 
+## How It Actually Works
+
+SQLite has no stored procedure language at all — no `PL/pgSQL`, no `T-SQL`
+batches — because the entire engine is designed to be an embedded library
+with no separate server process to host procedural logic on. What other
+databases implement as a stored procedure (multiple statements, control
+flow, executed atomically on the server) SQLite achieves instead through
+**application-side transactions**: wrap a sequence of statements in `BEGIN`
+... `COMMIT` and the same atomicity/durability guarantees apply, just
+orchestrated by your calling code instead of a server-side procedural
+runtime. The closest SQLite gets to encapsulated server-side logic is
+**triggers** (covered next) and **user-defined functions** registered
+through the C API (`sqlite3_create_function`), which let host applications
+inject custom logic the VDBE can call as an opcode during query execution —
+but that logic lives in the host process, not inside a portable stored
+procedure object in the database file itself. Understanding this distinction
+matters when porting schemas: a Postgres/MySQL stored procedure has no
+direct SQLite equivalent and must be reimplemented as either a trigger or
+application code.
+
 ## Exercise
 
 1. Write a Python function `apply_discount(conn, order_id, percent)` that

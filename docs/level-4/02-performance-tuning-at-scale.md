@@ -148,6 +148,27 @@ exact commands differ:
 | Confirm an index is used | `EXPLAIN QUERY PLAN` | `SCAN` → full table; `SEARCH` → index used |
 | Durability vs speed trade-off | `PRAGMA synchronous=NORMAL` (with WAL) | Fewer fsyncs, small durability window on crash |
 
+## How It Actually Works
+
+At scale, the bottleneck usually shifts from CPU (evaluating expressions) to
+I/O (moving pages between disk and the page cache). `PRAGMA cache_size`
+controls how many pages SQLite keeps resident in memory — a working set that
+fits in the cache turns repeated B-tree traversals into pure memory lookups;
+one that doesn't causes page faults back to disk on every level of every
+B-tree descent. `PRAGMA journal_mode=WAL` changes the write path
+fundamentally: instead of copying original pages to a rollback journal and
+writing directly back into the main file, writers append new page versions
+to a separate write-ahead log file, and a background **checkpoint** process
+periodically folds the WAL back into the main database — this lets readers
+proceed concurrently with a writer (they read a consistent snapshot as of
+when they started) instead of blocking on the whole-file exclusive lock the
+rollback journal requires. `PRAGMA synchronous=NORMAL` (vs the default
+`FULL`) skips one of the two `fsync()` calls per transaction, trading a small
+durability window (a power loss could lose the last few committed
+transactions, though the file stays structurally consistent) for
+substantially higher write throughput — understanding exactly which
+guarantee you're trading away is the core of tuning at scale.
+
 ## Exercise
 
 1. Reproduce the batching benchmark above with 5000 rows instead of 2000

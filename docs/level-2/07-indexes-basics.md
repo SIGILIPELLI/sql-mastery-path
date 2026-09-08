@@ -171,6 +171,25 @@ often just as fast as using the index anyway.
 | Composite index `(a, b)`, filtering on `b` only | No — wrong leading column |
 | Heavy `INSERT`/`UPDATE` workload, low-selectivity column | Often not worth it |
 
+## How It Actually Works
+
+An index is a second, independent B-tree, sorted by the indexed column(s)
+rather than by rowid, where each leaf entry stores the indexed value plus a
+pointer back to the corresponding row (the rowid, or the full key for
+`WITHOUT ROWID` tables). A B-tree seek (`SEARCH ... USING INDEX`) walks from
+the root page down to the correct leaf in O(log n) disk-page reads by
+comparing the search key against separator keys at each internal node —
+compare that to a full `SCAN`, which touches every one of the table's O(n)
+leaf pages regardless of how selective the filter is. The tradeoff is write
+cost: every `INSERT`/`UPDATE`/`DELETE` that touches an indexed column must
+also update the index's B-tree — inserting a new key in sorted position
+(possibly triggering a page split if the leaf is full), which is why heavily
+indexed tables are slower to write to and why you shouldn't index columns you
+never filter or join on. A **composite index** on `(a, b)` can only be used
+efficiently to seek on `a` alone, or on `a` and `b` together, in that column
+order — it's essentially a single B-tree sorted primarily by `a` then by `b`,
+so it can't help a query that filters on `b` alone.
+
 ## Exercise
 
 Using the `customers` table above:

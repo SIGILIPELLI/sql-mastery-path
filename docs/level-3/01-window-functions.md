@@ -240,6 +240,25 @@ whole partition's total on every row, either drop `ORDER BY` from the
 | No `ORDER BY` in `OVER(...)` | — | Frame defaults to the whole partition |
 | `ORDER BY` present, no explicit frame | — | **Trap:** frame defaults to `UNBOUNDED PRECEDING` through current row |
 
+## How It Actually Works
+
+Window functions require a fundamentally different execution strategy than
+aggregates: instead of collapsing rows into one output row per group, SQLite
+must keep every row in the partition intact while giving each one access to
+values computed across its window frame. Internally, the engine first
+sorts (or seeks via an index already in the right order) the rows by the
+`PARTITION BY` and `ORDER BY` columns together, then makes a single pass
+maintaining a **sliding frame** — for `ROWS BETWEEN` frames it's a literal
+buffer of the rows currently in scope; for ranking functions (`ROW_NUMBER`,
+`RANK`, `DENSE_RANK`) it just tracks a running counter and the previous row's
+sort-key values to detect ties. This is materially more expensive than a
+plain aggregate: the sort step is unavoidable unless a supporting index
+already provides that exact order, and the per-partition frame state has to
+be recomputed from scratch every time the partition key changes. `LAG`/`LEAD`
+are implemented as fixed-offset frame lookups — the engine keeps a small
+rolling buffer of prior/upcoming rows rather than re-scanning the table for
+each call.
+
 ## Exercise
 
 Using the `sales` schema above:

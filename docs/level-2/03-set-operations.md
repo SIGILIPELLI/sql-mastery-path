@@ -147,6 +147,24 @@ Some databases (notably MySQL before 8.0.31, and Oracle) call this operator
 | `INTERSECT` | Rows in both queries | Yes |
 | `EXCEPT` | Rows in the first query only, absent from the second | Yes |
 
+## How It Actually Works
+
+`UNION` (without ALL) has to eliminate duplicates, so under the hood SQLite
+routes both sides' results into a single ephemeral B-tree keyed by the full
+row content, relying on the B-tree's insert-time duplicate detection to drop
+repeats — this is real sort/dedup work, not a cheap concatenation. `UNION
+ALL`, by contrast, is nearly free: it's implemented as literally running the
+first sub-query's VDBE program to completion, then running the second's,
+piping both result streams straight to the caller with zero buffering or
+deduplication, which is why it's dramatically faster on large result sets.
+`INTERSECT` and `EXCEPT` also go through a temporary sorted structure — the
+engine effectively sorts (or indexes) both sides on the full row tuple and
+walks them in lockstep, similar to a merge-join, keeping or discarding rows
+based on presence in the other side. All three set operators require both
+sides to produce the same number of columns with compatible affinities,
+because the resulting temp B-tree needs a single consistent key format to
+compare rows byte-for-byte.
+
 ## Exercise
 
 Using the `newsletter_subscribers`/`webinar_signups` schema above:

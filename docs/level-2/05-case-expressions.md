@@ -171,6 +171,23 @@ delivered" instead of alphabetical.
 | `SUM(CASE WHEN cond THEN 1 ELSE 0 END)` | — | Conditional counting / pivot-style summaries |
 | `CASE` in `ORDER BY` | — | Custom sort order that isn't alphabetical/numeric |
 
+## How It Actually Works
+
+`CASE WHEN ... THEN ... END` compiles into a straight sequence of conditional
+jump opcodes in the VDBE — functionally it's an if/elif/else chain evaluated
+top to bottom for every row, stopping at the first matching `WHEN` (later
+branches are never evaluated once one matches, so order conditions from most
+to least selective if they're expensive to check). Because it's evaluated
+per-row inline during the scan, a `CASE` expression itself doesn't prevent
+index use on *other* filter columns in the same query — but like any
+function, wrapping the *indexed* column itself inside a `CASE` in the `WHERE`
+clause blocks that column's index from being used, for the same reason
+calling a function on a column does. When used in `ORDER BY` or `GROUP BY`
+as a bucketing trick (`CASE WHEN age < 18 THEN 'minor' ELSE 'adult' END`),
+the engine has no choice but to materialize the computed value for every row
+into the temporary sort/group B-tree, since there's no way to seek an index
+by a value that doesn't physically exist in any column.
+
 ## Exercise
 
 Using the `orders` table above:

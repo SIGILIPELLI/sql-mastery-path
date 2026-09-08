@@ -208,6 +208,23 @@ idiom for date arithmetic that a simple string comparison can't do.
 | `STRFTIME(fmt, d)` | Format/extract parts of a date |
 | `julianday(d)` | Convert a date to a number for arithmetic |
 
+## How It Actually Works
+
+SQLite has no native date/time storage class — dates are stored as TEXT
+(ISO-8601 strings), REAL (Julian day numbers), or INTEGER (Unix timestamps),
+and functions like `date()`, `datetime()`, and `strftime()` are pure
+computation performed at query time, parsing whichever representation you
+gave them and reformatting on the fly. This means date comparisons only sort
+correctly if you're consistent about the underlying representation — ISO-8601
+TEXT strings happen to sort lexicographically in chronological order, which
+is why this course's schema convention leans on TEXT dates. String functions
+like `substr()`, `instr()`, and `replace()` operate on the raw payload bytes
+of the TEXT record value already decoded into memory (no additional disk
+I/O), but they're **not indexable** unless you create an expression index
+(`CREATE INDEX ... ON t(lower(name))`) — otherwise, wrapping a column in a
+function inside `WHERE` forces the planner to fall back to a full scan
+because it can no longer match the raw column value against a B-tree key.
+
 ## Exercise
 
 Using the `customers` table above:

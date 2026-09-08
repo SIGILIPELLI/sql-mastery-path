@@ -156,6 +156,23 @@ the underlying table's data.
 | `DROP VIEW IF EXISTS` | Removes the definition only, never the base table's rows |
 | Good use case | Hiding a recurring join/aggregate behind a simple name |
 
+## How It Actually Works
+
+A `VIEW` stores no data of its own — `CREATE VIEW` just persists the view's
+`SELECT` text in `sqlite_master`, the same schema table that holds your
+`CREATE TABLE` statements. When you query the view, SQLite performs **view
+expansion**: it substitutes the view's stored query directly into your query
+at compile time, essentially textually inlining it as a subquery in the
+`FROM` clause, and then the ordinary query planner (join ordering, index
+selection) runs over the combined, expanded query as if you'd typed it all
+out by hand. This means a view gives you zero performance benefit or
+penalty by itself — a `SELECT * FROM my_view WHERE x = 1` optimizes exactly
+as well (or as poorly) as the equivalent hand-written join, because by the
+time the planner sees it, it *is* the equivalent hand-written join. SQLite's
+views are always **non-materialized** (unlike Postgres's optional
+`MATERIALIZED VIEW`) — there is no cached result set, so every query against
+a view re-executes its underlying definition from scratch, every time.
+
 ## Exercise
 
 Using the `products`/`sales` schema above:

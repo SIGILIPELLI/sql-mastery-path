@@ -133,6 +133,23 @@ back to the `BEGIN`. Transactions are covered in full depth in
 | Upsert (SQLite) | `INSERT OR REPLACE INTO t (...) VALUES (...)` | — |
 | Group changes | `BEGIN; ... COMMIT;` or `ROLLBACK;` | — |
 
+## How It Actually Works
+
+Every `INSERT`, `UPDATE`, or `DELETE` is wrapped in an implicit transaction if
+you don't start one explicitly, and each one goes through SQLite's
+**rollback journal** (or WAL, depending on `journal_mode`) before touching
+the main database file. In the default rollback-journal mode: before
+modifying any page, SQLite copies the *original* page content into a
+`-journal` file first, then modifies the in-memory page cache, then — only
+at commit — flushes the dirty pages to the main file and deletes the journal.
+If the process crashes mid-write, the next connection to open the database
+sees the leftover journal file and uses it to restore the original pages,
+guaranteeing atomicity. `UPDATE` and `DELETE` both work by first *locating*
+the target rows (via a scan or index seek, exactly like a `SELECT ... WHERE`)
+and then rewriting or removing those specific B-tree entries in place —
+`UPDATE` may even need to relocate a row within the B-tree if its new size
+no longer fits the original slot, causing a page split.
+
 ## Exercise
 
 Using the `books` table: insert 3 new books in a single `INSERT` statement.

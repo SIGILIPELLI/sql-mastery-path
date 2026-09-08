@@ -133,6 +133,24 @@ zero doesn't wrongly drag down the average).
 | NULLs in aggregates | Silently skipped, not treated as 0 |
 | NULLs in arithmetic | Any operation with NULL produces NULL |
 
+## How It Actually Works
+
+NULL isn't a value stored in a column — in SQLite's record format, a NULL is
+represented by a serial type of `0` in the row header, meaning zero payload
+bytes are stored for that column at all. This is why NULLs are essentially
+free storage-wise. The reason `NULL = NULL` evaluates to NULL (not true) is
+that SQL's comparison operators implement **three-valued logic**: every
+comparison against an unknown returns "unknown," not false — the engine
+literally propagates a NULL marker through the expression tree rather than a
+boolean. `IS NULL` / `IS NOT NULL` are special VDBE opcodes that check the
+record header's serial type directly rather than performing a value
+comparison, which is why they're the only reliable way to test for NULL.
+This three-valued logic also silently affects `WHERE`, which only keeps rows
+where the predicate evaluates to *true* (not just non-false) — a row where
+the condition evaluates to NULL is filtered out exactly like a false one,
+which is a common source of "missing rows" bugs when NULLs are involved in
+`NOT IN` subqueries.
+
 ## Exercise
 
 Using the `books` table above: write a query using `COALESCE` that shows each

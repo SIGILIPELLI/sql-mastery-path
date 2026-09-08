@@ -128,6 +128,24 @@ sqlite3 school.db
 sqlite> SELECT * FROM students;
 ```
 
+## How It Actually Works
+
+When you run `sqlite3 mydb.db`, SQLite doesn't start a server process — it
+opens the file directly in your process's address space and memory-maps its
+header. The file is organized into fixed-size **pages** (default 4096 bytes).
+Page 1 holds the database header (magic string, page size, schema version,
+text encoding) plus the start of the `sqlite_master` table, which is itself
+just an ordinary B-tree table that happens to store the schema (your `CREATE
+TABLE` statements as text). Every `.tables` or `.schema` command is really a
+`SELECT` against that table. When you type a query, SQLite doesn't execute it
+directly against the text — it compiles it into **bytecode** for an internal
+virtual machine (VDBE, the Virtual Database Engine). Even a query as simple
+as `SELECT 1;` produces a handful of opcodes (`Init`, `Integer`, `ResultRow`,
+`Halt`) that you can see by prefixing a query with `EXPLAIN`. There is no
+client/server round trip, no network stack, and no connection pool — the
+"connection" is just an in-process handle (`sqlite3*`) wrapping open file
+descriptors and a page cache in RAM.
+
 ## Exercise
 
 1. Create a database file called `practice.db`.

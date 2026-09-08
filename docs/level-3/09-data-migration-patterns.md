@@ -163,6 +163,25 @@ constraint SQLite's `ALTER TABLE` alone can't add.
 | Change column type | No | Rebuild pattern |
 | Any rebuild | — | `PRAGMA foreign_keys=OFF` → transaction → create new → copy → drop old → rename → `COMMIT` → `PRAGMA foreign_keys=ON` |
 
+## How It Actually Works
+
+SQLite's `ALTER TABLE` is deliberately limited (only rename, add column, drop
+column, in modern versions) precisely because of how its B-tree storage
+works: adding a nullable column with no default is a near-instant metadata-only
+change — no existing row is rewritten, because the record format's varint
+column count means old rows are simply read as having `NULL` for any column
+beyond what their stored header describes. But changing a column's type,
+adding a `NOT NULL` constraint to existing data, or restructuring keys
+requires the classic **12-step migration**: create a new table with the
+target schema, copy data across (`INSERT INTO new SELECT ... FROM old`,
+which rewrites every row into the new B-tree), drop the old table, rename the
+new one, and rebuild any indexes/triggers/views that referenced the old name
+— because none of those objects are updated automatically by a rename at the
+storage level. This whole sequence should run inside a single transaction
+specifically because of the atomicity model covered earlier: if the process
+crashes mid-migration, the journal-based rollback guarantees you get either
+the fully old schema or the fully new one, never a half-migrated table.
+
 ## Exercise
 
 Using the `users` table above:

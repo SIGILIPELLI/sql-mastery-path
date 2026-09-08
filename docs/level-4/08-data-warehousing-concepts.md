@@ -155,6 +155,26 @@ against the normalized schema) doesn't scale to a real warehouse workload:
 | ETL / ELT | The batch pipeline that populates a warehouse from OLTP sources |
 | Grain | What one fact row represents (e.g. "one line item," not "one order") — defines what you can and can't aggregate to |
 
+## How It Actually Works
+
+OLTP engines like SQLite store data **row-oriented**: an entire row's columns
+sit contiguously in one record on one page, which is efficient when a query
+needs most/all columns of a few specific rows (the transactional access
+pattern this whole course has focused on). Analytical/warehouse engines
+(ClickHouse, BigQuery, Redshift) instead store data **column-oriented**: all
+values for a single column across many rows are packed contiguously, so an
+aggregate query touching 3 of a table's 50 columns only has to read those 3
+columns' storage, skipping the other 47 entirely — impossible in a
+row-store, where reading any column of a row means reading the whole row's
+page. Column stores also compress dramatically better, because adjacent
+values in the same column tend to be similar (a `status` column with 4
+distinct values compresses far better stored together than interleaved with
+unrelated columns). **Star schemas** (fact table + dimension tables) exist
+because they minimize the number of large fact-table columns needed per
+query — dimension lookups become small, cheap joins against tiny tables,
+letting analytical engines dedicate their columnar scan and compression
+advantages to just the (typically much larger) fact table.
+
 ## Exercise
 
 1. Add a `dim_store` dimension and a `store_key` column to `fact_sales`,
