@@ -1160,6 +1160,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2502,6 +2524,22 @@ using <code>LEFT JOIN</code> throughout the chain.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite implements <code>RIGHT JOIN</code> and <code>FULL OUTER JOIN</code> (in modern versions) by
+still walking a nested-loop plan, but it has to track "was this inner-table
+row matched by <em>any</em> outer row" across the entire loop, not just per current
+row — which is why full outer joins are noticeably more expensive: the
+engine effectively runs the equivalent of a left join sweep, then a second
+pass to emit unmatched rows from the other side padded with NULLs. A
+self-join (<code>t1 JOIN t1 AS t2</code>) is not special-cased at all — the planner
+treats the aliased table exactly like a second physical table and can even
+choose a different index/access path for each alias independently, based on
+which columns are filtered or joined on each side. Multi-table joins with 3+
+tables force the planner to solve a mini combinatorial optimization problem —
+choosing join <em>order</em> — because nested-loop cost compounds multiplicatively;
+SQLite uses a greedy cost-based heuristic (not exhaustive search past ~8
+tables) that estimates row counts from any <code>ANALYZE</code>-collected statistics to
+decide which table should anchor the outermost loop.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>employees</code> and <code>departments</code> schema above:</p>
 <ol>

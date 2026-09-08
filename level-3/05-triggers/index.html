@@ -1648,6 +1648,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2474,6 +2496,23 @@ trigger writes to before adding another trigger on a table it touches.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A trigger is compiled into its own VDBE sub-program, attached to a specific
+table event (<code>BEFORE</code>/<code>AFTER</code> × <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code>), and stored (like
+views) as text in <code>sqlite_master</code>. When the triggering statement executes,
+after the row-level operation completes (for <code>AFTER</code>) or before it's applied
+(for <code>BEFORE</code>), the VDBE jumps into the trigger's sub-program with the
+special <code>OLD</code> and <code>NEW</code> pseudo-row values bound as local registers pointing
+at the pre- and post-image of the affected row. Triggers fire <strong>per row</strong>,
+not once per statement — an <code>UPDATE</code> touching 10,000 rows invokes the
+trigger's sub-program 10,000 times, each with its own <code>OLD</code>/<code>NEW</code> bindings,
+which is a common performance trap when a trigger itself does expensive work
+like a lookup into another table. Triggers can cascade: a trigger's own
+<code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> can fire other triggers, and SQLite enforces a
+recursion depth limit (<code>SQLITE_LIMIT_TRIGGER_DEPTH</code>) specifically to catch
+runaway cascades, since there's no built-in cycle detection otherwise — a
+poorly designed pair of triggers on two tables that each update the other
+can trigger infinite recursion.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>products</code>/<code>stock_log</code> schema above:</p>
 <ol>

@@ -1558,6 +1558,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2591,6 +2613,23 @@ whole partition's total on every row, either drop <code>ORDER BY</code> from the
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Window functions require a fundamentally different execution strategy than
+aggregates: instead of collapsing rows into one output row per group, SQLite
+must keep every row in the partition intact while giving each one access to
+values computed across its window frame. Internally, the engine first
+sorts (or seeks via an index already in the right order) the rows by the
+<code>PARTITION BY</code> and <code>ORDER BY</code> columns together, then makes a single pass
+maintaining a <strong>sliding frame</strong> — for <code>ROWS BETWEEN</code> frames it's a literal
+buffer of the rows currently in scope; for ranking functions (<code>ROW_NUMBER</code>,
+<code>RANK</code>, <code>DENSE_RANK</code>) it just tracks a running counter and the previous row's
+sort-key values to detect ties. This is materially more expensive than a
+plain aggregate: the sort step is unavoidable unless a supporting index
+already provides that exact order, and the per-partition frame state has to
+be recomputed from scratch every time the partition key changes. <code>LAG</code>/<code>LEAD</code>
+are implemented as fixed-offset frame lookups — the engine keeps a small
+rolling buffer of prior/upcoming rows rather than re-scanning the table for
+each call.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>sales</code> schema above:</p>
 <ol>

@@ -1698,6 +1698,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2518,6 +2540,23 @@ you're accepting the anomaly risk in exchange for read speed.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Normalization rules aren't just tidiness conventions — each normal form
+directly targets a specific storage/consistency mechanism. Violating 1NF
+(repeating groups in one column) forces every query to parse and re-parse a
+packed string at read time since the engine has no way to index or type
+individual sub-values inside one TEXT cell. Violating 2NF/3NF (partial or
+transitive dependencies, e.g. storing a customer's city on every order row
+instead of a <code>customer_id</code> foreign key) means every update-anomaly turns into
+literal duplicated B-tree entries — updating "customer moved cities" now
+requires rewriting every order row for that customer instead of one row in
+a <code>customers</code> table, multiplying write I/O and creating windows where the
+data is inconsistent between the rewrite of row 1 and row 10,000. On the flip
+side, <strong>over-normalizing</strong> has a real, measurable cost too: every additional
+join you introduce to satisfy a stricter normal form adds another nested-loop
+pass and another B-tree seek per outer row at query time — which is exactly
+the tradeoff <strong>denormalization</strong> deliberately accepts, trading write-time
+consistency risk for fewer joins at read time.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>orders_unnormalized</code> table above:</p>
 <ol>

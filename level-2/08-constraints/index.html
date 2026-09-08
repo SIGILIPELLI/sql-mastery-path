@@ -1345,6 +1345,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2261,6 +2272,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2461,6 +2483,22 @@ student 1 can't enroll in course 101 twice. Neither column alone is <code>UNIQUE
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>PRIMARY KEY</code>, <code>UNIQUE</code>, and <code>FOREIGN KEY</code> aren't just documentation — each
+one triggers real enforcement machinery. <code>UNIQUE</code> (and non-rowid
+<code>PRIMARY KEY</code>) constraints are backed by an actual auto-created index; every
+insert or update must do a B-tree seek into that index <em>before</em> completing,
+to check whether the new key already exists — a genuine extra lookup on
+every write, not a free label. <code>FOREIGN KEY</code> enforcement (when <code>PRAGMA
+foreign_keys = ON</code>) works by running an implicit existence check — effectively
+a small <code>SELECT ... WHERE parent_key = ?</code> — against the referenced table on
+every insert/update to the child, and again on every delete/update to the
+parent to make sure no orphaned children exist; if that lookup isn't backed
+by an index on the parent side you get a full scan per write. <code>CHECK</code>
+constraints are evaluated as a boolean expression against the <em>new</em> row
+values at write time, entirely in-memory, with no additional I/O — but they
+run on every single write to the table, so an expensive <code>CHECK</code> expression is
+paid repeatedly, not once.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the schemas above:</p>
 <ol>

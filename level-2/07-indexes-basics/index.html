@@ -1350,6 +1350,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2513,6 +2535,23 @@ often just as fast as using the index anyway.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>An index is a second, independent B-tree, sorted by the indexed column(s)
+rather than by rowid, where each leaf entry stores the indexed value plus a
+pointer back to the corresponding row (the rowid, or the full key for
+<code>WITHOUT ROWID</code> tables). A B-tree seek (<code>SEARCH ... USING INDEX</code>) walks from
+the root page down to the correct leaf in O(log n) disk-page reads by
+comparing the search key against separator keys at each internal node —
+compare that to a full <code>SCAN</code>, which touches every one of the table's O(n)
+leaf pages regardless of how selective the filter is. The tradeoff is write
+cost: every <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> that touches an indexed column must
+also update the index's B-tree — inserting a new key in sorted position
+(possibly triggering a page split if the leaf is full), which is why heavily
+indexed tables are slower to write to and why you shouldn't index columns you
+never filter or join on. A <strong>composite index</strong> on <code>(a, b)</code> can only be used
+efficiently to seek on <code>a</code> alone, or on <code>a</code> and <code>b</code> together, in that column
+order — it's essentially a single B-tree sorted primarily by <code>a</code> then by <code>b</code>,
+so it can't help a query that filters on <code>b</code> alone.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>customers</code> table above:</p>
 <ol>

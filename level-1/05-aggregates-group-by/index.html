@@ -896,6 +896,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2447,6 +2469,21 @@ can't see aggregate results (they're computed after it runs) and why
 <p>(<code>Fantasy</code>'s <code>The Hobbit</code> was published in 1937, so <code>WHERE published_year &gt;=
 1950</code> drops it, leaving only <code>The Fellowship of the Ring</code> — one row, filtered
 out by <code>HAVING COUNT(*) &gt; 1</code>.)</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>GROUP BY</code> needs rows with equal keys adjacent to each other so it can
+accumulate aggregates. SQLite does this one of two ways: if there's a B-tree
+index (or a table's own rowid-implicit ordering) already sorted by the
+<code>GROUP BY</code> columns, it streams rows in that order and simply resets the
+accumulator every time the key changes — no extra data structure needed. If
+not, it builds an ephemeral B-tree keyed by the group columns (same mechanism
+as a sort), inserts every row, then walks it in sorted order — you'll see
+<code>USE TEMP B-TREE FOR GROUP BY</code>. Each aggregate function (<code>COUNT</code>, <code>SUM</code>,
+<code>AVG</code>, <code>MAX</code>) keeps a tiny running accumulator per group: <code>SUM</code> and <code>COUNT</code>
+are single running totals updated per row; <code>AVG</code> internally tracks both a sum
+and a count and divides only at the end; <code>MAX</code>/<code>MIN</code> just compare-and-replace.
+<code>HAVING</code> runs <em>after</em> grouping is complete, filtering finished accumulator
+rows — which is exactly why it can reference aggregate results that <code>WHERE</code>
+(evaluated per-row, before grouping) cannot.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table:</p>
 <ol>

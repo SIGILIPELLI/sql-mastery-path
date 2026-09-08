@@ -823,6 +823,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2488,6 +2510,20 @@ they were enforced, and validate data in your application.</p>
 </code></pre></div>
 <p><code>CAST</code> is portable across nearly all SQL databases and is the safest way to
 convert types explicitly rather than relying on implicit coercion.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite uses <strong>type affinity</strong>, not rigid static typing like most databases.
+Each column has a declared type (<code>INTEGER</code>, <code>TEXT</code>, <code>REAL</code>, <code>BLOB</code>, <code>NUMERIC</code>)
+but that's a <em>hint</em> the storage engine uses to decide how to coerce a value
+before storing it — the value itself still carries its own storage class
+tag on disk. A column declared <code>TEXT</code> can still hold an integer if you insert
+one and it doesn't cleanly convert. Under the hood, every row is stored as a
+<strong>record</strong>: a header of varint-encoded serial types (one per column,
+describing exactly how many bytes and what class each value occupies) followed
+by the raw payload bytes, packed with no padding. This is why SQLite databases
+are often smaller than the equivalent Postgres/MySQL table — there's no fixed
+per-row slot size to pad out. When you <code>SELECT</code> a column, the VDBE walks the
+row's header varints to compute byte offsets, then reads only the bytes for
+the columns you asked for — it never deserializes columns you didn't request.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table above:</p>
 <ol>

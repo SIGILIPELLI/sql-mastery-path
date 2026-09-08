@@ -1996,6 +1996,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2458,6 +2480,23 @@ backups (not replication) are SQLite's actual resilience story.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite's built-in <strong>online backup API</strong> (exposed via <code>.backup</code> in the CLI)
+works by copying pages directly at the storage layer — it iterates the
+source database's pages and copies each into the destination file, taking a
+lock only briefly per page (or per batch), so a backup can run concurrently
+with normal reads without requiring an exclusive lock for the whole
+operation, though it does need to handle pages that change mid-backup by
+retrying them. In WAL mode, a <strong>checkpoint</strong> is the mechanism that actually
+merges the write-ahead log's accumulated changes back into the main database
+file; a backup taken without accounting for an in-progress WAL can miss the
+most recent committed transactions if it only copies the main file and
+ignores the <code>-wal</code> file. True replication (multiple independent database
+copies staying in sync) isn't a SQLite-native concept at all — projects like
+Litestream or rqlite bolt it on by shipping the WAL file's append-only
+changes to replicas as they're written, essentially treating the WAL as a
+change-data-capture stream, since the WAL already is, structurally, an
+ordered log of page changes.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Write a shell one-liner using <code>sqlite3 mydb.db ".backup backup-$(date +%F).db"</code> you could put in a cron job for nightly backups, and describe how you'd verify a given backup file is actually restorable.</li>

@@ -1199,6 +1199,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2507,6 +2529,22 @@ it compares rows, not raw values against a list:</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Not all subqueries execute the same way. A <strong>scalar subquery</strong> in the
+<code>SELECT</code> list or <code>WHERE</code> clause is typically evaluated once per outer row (or
+cached if it's uncorrelated) — the VDBE compiles it as a nested sub-program
+it calls repeatedly, which is why a correlated scalar subquery in a
+<code>SELECT</code> list can be as slow as a join if it isn't optimized away. A subquery
+used with <code>IN (SELECT ...)</code> is often <strong>flattened</strong> by the query planner into
+an equivalent join or semi-join when it can prove it's safe to do so — this
+optimization (query flattening) rewrites <code>WHERE x IN (SELECT y FROM t2)</code> into
+something closer to <code>EXISTS</code>-style semantics using an ephemeral index over
+the subquery's results, avoiding re-running the subquery per outer row. A
+subquery in the <code>FROM</code> clause materializes as a genuine <strong>ephemeral B-tree
+table</strong> the outer query then scans or seeks into like any real table — you
+can see this in <code>EXPLAIN QUERY PLAN</code> as <code>SCAN &lt;subquery&gt;</code>. <code>EXISTS</code> is
+usually cheapest of all because the VDBE can stop at the very first matching
+row instead of counting or collecting every match.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>customers</code>/<code>orders</code> schema above:</p>
 <ol>

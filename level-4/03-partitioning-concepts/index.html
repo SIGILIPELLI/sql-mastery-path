@@ -1968,6 +1968,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2453,6 +2475,22 @@ of a slow bulk <code>DELETE</code>.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite has no built-in table partitioning (unlike Postgres's declarative
+partitioning or MySQL's <code>PARTITION BY</code>), so the concept has to be
+implemented manually — typically as separate physical tables (e.g.
+<code>orders_2026_01</code>, <code>orders_2026_02</code>) unioned by a view, or as separate
+database <em>files</em> attached together with <code>ATTACH DATABASE</code>. The mechanical
+benefit partitioning provides elsewhere — letting the planner prune entire
+partitions out of a scan based on a <code>WHERE</code> predicate on the partition key —
+has to be recreated here by application logic choosing which physical table
+to query, since SQLite's planner has no native concept of a partition key to
+prune by. What you <em>do</em> get for free is smaller individual B-trees per
+partition: a query against just <code>orders_2026_01</code> walks a B-tree a fraction
+of the size of one holding all history, which is the same underlying
+performance win real partitioning delivers (smaller trees, shallower
+traversals, better cache locality), just achieved by physically splitting
+the data rather than through a query-planner feature.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Extend the pattern above to a third table <code>events_2025_03</code> and update

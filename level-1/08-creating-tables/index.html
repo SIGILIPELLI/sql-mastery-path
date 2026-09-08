@@ -1013,6 +1013,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2535,6 +2557,20 @@ fills it in automatically.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>CREATE TABLE</code> doesn't just register metadata — it allocates a brand-new
+B-tree in the database file (SQLite calls each table and each index a
+separate B-tree, keyed by a <strong>root page number</strong> stored in <code>sqlite_master</code>).
+A freshly created table is a single leaf page waiting for rows. Every table
+is physically a B-tree keyed by <code>rowid</code> (an implicit 64-bit integer) unless
+you declare <code>WITHOUT ROWID</code>, in which case the primary key you specify
+becomes the B-tree's own key directly, avoiding a secondary lookup. This is
+also why <code>INTEGER PRIMARY KEY</code> is special in SQLite: it's not a separate
+index sitting beside the table — it <em>is</em> the rowid, so it's a free, zero-cost
+unique key with no extra storage. Declaring <code>id INTEGER PRIMARY KEY</code> literally
+aliases the column to the table's own B-tree key; any other column type used
+as "primary key" gets a real, separate unique index built and maintained
+alongside the table's rowid B-tree, doubling the write cost for every insert.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Create a <code>students</code> table with: an auto-incrementing <code>id</code>, a required <code>name</code>,
 a <code>unique</code> <code>email</code>, an <code>enrolled</code> integer column defaulting to <code>1</code>, and an

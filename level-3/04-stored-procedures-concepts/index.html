@@ -1598,6 +1598,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2239,6 +2250,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2409,6 +2431,24 @@ data changes, not on demand) by triggers — see the next module.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite has no stored procedure language at all — no <code>PL/pgSQL</code>, no <code>T-SQL</code>
+batches — because the entire engine is designed to be an embedded library
+with no separate server process to host procedural logic on. What other
+databases implement as a stored procedure (multiple statements, control
+flow, executed atomically on the server) SQLite achieves instead through
+<strong>application-side transactions</strong>: wrap a sequence of statements in <code>BEGIN</code>
+... <code>COMMIT</code> and the same atomicity/durability guarantees apply, just
+orchestrated by your calling code instead of a server-side procedural
+runtime. The closest SQLite gets to encapsulated server-side logic is
+<strong>triggers</strong> (covered next) and <strong>user-defined functions</strong> registered
+through the C API (<code>sqlite3_create_function</code>), which let host applications
+inject custom logic the VDBE can call as an opcode during query execution —
+but that logic lives in the host process, not inside a portable stored
+procedure object in the database file itself. Understanding this distinction
+matters when porting schemas: a Postgres/MySQL stored procedure has no
+direct SQLite equivalent and must be reimplemented as either a trigger or
+application code.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Write a Python function <code>apply_discount(conn, order_id, percent)</code> that

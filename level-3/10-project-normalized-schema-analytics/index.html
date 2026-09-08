@@ -1827,6 +1827,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2361,6 +2372,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2583,6 +2605,22 @@ since the primary key <em>is</em> the table's row storage order. <code>USE TEMP 
 FOR GROUP BY</code> shows the grouping needs its own sort step because the driving
 scan (<code>oi</code>) isn't already ordered by <code>customer_id</code>; on a much larger dataset
 that's the step worth watching if this query got slow.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>This capstone forces every mechanism from Level 3 to interact: recursive
+CTEs walking a normalized hierarchy will re-run their recursive branch once
+per newly discovered row batch (not the whole result so far); window
+functions computing running analytics require a full sort pass unless a
+composite index already matches the <code>PARTITION BY</code>/<code>ORDER BY</code> columns; and a
+properly normalized schema means your analytics queries pay for correctness
+with extra joins — each one a nested-loop pass the planner must cost and
+order. Use <code>EXPLAIN QUERY PLAN</code> liberally here: with several joined tables
+plus a CTE plus a window function in one query, the planner is solving a
+genuinely harder join-ordering problem, and a missing index on any one join
+column can silently degrade an otherwise well-designed query from
+milliseconds to seconds as row counts grow. Running <code>ANALYZE</code> after loading
+representative data volumes (not just a handful of test rows) is what gives
+the planner accurate enough statistics to make good join-order decisions on
+a schema this size.</p>
 <h2 id="stretch-goals">Stretch goals<a class="headerlink" href="#stretch-goals" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Add a <code>reviews</code> table (<code>product_id</code>, <code>customer_id</code>, <code>rating</code> 1-5,

@@ -1940,6 +1940,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2456,6 +2478,25 @@ exact commands differ:</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>At scale, the bottleneck usually shifts from CPU (evaluating expressions) to
+I/O (moving pages between disk and the page cache). <code>PRAGMA cache_size</code>
+controls how many pages SQLite keeps resident in memory — a working set that
+fits in the cache turns repeated B-tree traversals into pure memory lookups;
+one that doesn't causes page faults back to disk on every level of every
+B-tree descent. <code>PRAGMA journal_mode=WAL</code> changes the write path
+fundamentally: instead of copying original pages to a rollback journal and
+writing directly back into the main file, writers append new page versions
+to a separate write-ahead log file, and a background <strong>checkpoint</strong> process
+periodically folds the WAL back into the main database — this lets readers
+proceed concurrently with a writer (they read a consistent snapshot as of
+when they started) instead of blocking on the whole-file exclusive lock the
+rollback journal requires. <code>PRAGMA synchronous=NORMAL</code> (vs the default
+<code>FULL</code>) skips one of the two <code>fsync()</code> calls per transaction, trading a small
+durability window (a power loss could lose the last few committed
+transactions, though the file stays structurally consistent) for
+substantially higher write throughput — understanding exactly which
+guarantee you're trading away is the core of tuning at scale.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Reproduce the batching benchmark above with 5000 rows instead of 2000

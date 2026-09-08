@@ -1401,6 +1401,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2261,6 +2272,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2553,6 +2575,21 @@ already inserted got discarded too — stock stayed at <code>1</code> and no orp
 order exists for a sale that never really happened. Skipping that <code>ROLLBACK</code>
 would have left a phantom <code>orders</code> row with no corresponding stock deducted,
 exactly the kind of inconsistency transactions are meant to prevent.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A reporting workload like this one stresses exactly the mechanisms covered so
+far at once: multi-table nested-loop joins across orders/customers/products,
+aggregation via temporary B-trees for <code>GROUP BY</code>, and index seeks (or full
+scans, if you forgot an index) on every filter predicate. The biggest lever
+for report-query performance here is <strong>composite covering indexes</strong> — an
+index on <code>(customer_id, order_date)</code> for a query that filters by customer and
+sorts by date lets the planner satisfy both the <code>WHERE</code> and <code>ORDER BY</code> from a
+single ordered B-tree walk, skipping the separate temp-B-tree sort entirely.
+Run <code>EXPLAIN QUERY PLAN</code> on your heaviest report query here and look for
+<code>USE TEMP B-TREE FOR GROUP BY/ORDER BY</code> — that's your signal an index could
+eliminate a whole materialization step. Also watch for <code>SCAN</code> on any of the
+larger fact-like tables (orders, order_items): at real-world data volumes,
+an unindexed scan there is the difference between a report that returns in
+milliseconds and one that takes seconds.</p>
 <h2 id="stretch-goals">Stretch goals<a class="headerlink" href="#stretch-goals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Add a <code>reviews</code> table (<code>product_id</code>, <code>customer_id</code>, <code>rating</code>, <code>comment</code>)

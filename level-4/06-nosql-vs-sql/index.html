@@ -2063,6 +2063,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2513,6 +2535,24 @@ forcing every use case through pure relational tables.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>The core structural difference is what the storage engine assumes about
+your data's shape. A relational engine like SQLite's B-tree tables assume a
+fixed, known set of columns per row (even with flexible typing) and build
+secondary indexes as separate sorted structures over specific columns —
+which is exactly what makes ad-hoc, multi-column filtering and joins across
+tables efficient: the planner can always find <em>some</em> B-tree sorted the way
+a query needs. Document stores (MongoDB-style) instead default to storing
+each record as an opaque blob (often BSON) with no fixed schema, and
+typically build indexes only on paths you explicitly declare — querying an
+unindexed nested field means scanning and deserializing every document's
+full blob, similar to SQLite's <code>json_extract()</code> cost model but as the
+<em>primary</em> access pattern rather than an escape hatch. Wide-column stores
+(Cassandra-style) organize data by a partition key that determines physical
+placement across a cluster, trading SQL's flexible ad-hoc joins for
+horizontal write scalability — there is no cross-partition join operator at
+all, because the engine deliberately avoids the nested-loop-across-nodes cost
+that would require.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Take the <code>customers</code>/<code>orders</code> example above and sketch what the same

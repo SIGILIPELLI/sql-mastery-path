@@ -2234,6 +2234,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2418,6 +2429,17 @@
     <span class="md-ellipsis">
       
         What this project demonstrates from across the whole path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
       
     </span>
   </a>
@@ -2699,6 +2721,23 @@ be three full table scans.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>The capstone should force you to justify, mechanism by mechanism, every
+schema and index decision you make: which columns get B-tree indexes and
+why (based on actual <code>WHERE</code>/<code>JOIN</code>/<code>ORDER BY</code> usage, verified with <code>EXPLAIN
+QUERY PLAN</code>, not guesswork); which tables benefit from <code>WITHOUT ROWID</code>
+because their natural key is already unique and would otherwise cost a
+redundant secondary index; whether <code>WAL</code> mode's concurrent-reader/single-writer
+model fits your access pattern better than the default rollback journal's
+whole-file locking; and where triggers versus application-level transaction
+logic is the right place to enforce an invariant, given that triggers fire
+per-row inside the same atomic transaction while application code runs
+outside it entirely. A strong capstone review means actually running
+<code>ANALYZE</code>, checking <code>sqlite_stat1</code> for realistic cardinality once you've
+loaded representative data volumes, and confirming the planner's chosen join
+order and access paths in <code>EXPLAIN QUERY PLAN</code> match what you intended —
+rather than assuming a query is fast just because it returns correct results
+quickly on a small test dataset.</p>
 <h2 id="stretch-goals">Stretch goals<a class="headerlink" href="#stretch-goals" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Add a <code>refunds</code> table and a trigger that, on <code>orders.status</code> moving to

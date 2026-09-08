@@ -1625,6 +1625,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2551,6 +2573,23 @@ lead to worse plans than no statistics at all.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>EXPLAIN QUERY PLAN</code> doesn't run your query — it asks the query planner to
+report the access strategy it <em>would</em> choose, based on cost estimates derived
+from table/index metadata and, if you've run <code>ANALYZE</code>, real column
+cardinality statistics stored in <code>sqlite_stat1</code>. Without <code>ANALYZE</code> data, the
+planner falls back to rough heuristics (assuming, e.g., that an indexed
+equality lookup returns very few rows) that can be wrong for skewed data —
+this is why <code>ANALYZE</code> matters: it lets the cost model distinguish "this
+column has 2 distinct values" from "this column is nearly unique," which
+directly changes whether the planner picks an index seek or a full scan for
+borderline cases. The planner's cost function is a rough proxy for total page
+reads: a <code>SCAN</code> costs roughly proportional to table size; a <code>SEARCH</code> costs
+roughly <code>log(n)</code> for the B-tree descent plus the number of matching rows
+retrieved. For joins, it estimates the cost of <em>every</em> candidate join order
+(bounded by a search-space cap) and picks the cheapest, which is why adding
+or removing an index can silently change which table becomes the outer loop
+in a multi-way join, not just whether one particular filter uses an index.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>orders</code>/<code>customers</code> schema above:</p>
 <ol>

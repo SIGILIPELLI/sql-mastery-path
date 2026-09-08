@@ -1782,6 +1782,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2521,6 +2543,23 @@ constraint SQLite's <code>ALTER TABLE</code> alone can't add.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite's <code>ALTER TABLE</code> is deliberately limited (only rename, add column, drop
+column, in modern versions) precisely because of how its B-tree storage
+works: adding a nullable column with no default is a near-instant metadata-only
+change — no existing row is rewritten, because the record format's varint
+column count means old rows are simply read as having <code>NULL</code> for any column
+beyond what their stored header describes. But changing a column's type,
+adding a <code>NOT NULL</code> constraint to existing data, or restructuring keys
+requires the classic <strong>12-step migration</strong>: create a new table with the
+target schema, copy data across (<code>INSERT INTO new SELECT ... FROM old</code>,
+which rewrites every row into the new B-tree), drop the old table, rename the
+new one, and rebuild any indexes/triggers/views that referenced the old name
+— because none of those objects are updated automatically by a rename at the
+storage level. This whole sequence should run inside a single transaction
+specifically because of the atomicity model covered earlier: if the process
+crashes mid-migration, the journal-based rollback guarantees you get either
+the fully old schema or the fully new one, never a half-migrated table.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>users</code> table above:</p>
 <ol>

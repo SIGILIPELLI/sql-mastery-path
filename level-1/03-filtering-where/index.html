@@ -851,6 +851,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2463,6 +2485,22 @@ value. This is explored fully in <a href="../07-working-with-null/">Module 7</a>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Dune         Frank Herbert    9.99   1965
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Foundation   Isaac Asimov     8.5    1951
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A <code>WHERE</code> clause without a supporting index forces SQLite into a <strong>full table
+scan</strong>: the query planner walks every leaf page of the table's B-tree in
+physical order, decodes each row's record, evaluates the predicate against
+it, and discards rows that don't match. You can watch this happen with
+<code>EXPLAIN QUERY PLAN SELECT ... WHERE ...</code> — a plan of <code>SCAN t</code> means every row
+is visited; <code>SEARCH t USING INDEX ...</code> means the planner found a B-tree it
+could seek into directly. <code>AND</code>-connected conditions are evaluated
+short-circuit, left to right as compiled, so cheap, selective conditions
+should come first if you're hand-tuning a hot query. <code>OR</code> is more expensive:
+unless every branch is separately indexed (letting SQLite use an OR-optimization
+that unions multiple index searches), an <code>OR</code> clause typically forces a full
+scan because no single B-tree ordering can satisfy both branches at once.
+<code>LIKE '%foo%'</code> (leading wildcard) can never use a plain index seek either,
+because a B-tree is sorted by prefix — only <code>LIKE 'foo%'</code> (anchored prefix)
+lets the planner binary-search into the tree.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table above, write queries to find:</p>
 <ol>

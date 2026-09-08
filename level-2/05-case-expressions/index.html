@@ -1283,6 +1283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2497,6 +2519,21 @@ delivered" instead of alphabetical.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>CASE WHEN ... THEN ... END</code> compiles into a straight sequence of conditional
+jump opcodes in the VDBE — functionally it's an if/elif/else chain evaluated
+top to bottom for every row, stopping at the first matching <code>WHEN</code> (later
+branches are never evaluated once one matches, so order conditions from most
+to least selective if they're expensive to check). Because it's evaluated
+per-row inline during the scan, a <code>CASE</code> expression itself doesn't prevent
+index use on <em>other</em> filter columns in the same query — but like any
+function, wrapping the <em>indexed</em> column itself inside a <code>CASE</code> in the <code>WHERE</code>
+clause blocks that column's index from being used, for the same reason
+calling a function on a column does. When used in <code>ORDER BY</code> or <code>GROUP BY</code>
+as a bucketing trick (<code>CASE WHEN age &lt; 18 THEN 'minor' ELSE 'adult' END</code>),
+the engine has no choice but to materialize the computed value for every row
+into the temporary sort/group B-tree, since there's no way to seek an index
+by a value that doesn't physically exist in any column.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>orders</code> table above:</p>
 <ol>

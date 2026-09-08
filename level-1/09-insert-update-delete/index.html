@@ -1008,6 +1008,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2447,6 +2469,21 @@ back to the <code>BEGIN</code>. Transactions are covered in full depth in
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Every <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> is wrapped in an implicit transaction if
+you don't start one explicitly, and each one goes through SQLite's
+<strong>rollback journal</strong> (or WAL, depending on <code>journal_mode</code>) before touching
+the main database file. In the default rollback-journal mode: before
+modifying any page, SQLite copies the <em>original</em> page content into a
+<code>-journal</code> file first, then modifies the in-memory page cache, then — only
+at commit — flushes the dirty pages to the main file and deletes the journal.
+If the process crashes mid-write, the next connection to open the database
+sees the leftover journal file and uses it to restore the original pages,
+guaranteeing atomicity. <code>UPDATE</code> and <code>DELETE</code> both work by first <em>locating</em>
+the target rows (via a scan or index seek, exactly like a <code>SELECT ... WHERE</code>)
+and then rewriting or removing those specific B-tree entries in place —
+<code>UPDATE</code> may even need to relocate a row within the B-tree if its new size
+no longer fits the original slot, causing a page split.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table: insert 3 new books in a single <code>INSERT</code> statement.
 Write an <code>UPDATE</code> that gives a 10% discount (<code>price * 0.9</code>) to every book

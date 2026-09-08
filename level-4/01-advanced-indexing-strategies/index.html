@@ -1923,6 +1923,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2480,6 +2502,24 @@ index type stretches to cover what other engines split across index types.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A <strong>covering index</strong> eliminates a step other indexes can't: normally, once a
+<code>SEARCH</code> finds a matching key in a secondary index's B-tree leaf, it still
+has to follow that leaf's rowid pointer back into the <em>table's own</em> B-tree to
+fetch any columns not present in the index itself — a second B-tree
+traversal per matching row. If every column the query needs (both filtered
+and selected) is already present in the index's leaf entries, the planner
+can skip that lookup entirely and answer straight from the index — you'll
+see this as <code>SEARCH ... USING COVERING INDEX</code> in <code>EXPLAIN QUERY PLAN</code>,
+roughly halving the I/O for lookup-heavy queries. A <strong>partial index</strong>
+(<code>CREATE INDEX ... WHERE status = 'active'</code>) is smaller and cheaper to
+maintain precisely because its B-tree only contains entries for rows
+matching the predicate — writes to rows outside that predicate never touch
+the index at all, and the planner can only use it for queries whose <code>WHERE</code>
+clause provably implies the partial index's condition. An <strong>expression
+index</strong> stores the <em>computed</em> value as the B-tree key rather than a raw
+column, which is the only way to make a function-wrapped predicate
+(<code>WHERE lower(email) = ?</code>) seekable instead of forcing a full scan.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>employees</code> table above:</p>
 <ol>

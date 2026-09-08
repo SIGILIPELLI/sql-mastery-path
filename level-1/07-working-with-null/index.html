@@ -963,6 +963,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2457,6 +2479,22 @@ zero doesn't wrongly drag down the average).</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>NULL isn't a value stored in a column — in SQLite's record format, a NULL is
+represented by a serial type of <code>0</code> in the row header, meaning zero payload
+bytes are stored for that column at all. This is why NULLs are essentially
+free storage-wise. The reason <code>NULL = NULL</code> evaluates to NULL (not true) is
+that SQL's comparison operators implement <strong>three-valued logic</strong>: every
+comparison against an unknown returns "unknown," not false — the engine
+literally propagates a NULL marker through the expression tree rather than a
+boolean. <code>IS NULL</code> / <code>IS NOT NULL</code> are special VDBE opcodes that check the
+record header's serial type directly rather than performing a value
+comparison, which is why they're the only reliable way to test for NULL.
+This three-valued logic also silently affects <code>WHERE</code>, which only keeps rows
+where the predicate evaluates to <em>true</em> (not just non-false) — a row where
+the condition evaluates to NULL is filtered out exactly like a false one,
+which is a common source of "missing rows" bugs when NULLs are involved in
+<code>NOT IN</code> subqueries.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table above: write a query using <code>COALESCE</code> that shows each
 book's price, defaulting to <code>0.00</code> when the price is <code>NULL</code>. Then write a

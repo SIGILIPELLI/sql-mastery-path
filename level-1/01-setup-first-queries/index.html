@@ -795,6 +795,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2428,6 +2450,22 @@ data — reopen the same file and everything you created is still there:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sqlite3<span class="w"> </span>school.db
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>students<span class="p">;</span>
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>When you run <code>sqlite3 mydb.db</code>, SQLite doesn't start a server process — it
+opens the file directly in your process's address space and memory-maps its
+header. The file is organized into fixed-size <strong>pages</strong> (default 4096 bytes).
+Page 1 holds the database header (magic string, page size, schema version,
+text encoding) plus the start of the <code>sqlite_master</code> table, which is itself
+just an ordinary B-tree table that happens to store the schema (your <code>CREATE
+TABLE</code> statements as text). Every <code>.tables</code> or <code>.schema</code> command is really a
+<code>SELECT</code> against that table. When you type a query, SQLite doesn't execute it
+directly against the text — it compiles it into <strong>bytecode</strong> for an internal
+virtual machine (VDBE, the Virtual Database Engine). Even a query as simple
+as <code>SELECT 1;</code> produces a handful of opcodes (<code>Init</code>, <code>Integer</code>, <code>ResultRow</code>,
+<code>Halt</code>) that you can see by prefixing a query with <code>EXPLAIN</code>. There is no
+client/server round trip, no network stack, and no connection pool — the
+"connection" is just an in-process handle (<code>sqlite3*</code>) wrapping open file
+descriptors and a page cache in RAM.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Create a database file called <code>practice.db</code>.</li>

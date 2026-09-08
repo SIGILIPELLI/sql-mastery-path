@@ -901,6 +901,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2485,6 +2507,21 @@ scale — the database still has to walk past all the skipped rows, so <code>OFF
 <p>Clause order in a query is fixed: <code>SELECT ... FROM ... WHERE ... ORDER BY ...
 LIMIT ...</code> — <code>WHERE</code> always comes before <code>ORDER BY</code>, which always comes before
 <code>LIMIT</code>.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>ORDER BY</code> needs the <em>entire</em> candidate result set materialized before it can
+guarantee order, unless the rows already arrive in that order for free. If
+there's a B-tree index on the sort column, SQLite can walk the index's leaf
+pages directly (they're stored in sorted key order) and stream rows out
+without ever building a temporary sort structure — you'll see <code>USING INDEX
+... (SCAN)</code> with no separate sort step in <code>EXPLAIN QUERY PLAN</code>. Without such
+an index, SQLite allocates a temporary B-tree (in memory, spilling to a
+temp file on disk if it exceeds <code>PRAGMA cache_size</code> / <code>temp_store</code> limits),
+inserts every row into it keyed by the sort expression, then reads it back in
+order — an O(n log n) operation you'll see reported as <code>USE TEMP B-TREE FOR
+ORDER BY</code>. <code>LIMIT</code> is applied <em>after</em> sorting logically, but the VDBE is
+smart enough to short-circuit: if there's no <code>ORDER BY</code>, it simply stops
+pulling rows from the scan once the limit counter hits zero, saving the cost
+of visiting the rest of the table entirely.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table:</p>
 <ol>

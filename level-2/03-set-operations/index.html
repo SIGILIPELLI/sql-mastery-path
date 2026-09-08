@@ -1227,6 +1227,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2470,6 +2492,22 @@ Some databases (notably MySQL before 8.0.31, and Oracle) call this operator
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>UNION</code> (without ALL) has to eliminate duplicates, so under the hood SQLite
+routes both sides' results into a single ephemeral B-tree keyed by the full
+row content, relying on the B-tree's insert-time duplicate detection to drop
+repeats — this is real sort/dedup work, not a cheap concatenation. <code>UNION
+ALL</code>, by contrast, is nearly free: it's implemented as literally running the
+first sub-query's VDBE program to completion, then running the second's,
+piping both result streams straight to the caller with zero buffering or
+deduplication, which is why it's dramatically faster on large result sets.
+<code>INTERSECT</code> and <code>EXCEPT</code> also go through a temporary sorted structure — the
+engine effectively sorts (or indexes) both sides on the full row tuple and
+walks them in lockstep, similar to a merge-join, keeping or discarding rows
+based on presence in the other side. All three set operators require both
+sides to produce the same number of columns with compatible affinities,
+because the resulting temp B-tree needs a single consistent key format to
+compare rows byte-for-byte.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>newsletter_subscribers</code>/<code>webinar_signups</code> schema above:</p>
 <ol>

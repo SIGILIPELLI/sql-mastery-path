@@ -924,6 +924,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2423,6 +2445,22 @@ them left to right, each one narrowing or extending the row set.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite's query planner implements joins almost exclusively as <strong>nested loop
+joins</strong> (it doesn't have hash or sort-merge join operators like Postgres).
+For <code>A JOIN B ON A.id = B.a_id</code>, it picks one table as the "outer" loop
+(based on cost estimates) and, for every row in the outer table, seeks into
+the inner table's B-tree for matches. If <code>B.a_id</code> has an index, that seek is
+O(log n) per outer row via B-tree traversal — a <code>SEARCH</code> step in <code>EXPLAIN
+QUERY PLAN</code>. Without an index on the join column, the inner table is
+rescanned in full for <em>every single outer row</em>, making the join O(n×m) — this
+is the single most common performance disaster in SQL, and why "index your
+foreign keys" is not just a suggestion. <code>LEFT JOIN</code> uses the same nested-loop
+mechanism but the VDBE tracks whether any inner match was found for each
+outer row; if none was, it synthesizes a row of NULLs before moving to the
+next outer row instead of skipping it. The planner also chooses <em>which</em> table
+becomes the outer loop based on rough cardinality estimates, not necessarily
+the order you wrote them in.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code>/<code>authors</code> schema above:</p>
 <ol>

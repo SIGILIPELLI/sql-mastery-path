@@ -2119,6 +2119,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2298,6 +2309,17 @@
     <span class="md-ellipsis">
       
         Cheat sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
       
     </span>
   </a>
@@ -2524,6 +2546,24 @@ against the normalized schema) doesn't scale to a real warehouse workload:</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>OLTP engines like SQLite store data <strong>row-oriented</strong>: an entire row's columns
+sit contiguously in one record on one page, which is efficient when a query
+needs most/all columns of a few specific rows (the transactional access
+pattern this whole course has focused on). Analytical/warehouse engines
+(ClickHouse, BigQuery, Redshift) instead store data <strong>column-oriented</strong>: all
+values for a single column across many rows are packed contiguously, so an
+aggregate query touching 3 of a table's 50 columns only has to read those 3
+columns' storage, skipping the other 47 entirely — impossible in a
+row-store, where reading any column of a row means reading the whole row's
+page. Column stores also compress dramatically better, because adjacent
+values in the same column tend to be similar (a <code>status</code> column with 4
+distinct values compresses far better stored together than interleaved with
+unrelated columns). <strong>Star schemas</strong> (fact table + dimension tables) exist
+because they minimize the number of large fact-table columns needed per
+query — dimension lookups become small, cheap joins against tiny tables,
+letting analytical engines dedicate their columnar scan and compression
+advantages to just the (typically much larger) fact table.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Add a <code>dim_store</code> dimension and a <code>store_key</code> column to <code>fact_sales</code>,

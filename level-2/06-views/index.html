@@ -1311,6 +1311,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2481,6 +2503,21 @@ the underlying table's data.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A <code>VIEW</code> stores no data of its own — <code>CREATE VIEW</code> just persists the view's
+<code>SELECT</code> text in <code>sqlite_master</code>, the same schema table that holds your
+<code>CREATE TABLE</code> statements. When you query the view, SQLite performs <strong>view
+expansion</strong>: it substitutes the view's stored query directly into your query
+at compile time, essentially textually inlining it as a subquery in the
+<code>FROM</code> clause, and then the ordinary query planner (join ordering, index
+selection) runs over the combined, expanded query as if you'd typed it all
+out by hand. This means a view gives you zero performance benefit or
+penalty by itself — a <code>SELECT * FROM my_view WHERE x = 1</code> optimizes exactly
+as well (or as poorly) as the equivalent hand-written join, because by the
+time the planner sees it, it <em>is</em> the equivalent hand-written join. SQLite's
+views are always <strong>non-materialized</strong> (unlike Postgres's optional
+<code>MATERIALIZED VIEW</code>) — there is no cached result set, so every query against
+a view re-executes its underlying definition from scratch, every time.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>products</code>/<code>sales</code> schema above:</p>
 <ol>

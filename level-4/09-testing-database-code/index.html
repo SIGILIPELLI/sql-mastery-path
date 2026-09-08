@@ -2136,6 +2136,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2276,6 +2287,17 @@
     <span class="md-ellipsis">
       
         Cheat sheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
       
     </span>
   </a>
@@ -2468,6 +2490,24 @@ previous test did to the (different, disposed-of) in-memory database.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A common pattern — wrapping each test in a transaction and rolling it back
+at the end instead of truncating tables — works specifically because of the
+rollback journal mechanism covered earlier in this course: <code>ROLLBACK</code>
+doesn't undo changes by executing inverse SQL statements, it restores the
+<em>original page images</em> that were copied into the journal before any write
+happened, which is why it's essentially instantaneous regardless of how much
+data the test modified — there's no re-computation, just discarding the
+dirty pages and reverting to the pre-transaction page set. Using an
+in-memory database (<code>:memory:</code>) for tests skips file I/O and <code>fsync()</code>
+entirely — pages live only in the process's memory-mapped page cache with no
+disk-backed durability guarantee needed, which is exactly why it's
+dramatically faster for test suites that don't need persistence across
+runs. Testing query correctness against <code>EXPLAIN QUERY PLAN</code> output (not
+just result rows) is a legitimate technique for catching performance
+regressions in CI — asserting a query still produces a <code>SEARCH USING INDEX</code>
+rather than a <code>SCAN</code> is a stronger guarantee than eyeballing manual runs
+after a schema or index change.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Add a test <code>test_transfer_to_nonexistent_owner_rolls_back</code> that calls

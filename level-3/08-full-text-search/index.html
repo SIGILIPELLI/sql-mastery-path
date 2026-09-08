@@ -1765,6 +1765,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2519,6 +2541,22 @@ for the rest of the data.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>FTS5 (SQLite's full-text search extension) is not a B-tree index at all —
+it's a completely separate storage structure called an <strong>inverted index</strong>.
+Instead of mapping a sorted key to a row, it maps every distinct <em>token</em>
+(word) to the list of rows (and positions within those rows) that contain it.
+When you insert a row into an FTS5 virtual table, the tokenizer splits the
+text into terms, and for each term the engine appends an entry to that term's
+posting list, batched into segments and periodically merged (similar in
+spirit to an LSM-tree) rather than updated in place like a B-tree, because
+inverted indexes are optimized for append-heavy write patterns and
+term-lookup reads, not point updates. A <code>MATCH</code> query looks up each search
+term's posting list directly (O(matching term frequency), not O(table size))
+and intersects/unions them for multi-term queries — which is why full-text
+search on a <code>LIKE '%word%'</code> scan is dramatically slower at any real data
+volume: <code>LIKE</code> must decode and pattern-match every row's text, while <code>MATCH</code>
+jumps straight to the rows already known to contain that term.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>articles</code> table above:</p>
 <ol>

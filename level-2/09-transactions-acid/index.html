@@ -1395,6 +1395,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2510,6 +2532,25 @@ mainly needs correctness guarantees.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>SQLite guarantees <strong>atomicity</strong> and <strong>durability</strong> primarily through its
+rollback journal (or WAL) mechanism: on <code>BEGIN</code>, no journal exists yet;
+on the first write, SQLite copies original page images to the journal file
+<em>before</em> modifying the live page cache; on <code>COMMIT</code>, it calls <code>fsync()</code> to
+force the journal to durable storage, then writes the actual dirty pages to
+the main database file, <code>fsync()</code>s again, and finally deletes (or truncates)
+the journal — that final deletion is the atomic "commit point." If the
+process or machine crashes at any point before that deletion, the next
+connection to open the file finds a stale journal and automatically replays
+it to roll back the incomplete transaction, restoring exactly the pre-transaction
+state — this is what gives you atomicity without a separate log-replay
+service. <strong>Isolation</strong> in SQLite's default (non-WAL) mode is coarse: a writer
+holds an exclusive lock on the <em>entire database file</em> for the whole
+transaction, so concurrent writers simply block/fail with <code>SQLITE_BUSY</code>
+rather than being interleaved — there's no per-row locking or MVCC snapshot
+isolation unless you switch to <code>PRAGMA journal_mode=WAL</code>, which lets readers
+see a consistent snapshot from the WAL file while a single writer appends
+new pages concurrently.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>accounts</code> schema above:</p>
 <ol>
