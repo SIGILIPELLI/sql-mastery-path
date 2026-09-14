@@ -1,5 +1,9 @@
 # 02 · SELECT Basics & Data Types
 
+## 🎥 Video walkthrough
+
+<iframe width="100%" height="400" style="max-width:720px;aspect-ratio:16/9;height:auto;" src="https://www.youtube.com/embed/IM5pRfT9N4o" title="Video walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 `SELECT` retrieves data. Almost everything you do in SQL revolves around
 shaping and refining a `SELECT` statement, so getting comfortable with its
 basic anatomy now pays off for the rest of the course.

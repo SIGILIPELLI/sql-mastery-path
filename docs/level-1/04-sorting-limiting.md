@@ -1,5 +1,9 @@
 # 04 · Sorting & Limiting Results
 
+## 🎥 Video walkthrough
+
+<iframe width="100%" height="400" style="max-width:720px;aspect-ratio:16/9;height:auto;" src="https://www.youtube.com/embed/zYv7rn6cdzw" title="Video walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 `ORDER BY` controls the order rows come back in; `LIMIT` (and `OFFSET`)
 control how many. Without `ORDER BY`, SQL makes **no guarantee** about row
 order — a database is free to return rows in whatever order is convenient

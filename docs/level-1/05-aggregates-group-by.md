@@ -1,5 +1,9 @@
 # 05 · Aggregate Functions & GROUP BY
 
+## 🎥 Video walkthrough
+
+<iframe width="100%" height="400" style="max-width:720px;aspect-ratio:16/9;height:auto;" src="https://www.youtube.com/embed/Zsjo_rx5TEs" title="Video walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 Aggregate functions collapse many rows into a single summary value —
 counting, summing, averaging. Combined with `GROUP BY`, they let you compute
 those summaries **per category** instead of over the whole table.

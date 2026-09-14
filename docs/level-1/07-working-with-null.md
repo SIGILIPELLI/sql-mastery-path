@@ -1,5 +1,9 @@
 # 07 · Working with NULL
 
+## 🎥 Video walkthrough
+
+<iframe width="100%" height="400" style="max-width:720px;aspect-ratio:16/9;height:auto;" src="https://www.youtube.com/embed/-a-xa1hGAwU" title="Video walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 `NULL` represents "unknown" or "absent" — it is not the same as zero, an
 empty string, or false. It has special comparison rules that trip up almost
 everyone the first time.
