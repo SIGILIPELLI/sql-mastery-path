@@ -1,3 +1,7 @@
+---
+description: "NoSQL vs SQL — 'NoSQL' isn't one technology — it's an umbrella for document stores (MongoDB), key-value stores (Redis), wide-column stores (Cassandra)…"
+---
+
 # 06 · NoSQL vs SQL
 
 "NoSQL" isn't one technology — it's an umbrella for document stores

@@ -1,3 +1,7 @@
+---
+description: "Partitioning Concepts — Partitioning splits one logically-huge table into physically-separate chunks — by date range, by region, by hash of a key — so…"
+---
+
 # 03 · Partitioning Concepts
 
 Partitioning splits one logically-huge table into physically-separate

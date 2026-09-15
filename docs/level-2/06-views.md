@@ -1,3 +1,7 @@
+---
+description: "Views — A view is a SELECT query saved under a name, queryable as if it were a table. It doesn't store data itself — every time you query a view, the…"
+---
+
 # 06 · Views
 
 A view is a `SELECT` query saved under a name, queryable as if it were a

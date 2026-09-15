@@ -1,3 +1,7 @@
+---
+description: "String & Date Functions — Real-world data is messy — inconsistent capitalization, stray whitespace, dates stored as text. SQL's built-in string and date…"
+---
+
 # 04 · String & Date Functions
 
 Real-world data is messy — inconsistent capitalization, stray whitespace,

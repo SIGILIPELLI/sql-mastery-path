@@ -1,3 +1,7 @@
+---
+description: "JSON in SQL — SQLite ships a built-in JSON1 extension, enabled by default in modern builds, that lets you store semi-structured data in a TEXT column and…"
+---
+
 # 07 · JSON in SQL
 
 SQLite ships a built-in JSON1 extension, enabled by default in modern

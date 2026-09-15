@@ -1,3 +1,7 @@
+---
+description: "Aggregate Functions & GROUP BY — Each unique combination of genre and published_year becomes its own group."
+---
+
 # 05 · Aggregate Functions & GROUP BY
 
 ## 🎥 Video walkthrough
@@ -200,6 +204,12 @@ and a count and divides only at the end; `MAX`/`MIN` just compare-and-replace.
 `HAVING` runs *after* grouping is complete, filtering finished accumulator
 rows — which is exactly why it can reference aggregate results that `WHERE`
 (evaluated per-row, before grouping) cannot.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Functions & Arguments](https://sigilipelli.github.io/shell-mastery-path/level-1/05-functions-arguments/)
+- [C — Arrays & Strings](https://sigilipelli.github.io/c-mastery-path/level-1/05-arrays-strings/)
+- [PHP — Arrays](https://sigilipelli.github.io/php-mastery-path/level-1/05-arrays/)
 
 ## Exercise
 

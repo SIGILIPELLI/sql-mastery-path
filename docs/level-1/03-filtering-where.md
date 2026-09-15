@@ -1,3 +1,7 @@
+---
+description: "Filtering with WHERE — Equivalent to published_year >= 1960 AND published_year <= 1990 — both endpoints are included."
+---
+
 # 03 · Filtering with WHERE
 
 ## 🎥 Video walkthrough
@@ -165,6 +169,12 @@ scan because no single B-tree ordering can satisfy both branches at once.
 `LIKE '%foo%'` (leading wildcard) can never use a plain index seek either,
 because a B-tree is sorted by prefix — only `LIKE 'foo%'` (anchored prefix)
 lets the planner binary-search into the tree.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Control Flow](https://sigilipelli.github.io/shell-mastery-path/level-1/03-control-flow/)
+- [C — Control Flow](https://sigilipelli.github.io/c-mastery-path/level-1/03-control-flow/)
+- [PHP — Control Flow](https://sigilipelli.github.io/php-mastery-path/level-1/03-control-flow/)
 
 ## Exercise
 

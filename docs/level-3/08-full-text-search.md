@@ -1,3 +1,7 @@
+---
+description: "Full-Text Search — WHERE body LIKE '%database%' works, but it can't rank results by relevance, can't handle 'close to this phrase,' and forces a full scan…"
+---
+
 # 08 · Full-Text Search
 
 `WHERE body LIKE '%database%'` works, but it can't rank results by

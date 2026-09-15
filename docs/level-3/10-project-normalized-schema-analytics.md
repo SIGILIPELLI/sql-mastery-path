@@ -1,3 +1,7 @@
+---
+description: "Project: Normalized Schema & Analytics — This project builds a small e-commerce analytics database from scratch, applying the normalization, indexing, and…"
+---
+
 # 10 · Project: Normalized Schema & Analytics
 
 This project builds a small e-commerce analytics database from scratch,

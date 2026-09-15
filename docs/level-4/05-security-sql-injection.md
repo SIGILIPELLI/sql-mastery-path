@@ -1,3 +1,7 @@
+---
+description: "Security & SQL Injection — SQL injection happens when untrusted input is concatenated directly into a SQL string instead of being passed as data. This…"
+---
+
 # 05 · Security & SQL Injection
 
 SQL injection happens when untrusted input is concatenated directly into a

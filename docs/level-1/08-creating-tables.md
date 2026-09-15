@@ -1,3 +1,7 @@
+---
+description: "Creating Tables — Running this creates an empty table — no rows yet, just the shape."
+---
+
 # 08 · Creating Tables
 
 ## 🎥 Video walkthrough
@@ -163,6 +167,12 @@ unique key with no extra storage. Declaring `id INTEGER PRIMARY KEY` literally
 aliases the column to the table's own B-tree key; any other column type used
 as "primary key" gets a real, separate unique index built and maintained
 alongside the table's rowid B-tree, doubling the write cost for every insert.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Basic Text Processing](https://sigilipelli.github.io/shell-mastery-path/level-1/08-text-processing/)
+- [C — File I/O](https://sigilipelli.github.io/c-mastery-path/level-1/08-file-io/)
+- [PHP — Error Handling Basics](https://sigilipelli.github.io/php-mastery-path/level-1/08-error-handling/)
 
 ## Exercise
 

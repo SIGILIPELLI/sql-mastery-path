@@ -1,3 +1,7 @@
+---
+description: "Joins Basics — Notice The Lathe of Heaven is missing — its author_id is NULL, so it has no matching row in authors, and INNER JOIN only returns rows where…"
+---
+
 # 06 · Joins Basics
 
 ## 🎥 Video walkthrough
@@ -139,6 +143,12 @@ outer row; if none was, it synthesizes a row of NULLs before moving to the
 next outer row instead of skipping it. The planner also chooses *which* table
 becomes the outer loop based on rough cardinality estimates, not necessarily
 the order you wrote them in.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Working with Files & Directories](https://sigilipelli.github.io/shell-mastery-path/level-1/06-files-directories/)
+- [C — Pointers Basics](https://sigilipelli.github.io/c-mastery-path/level-1/06-pointers-basics/)
+- [PHP — Strings & String Functions](https://sigilipelli.github.io/php-mastery-path/level-1/06-strings/)
 
 ## Exercise
 

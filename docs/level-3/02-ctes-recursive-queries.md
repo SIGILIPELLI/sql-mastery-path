@@ -1,3 +1,7 @@
+---
+description: "CTEs & Recursive Queries — A Common Table Expression (CTE) is a named, temporary result set defined with a WITH clause and used just like a table for the…"
+---
+
 # 02 · CTEs & Recursive Queries
 
 A Common Table Expression (CTE) is a named, temporary result set defined with

@@ -1,3 +1,7 @@
+---
+description: "Data Migration Patterns — Schemas change after data already exists in production — adding a column, renaming one, tightening a constraint. SQLite supports…"
+---
+
 # 09 · Data Migration Patterns
 
 Schemas change after data already exists in production — adding a column,

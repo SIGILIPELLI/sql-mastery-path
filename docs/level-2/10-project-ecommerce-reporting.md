@@ -1,3 +1,7 @@
+---
+description: "Project — E-commerce Reporting — A capstone project combining everything from Level 2: advanced joins, subqueries, views, CASE expressions, and…"
+---
+
 # 10 · Project — E-commerce Reporting
 
 A capstone project combining everything from Level 2: advanced joins,

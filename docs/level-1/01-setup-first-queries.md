@@ -1,3 +1,7 @@
+---
+description: "Setup & First Queries — CREATE TABLE, INSERT, and SELECT are all covered in depth in later modules — this is just enough to confirm your setup works end…"
+---
+
 # 01 · Setup & First Queries
 
 ## 🎥 Video walkthrough
@@ -149,6 +153,12 @@ as `SELECT 1;` produces a handful of opcodes (`Init`, `Integer`, `ResultRow`,
 client/server round trip, no network stack, and no connection pool — the
 "connection" is just an in-process handle (`sqlite3*`) wrapping open file
 descriptors and a page cache in RAM.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Setup & First Script](https://sigilipelli.github.io/shell-mastery-path/level-1/01-setup/)
+- [C — Setup & First Program](https://sigilipelli.github.io/c-mastery-path/level-1/01-setup/)
+- [PHP — Setup & First Program](https://sigilipelli.github.io/php-mastery-path/level-1/01-setup/)
 
 ## Exercise
 

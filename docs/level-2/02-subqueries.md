@@ -1,3 +1,7 @@
+---
+description: "Subqueries — A subquery is a SELECT nested inside another query — used to compute a value, produce a list to filter against, or check whether related rows…"
+---
+
 # 02 · Subqueries
 
 A subquery is a `SELECT` nested inside another query — used to compute a

@@ -1,3 +1,7 @@
+---
+description: "Project — Library/Bookstore Database — A two-table library database — authors and books — that you'll design, populate, and query to answer realistic…"
+---
+
 # 10 · Project — Library/Bookstore Database
 
 ## 🎥 Video walkthrough
@@ -144,3 +148,9 @@ scans on a larger dataset.
   subquery (a preview of [Level 2 · Subqueries](../level-2/02-subqueries.md)).
 
 Completing this project means you're ready for **Level 2 · Intermediate**.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Project — Backup Script](https://sigilipelli.github.io/shell-mastery-path/level-1/10-project-backup-script/)
+- [C — Project — CLI Contact Book](https://sigilipelli.github.io/c-mastery-path/level-1/10-project-contact-book/)
+- [PHP — Project — CLI To-Do App](https://sigilipelli.github.io/php-mastery-path/level-1/10-project-todo-app/)

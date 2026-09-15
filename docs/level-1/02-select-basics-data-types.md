@@ -1,3 +1,7 @@
+---
+description: "SELECT Basics & Data Types — Listing exact columns (instead of SELECT *) is good practice in real applications: it's explicit about what the query needs…"
+---
+
 # 02 · SELECT Basics & Data Types
 
 ## 🎥 Video walkthrough
@@ -193,6 +197,12 @@ are often smaller than the equivalent Postgres/MySQL table — there's no fixed
 per-row slot size to pad out. When you `SELECT` a column, the VDBE walks the
 row's header varints to compute byte offsets, then reads only the bytes for
 the columns you asked for — it never deserializes columns you didn't request.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Variables & Data Types](https://sigilipelli.github.io/shell-mastery-path/level-1/02-variables-data-types/)
+- [C — Variables, Data Types & Operators](https://sigilipelli.github.io/c-mastery-path/level-1/02-variables-data-types/)
+- [PHP — Variables & Types](https://sigilipelli.github.io/php-mastery-path/level-1/02-variables-types/)
 
 ## Exercise
 

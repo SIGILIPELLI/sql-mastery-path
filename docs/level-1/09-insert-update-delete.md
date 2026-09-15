@@ -1,3 +1,7 @@
+---
+description: "Inserting, Updating, Deleting Data — Always list column names explicitly (INSERT INTO books (title, author, price)) rather than relying on column order …"
+---
+
 # 09 · Inserting, Updating, Deleting Data
 
 ## 🎥 Video walkthrough
@@ -153,6 +157,12 @@ the target rows (via a scan or index seek, exactly like a `SELECT ... WHERE`)
 and then rewriting or removing those specific B-tree entries in place —
 `UPDATE` may even need to relocate a row within the B-tree if its new size
 no longer fits the original slot, causing a page split.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Exit Codes & Basic Error Handling](https://sigilipelli.github.io/shell-mastery-path/level-1/09-exit-codes-error-handling/)
+- [C — Preprocessor & Multi-file Compilation](https://sigilipelli.github.io/c-mastery-path/level-1/09-preprocessor-multifile/)
+- [PHP — Composer & Package Basics](https://sigilipelli.github.io/php-mastery-path/level-1/09-composer-basics/)
 
 ## Exercise
 

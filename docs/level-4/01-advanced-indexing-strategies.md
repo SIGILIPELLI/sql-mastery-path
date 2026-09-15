@@ -1,3 +1,7 @@
+---
+description: "Advanced Indexing Strategies — Level 3 covered single-column indexes and EXPLAIN QUERY PLAN. This module goes further into composite indexes, covering…"
+---
+
 # 01 · Advanced Indexing Strategies
 
 Level 3 covered single-column indexes and `EXPLAIN QUERY PLAN`. This module

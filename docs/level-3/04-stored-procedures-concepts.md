@@ -1,3 +1,7 @@
+---
+description: "Stored Procedures — Concepts — In MySQL or PostgreSQL, a stored procedure is a named block of SQL (sometimes with loops and conditionals) that lives…"
+---
+
 # 04 · Stored Procedures — Concepts
 
 In MySQL or PostgreSQL, a stored procedure is a named block of SQL

@@ -1,3 +1,7 @@
+---
+description: "Advanced Joins — Level 1 covered INNER JOIN and LEFT JOIN between two tables. Real schemas need more: joining a table to itself, chaining several joins…"
+---
+
 # 01 · Advanced Joins
 
 Level 1 covered `INNER JOIN` and `LEFT JOIN` between two tables. Real schemas

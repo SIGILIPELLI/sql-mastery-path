@@ -1,3 +1,7 @@
+---
+description: "Working with NULL — Both queries above are silently wrong but produce no error — = NULL and != NULL never match anything because comparing 'unknown' to…"
+---
+
 # 07 · Working with NULL
 
 ## 🎥 Video walkthrough
@@ -154,6 +158,12 @@ where the predicate evaluates to *true* (not just non-false) — a row where
 the condition evaluates to NULL is filtered out exactly like a false one,
 which is a common source of "missing rows" bugs when NULLs are involved in
 `NOT IN` subqueries.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Pipes & Redirection](https://sigilipelli.github.io/shell-mastery-path/level-1/07-pipes-redirection/)
+- [C — Structs](https://sigilipelli.github.io/c-mastery-path/level-1/07-structs/)
+- [PHP — Classes & Objects Basics](https://sigilipelli.github.io/php-mastery-path/level-1/07-classes-objects/)
 
 ## Exercise
 

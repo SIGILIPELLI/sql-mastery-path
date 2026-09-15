@@ -1,3 +1,7 @@
+---
+description: "Sorting & Limiting Results — Each column can have its own direction — ORDER BY genre ASC, price DESC sorts genres alphabetically, and within each genre…"
+---
+
 # 04 · Sorting & Limiting Results
 
 ## 🎥 Video walkthrough
@@ -169,6 +173,12 @@ ORDER BY`. `LIMIT` is applied *after* sorting logically, but the VDBE is
 smart enough to short-circuit: if there's no `ORDER BY`, it simply stops
 pulling rows from the scan once the limit counter hits zero, saving the cost
 of visiting the rest of the table entirely.
+
+## 🔀 See this in another language
+
+- [Shell/Bash — Loops](https://sigilipelli.github.io/shell-mastery-path/level-1/04-loops/)
+- [C — Functions](https://sigilipelli.github.io/c-mastery-path/level-1/04-functions/)
+- [PHP — Functions](https://sigilipelli.github.io/php-mastery-path/level-1/04-functions/)
 
 ## Exercise
 

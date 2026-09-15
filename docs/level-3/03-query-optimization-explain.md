@@ -1,3 +1,7 @@
+---
+description: "Query Optimization & EXPLAIN QUERY PLAN — Every query has a plan — the sequence of steps SQLite's engine actually takes to produce your result: which…"
+---
+
 # 03 · Query Optimization & EXPLAIN QUERY PLAN
 
 Every query has a *plan* — the sequence of steps SQLite's engine actually

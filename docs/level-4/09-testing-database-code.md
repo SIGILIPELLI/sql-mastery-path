@@ -1,3 +1,7 @@
+---
+description: "Testing Database Code — Code that touches a database needs tests just like any other code — but the database itself is part of what's under test. The…"
+---
+
 # 09 · Testing Database Code
 
 Code that touches a database needs tests just like any other code — but

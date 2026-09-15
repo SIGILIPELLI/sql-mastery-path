@@ -1,3 +1,7 @@
+---
+description: "Triggers — A trigger is SQL code that runs automatically when a row is inserted, updated, or deleted — no application code has to remember to call it.…"
+---
+
 # 05 · Triggers
 
 A trigger is SQL code that runs automatically when a row is inserted,

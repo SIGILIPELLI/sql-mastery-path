@@ -1,3 +1,7 @@
+---
+description: "Data Warehousing Concepts — An OLTP (online transaction processing) database is optimized for fast, small, frequent read/write operations — 'record this…"
+---
+
 # 08 · Data Warehousing Concepts
 
 An OLTP (online transaction processing) database is optimized for fast,

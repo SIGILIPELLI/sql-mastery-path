@@ -1,3 +1,7 @@
+---
+description: "SQL from Application Code — Every technique so far ran through the sqlite3 CLI. Real applications talk to a database through a driver/DB-API instead …"
+---
+
 # 07 · SQL from Application Code
 
 Every technique so far ran through the `sqlite3` CLI. Real applications

@@ -1,3 +1,7 @@
+---
+description: "Replication & Backup Concepts — Replication (keeping copies of a database in sync across multiple servers) and backup (taking a point-in-time snapshot you…"
+---
+
 # 04 · Replication & Backup Concepts
 
 Replication (keeping copies of a database in sync across multiple servers)

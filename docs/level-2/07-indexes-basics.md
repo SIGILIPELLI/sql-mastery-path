@@ -1,3 +1,7 @@
+---
+description: "Indexes Basics — An index is a separate, sorted data structure that lets the database find rows matching a condition without checking every row in the…"
+---
+
 # 07 · Indexes Basics
 
 An index is a separate, sorted data structure that lets the database find

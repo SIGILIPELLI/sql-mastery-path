@@ -1,3 +1,7 @@
+---
+description: "Constraints — Constraints are rules the database enforces on your behalf — they reject bad data at insert/update time instead of letting it slip in and…"
+---
+
 # 08 · Constraints
 
 Constraints are rules the database enforces on your behalf — they reject bad

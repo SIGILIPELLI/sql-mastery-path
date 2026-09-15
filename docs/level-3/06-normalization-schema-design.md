@@ -1,3 +1,7 @@
+---
+description: "Normalization & Schema Design — Normalization is the process of structuring tables so each fact is stored in exactly one place. The payoff isn't academic…"
+---
+
 # 06 · Normalization & Schema Design
 
 Normalization is the process of structuring tables so each fact is stored

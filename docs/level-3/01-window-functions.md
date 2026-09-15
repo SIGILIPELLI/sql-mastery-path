@@ -1,3 +1,7 @@
+---
+description: "Window Functions — A window function computes a value across a set of rows related to the current row — a 'window' — without collapsing those rows into…"
+---
+
 # 01 · Window Functions
 
 A window function computes a value across a set of rows *related to the

@@ -1,3 +1,7 @@
+---
+description: "Transactions & ACID Basics — A transaction groups multiple statements into a single all-or-nothing unit of work. Without transactions, a crash or error…"
+---
+
 # 09 · Transactions & ACID Basics
 
 A transaction groups multiple statements into a single all-or-nothing unit

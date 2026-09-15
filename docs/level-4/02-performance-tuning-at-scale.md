@@ -1,3 +1,7 @@
+---
+description: "Performance Tuning at Scale — Indexing (previous module) fixes slow reads. This module covers the other half: write throughput, connection-level tuning…"
+---
+
 # 02 · Performance Tuning at Scale
 
 Indexing (previous module) fixes slow reads. This module covers the other

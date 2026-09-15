@@ -1,3 +1,7 @@
+---
+description: "CASE Expressions — CASE is SQL's inline if/else — it evaluates conditions and returns a value, right inside a SELECT, WHERE, or ORDER BY clause. It's how…"
+---
+
 # 05 · CASE Expressions
 
 `CASE` is SQL's inline if/else — it evaluates conditions and returns a value,

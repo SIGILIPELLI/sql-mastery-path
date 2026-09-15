@@ -1,3 +1,7 @@
+---
+description: "Capstone Project — This capstone pulls together the whole path: a normalized schema (Level 3) with constraints, indexes tuned for the actual queries…"
+---
+
 # 10 · Capstone Project
 
 This capstone pulls together the whole path: a normalized schema (Level 3)

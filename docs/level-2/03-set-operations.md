@@ -1,3 +1,7 @@
+---
+description: "Set Operations — Joins combine tables horizontally — matching rows side by side into wider rows. Set operations combine query results vertically …"
+---
+
 # 03 · Set Operations
 
 Joins combine tables *horizontally* — matching rows side by side into wider
