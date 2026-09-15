@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A structured, module-wise SQL training program from entry level to master level.">
+        <meta name="description" content="Inserting, Updating, Deleting Data — Always list column names explicitly (INSERT INTO books (title, author, price)) rather than relying on column order …">
       
       
       
@@ -67,14 +67,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SQL Mastery Path">
   <meta property="og:title" content="09 · Inserting, Updating, Deleting Data">
-  <meta property="og:description" content="A structured, module-wise SQL training program from entry level to master level — free, with runnable queries in every module.">
+  <meta property="og:description" content="Inserting, Updating, Deleting Data — Always list column names explicitly (INSERT INTO books (title, author, price)) rather than relying on column order …">
   <meta property="og:url" content="https://sigilipelli.github.io/sql-mastery-path/level-1/09-insert-update-delete/">
   <meta property="og:image" content="https://sigilipelli.github.io/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="09 · Inserting, Updating, Deleting Data">
-  <meta name="twitter:description" content="A structured, module-wise SQL training program from entry level to master level — free, with runnable queries in every module.">
+  <meta name="twitter:description" content="Inserting, Updating, Deleting Data — Always list column names explicitly (INSERT INTO books (title, author, price)) rather than relying on column order …">
   <meta name="twitter:image" content="https://sigilipelli.github.io/og-image.png">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
      crossorigin="anonymous"></script>
@@ -1029,6 +1029,17 @@
     <span class="md-ellipsis">
       
         How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-this-in-another-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔀 See this in another language
       
     </span>
   </a>
@@ -2333,6 +2344,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-this-in-another-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔀 See this in another language
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2515,6 +2537,12 @@ the target rows (via a scan or index seek, exactly like a <code>SELECT ... WHERE
 and then rewriting or removing those specific B-tree entries in place —
 <code>UPDATE</code> may even need to relocate a row within the B-tree if its new size
 no longer fits the original slot, causing a page split.</p>
+<h2 id="see-this-in-another-language">🔀 See this in another language<a class="headerlink" href="#see-this-in-another-language" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://sigilipelli.github.io/shell-mastery-path/level-1/09-exit-codes-error-handling/">Shell/Bash — Exit Codes &amp; Basic Error Handling</a></li>
+<li><a href="https://sigilipelli.github.io/c-mastery-path/level-1/09-preprocessor-multifile/">C — Preprocessor &amp; Multi-file Compilation</a></li>
+<li><a href="https://sigilipelli.github.io/php-mastery-path/level-1/09-composer-basics/">PHP — Composer &amp; Package Basics</a></li>
+</ul>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the <code>books</code> table: insert 3 new books in a single <code>INSERT</code> statement.
 Write an <code>UPDATE</code> that gives a 10% discount (<code>price * 0.9</code>) to every book
@@ -2528,6 +2556,9 @@ together inside a <code>BEGIN TRANSACTION</code> / <code>COMMIT</code> block.</p
 
 
 
+
+  
+  
 
 
 
