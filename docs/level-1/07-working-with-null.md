@@ -161,9 +161,9 @@ which is a common source of "missing rows" bugs when NULLs are involved in
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Pipes & Redirection](https://sigilipelli.github.io/shell-mastery-path/level-1/07-pipes-redirection/)
-- [C — Structs](https://sigilipelli.github.io/c-mastery-path/level-1/07-structs/)
-- [PHP — Classes & Objects Basics](https://sigilipelli.github.io/php-mastery-path/level-1/07-classes-objects/)
+- [Shell/Bash — Pipes & Redirection](https://learnmasterypath.com/shell-mastery-path/level-1/07-pipes-redirection/)
+- [C — Structs](https://learnmasterypath.com/c-mastery-path/level-1/07-structs/)
+- [PHP — Classes & Objects Basics](https://learnmasterypath.com/php-mastery-path/level-1/07-classes-objects/)
 
 ## Exercise
 

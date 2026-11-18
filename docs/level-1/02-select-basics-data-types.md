@@ -200,9 +200,9 @@ the columns you asked for — it never deserializes columns you didn't request.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Variables & Data Types](https://sigilipelli.github.io/shell-mastery-path/level-1/02-variables-data-types/)
-- [C — Variables, Data Types & Operators](https://sigilipelli.github.io/c-mastery-path/level-1/02-variables-data-types/)
-- [PHP — Variables & Types](https://sigilipelli.github.io/php-mastery-path/level-1/02-variables-types/)
+- [Shell/Bash — Variables & Data Types](https://learnmasterypath.com/shell-mastery-path/level-1/02-variables-data-types/)
+- [C — Variables, Data Types & Operators](https://learnmasterypath.com/c-mastery-path/level-1/02-variables-data-types/)
+- [PHP — Variables & Types](https://learnmasterypath.com/php-mastery-path/level-1/02-variables-types/)
 
 ## Exercise
 

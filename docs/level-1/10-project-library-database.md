@@ -151,6 +151,6 @@ Completing this project means you're ready for **Level 2 · Intermediate**.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Project — Backup Script](https://sigilipelli.github.io/shell-mastery-path/level-1/10-project-backup-script/)
-- [C — Project — CLI Contact Book](https://sigilipelli.github.io/c-mastery-path/level-1/10-project-contact-book/)
-- [PHP — Project — CLI To-Do App](https://sigilipelli.github.io/php-mastery-path/level-1/10-project-todo-app/)
+- [Shell/Bash — Project — Backup Script](https://learnmasterypath.com/shell-mastery-path/level-1/10-project-backup-script/)
+- [C — Project — CLI Contact Book](https://learnmasterypath.com/c-mastery-path/level-1/10-project-contact-book/)
+- [PHP — Project — CLI To-Do App](https://learnmasterypath.com/php-mastery-path/level-1/10-project-todo-app/)

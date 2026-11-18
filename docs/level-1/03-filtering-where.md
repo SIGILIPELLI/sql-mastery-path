@@ -172,9 +172,9 @@ lets the planner binary-search into the tree.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Control Flow](https://sigilipelli.github.io/shell-mastery-path/level-1/03-control-flow/)
-- [C — Control Flow](https://sigilipelli.github.io/c-mastery-path/level-1/03-control-flow/)
-- [PHP — Control Flow](https://sigilipelli.github.io/php-mastery-path/level-1/03-control-flow/)
+- [Shell/Bash — Control Flow](https://learnmasterypath.com/shell-mastery-path/level-1/03-control-flow/)
+- [C — Control Flow](https://learnmasterypath.com/c-mastery-path/level-1/03-control-flow/)
+- [PHP — Control Flow](https://learnmasterypath.com/php-mastery-path/level-1/03-control-flow/)
 
 ## Exercise
 

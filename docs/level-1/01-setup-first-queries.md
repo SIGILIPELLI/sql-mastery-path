@@ -156,9 +156,9 @@ descriptors and a page cache in RAM.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Setup & First Script](https://sigilipelli.github.io/shell-mastery-path/level-1/01-setup/)
-- [C — Setup & First Program](https://sigilipelli.github.io/c-mastery-path/level-1/01-setup/)
-- [PHP — Setup & First Program](https://sigilipelli.github.io/php-mastery-path/level-1/01-setup/)
+- [Shell/Bash — Setup & First Script](https://learnmasterypath.com/shell-mastery-path/level-1/01-setup/)
+- [C — Setup & First Program](https://learnmasterypath.com/c-mastery-path/level-1/01-setup/)
+- [PHP — Setup & First Program](https://learnmasterypath.com/php-mastery-path/level-1/01-setup/)
 
 ## Exercise
 

@@ -146,9 +146,9 @@ the order you wrote them in.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Working with Files & Directories](https://sigilipelli.github.io/shell-mastery-path/level-1/06-files-directories/)
-- [C — Pointers Basics](https://sigilipelli.github.io/c-mastery-path/level-1/06-pointers-basics/)
-- [PHP — Strings & String Functions](https://sigilipelli.github.io/php-mastery-path/level-1/06-strings/)
+- [Shell/Bash — Working with Files & Directories](https://learnmasterypath.com/shell-mastery-path/level-1/06-files-directories/)
+- [C — Pointers Basics](https://learnmasterypath.com/c-mastery-path/level-1/06-pointers-basics/)
+- [PHP — Strings & String Functions](https://learnmasterypath.com/php-mastery-path/level-1/06-strings/)
 
 ## Exercise
 

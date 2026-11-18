@@ -170,9 +170,9 @@ alongside the table's rowid B-tree, doubling the write cost for every insert.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Basic Text Processing](https://sigilipelli.github.io/shell-mastery-path/level-1/08-text-processing/)
-- [C — File I/O](https://sigilipelli.github.io/c-mastery-path/level-1/08-file-io/)
-- [PHP — Error Handling Basics](https://sigilipelli.github.io/php-mastery-path/level-1/08-error-handling/)
+- [Shell/Bash — Basic Text Processing](https://learnmasterypath.com/shell-mastery-path/level-1/08-text-processing/)
+- [C — File I/O](https://learnmasterypath.com/c-mastery-path/level-1/08-file-io/)
+- [PHP — Error Handling Basics](https://learnmasterypath.com/php-mastery-path/level-1/08-error-handling/)
 
 ## Exercise
 

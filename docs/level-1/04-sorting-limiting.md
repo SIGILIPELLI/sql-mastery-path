@@ -176,9 +176,9 @@ of visiting the rest of the table entirely.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Loops](https://sigilipelli.github.io/shell-mastery-path/level-1/04-loops/)
-- [C — Functions](https://sigilipelli.github.io/c-mastery-path/level-1/04-functions/)
-- [PHP — Functions](https://sigilipelli.github.io/php-mastery-path/level-1/04-functions/)
+- [Shell/Bash — Loops](https://learnmasterypath.com/shell-mastery-path/level-1/04-loops/)
+- [C — Functions](https://learnmasterypath.com/c-mastery-path/level-1/04-functions/)
+- [PHP — Functions](https://learnmasterypath.com/php-mastery-path/level-1/04-functions/)
 
 ## Exercise
 

@@ -207,9 +207,9 @@ rows — which is exactly why it can reference aggregate results that `WHERE`
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Functions & Arguments](https://sigilipelli.github.io/shell-mastery-path/level-1/05-functions-arguments/)
-- [C — Arrays & Strings](https://sigilipelli.github.io/c-mastery-path/level-1/05-arrays-strings/)
-- [PHP — Arrays](https://sigilipelli.github.io/php-mastery-path/level-1/05-arrays/)
+- [Shell/Bash — Functions & Arguments](https://learnmasterypath.com/shell-mastery-path/level-1/05-functions-arguments/)
+- [C — Arrays & Strings](https://learnmasterypath.com/c-mastery-path/level-1/05-arrays-strings/)
+- [PHP — Arrays](https://learnmasterypath.com/php-mastery-path/level-1/05-arrays/)
 
 ## Exercise
 

@@ -160,9 +160,9 @@ no longer fits the original slot, causing a page split.
 
 ## 🔀 See this in another language
 
-- [Shell/Bash — Exit Codes & Basic Error Handling](https://sigilipelli.github.io/shell-mastery-path/level-1/09-exit-codes-error-handling/)
-- [C — Preprocessor & Multi-file Compilation](https://sigilipelli.github.io/c-mastery-path/level-1/09-preprocessor-multifile/)
-- [PHP — Composer & Package Basics](https://sigilipelli.github.io/php-mastery-path/level-1/09-composer-basics/)
+- [Shell/Bash — Exit Codes & Basic Error Handling](https://learnmasterypath.com/shell-mastery-path/level-1/09-exit-codes-error-handling/)
+- [C — Preprocessor & Multi-file Compilation](https://learnmasterypath.com/c-mastery-path/level-1/09-preprocessor-multifile/)
+- [PHP — Composer & Package Basics](https://learnmasterypath.com/php-mastery-path/level-1/09-composer-basics/)
 
 ## Exercise
 
