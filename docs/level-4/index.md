@@ -1,3 +1,7 @@
+---
+description: "Level 4 (Master) of the free SQL Mastery Path: Advanced Indexing Strategies, Query Performance Tuning at Scale, Partitioning Concepts, Replication & Backup…"
+---
+
 # Level 4 · Master
 
 ## Modules

@@ -1,3 +1,7 @@
+---
+description: "Level 2 (Intermediate) of the free SQL Mastery Path: Advanced Joins, Subqueries, Set Operations, String & Date Functions, CASE Expressions, Views, with…"
+---
+
 # Level 2 · Intermediate
 
 ## Modules

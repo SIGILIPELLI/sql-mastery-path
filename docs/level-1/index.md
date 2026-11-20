@@ -1,3 +1,7 @@
+---
+description: "Level 1 (Entry) of the free SQL Mastery Path. Get comfortable reading and writing SQL, understand how relational databases store and query data, and ship a…"
+---
+
 # Level 1 · Entry <span class="level-badge">Foundations</span>
 
 Goal: get comfortable reading and writing SQL, understand how relational

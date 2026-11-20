@@ -1,6 +1,6 @@
 ---
 title: "Learn SQL Free: Beginner to Master Course"
-description: "Free SQL course from beginner to advanced -- hands-on lessons with runnable queries and real capstone projects. Part of a 37-course free learning library."
+description: "Free SQL course from beginner to advanced -- hands-on lessons with runnable queries and real capstone projects. Part of a 100+ course free learning library."
 ---
 
 # SQL Mastery Path

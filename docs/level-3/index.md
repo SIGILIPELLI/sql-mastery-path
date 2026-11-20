@@ -1,3 +1,7 @@
+---
+description: "Level 3 (Advanced) of the free SQL Mastery Path: Window Functions, CTEs & Recursive Queries, Query Optimization & EXPLAIN QUERY PLAN, Stored…"
+---
+
 # Level 3 · Advanced
 
 ## Modules
