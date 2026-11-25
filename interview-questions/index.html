@@ -1,0 +1,4125 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="180 SQL interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the SQL Mastery Path.">
+      
+      
+      
+        <link rel="canonical" href="https://learnmasterypath.com/sql-mastery-path/interview-questions/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../cheat-sheet/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+  
+  <title>SQL Interview Questions and Answers (180 Questions) – SQL Course</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/progress-tracker.css">
+    
+      <link rel="stylesheet" href="../stylesheets/final-quiz.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05VBGCXN12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-05VBGCXN12');
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mastery Path">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="SQL Interview Questions and Answers (180 Questions) – SQL Course">
+  <meta property="og:description" content="180 SQL interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the SQL Mastery Path.">
+  <meta property="og:url" content="https://learnmasterypath.com/sql-mastery-path/interview-questions/">
+  <meta property="og:image" content="https://learnmasterypath.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mastery Path: free structured courses, beginner to master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SQL Interview Questions and Answers (180 Questions) – SQL Course">
+  <meta name="twitter:description" content="180 SQL interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the SQL Mastery Path.">
+  <meta name="twitter:image" content="https://learnmasterypath.com/og-image.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
+     crossorigin="anonymous"></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Mastery Path", "item": "https://learnmasterypath.com/"},
+      {"@type": "ListItem", "position": 2, "name": "SQL Mastery Path", "item": "https://learnmasterypath.com/sql-mastery-path/"},
+      {"@type": "ListItem", "position": 3, "name": "Interview Questions", "item": "https://learnmasterypath.com/sql-mastery-path/interview-questions/"}
+    ]
+  }
+  </script>
+  <style>
+    .md-banner a:hover { text-decoration: underline !important; }
+    .mp-related { margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid var(--md-default-fg-color--lightest); font-size: .78rem; }
+    .mp-related h2 { font-size: .9rem; margin: 0 0 .5rem; }
+    .mp-related ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .9rem; }
+    .mp-related li { margin: 0 !important; }
+  </style>
+  <script type="application/json" id="mp-course-meta">{"home": false, "id": "sql-mastery-path", "name": "SQL Mastery Path", "repo": "https://github.com/SIGILIPELLI/sql-mastery-path", "src": "interview-questions.md", "url": "https://learnmasterypath.com/sql-mastery-path/"}</script>
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/learn.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/course.css?v=1">
+  <script src="https://learnmasterypath.com/assets/learn.js" defer></script>
+  <script src="https://learnmasterypath.com/assets/signup.js" defer></script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sql-interview-questions-and-answers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://learnmasterypath.com/" style="color: inherit; text-decoration: none;">
+    &larr; Mastery Path &middot; all 100+ free courses
+  </a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/search/" style="color: inherit; text-decoration: none;">Search all courses</a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/resume/" style="color: inherit; font-weight: 700; text-decoration: none;">
+    Got the skills? Free resume ATS check &rarr;
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SQL Mastery Path" class="md-header__button md-logo" aria-label="SQL Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SQL Mastery Path
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQL Interview Questions and Answers (180 Questions)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SIGILIPELLI/sql-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sql-mastery-path
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Interview Questions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cheat-sheet/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cheat Sheet
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 1 · Entry
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 2 · Intermediate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 3 · Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 4 · Master
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quiz/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Final Quiz
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SQL Mastery Path" class="md-nav__button md-logo" aria-label="SQL Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    SQL Mastery Path
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SIGILIPELLI/sql-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sql-mastery-path
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-setup-first-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Setup &amp; First Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-select-basics-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · SELECT Basics &amp; Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-filtering-with-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Filtering with WHERE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-sorting-limiting-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Sorting &amp; Limiting Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-aggregate-functions-group-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Aggregate Functions &amp; GROUP BY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-joins-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Joins Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-working-with-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Working with NULL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-creating-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Creating Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-inserting-updating-deleting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Inserting, Updating, Deleting Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-librarybookstore-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Library/Bookstore Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-advanced-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Advanced Joins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Subqueries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Set Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-string-date-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · String &amp; Date Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-case-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · CASE Expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-indexes-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Indexes Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-transactions-acid-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Transactions &amp; ACID Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-e-commerce-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — E-commerce Reporting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Window Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-ctes-recursive-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · CTEs &amp; Recursive Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-query-optimization-explain-query-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Query Optimization &amp; EXPLAIN QUERY PLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-stored-procedures-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Stored Procedures — Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Triggers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-normalization-schema-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Normalization &amp; Schema Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-json-in-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · JSON in SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-full-text-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Full-Text Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-data-migration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Data Migration Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-normalized-schema-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project: Normalized Schema &amp; Analytics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-advanced-indexing-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Advanced Indexing Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-performance-tuning-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Performance Tuning at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-partitioning-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Partitioning Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-replication-backup-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Replication &amp; Backup Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-security-sql-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Security &amp; SQL Injection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-nosql-vs-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · NoSQL vs SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-sql-from-application-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · SQL from Application Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-data-warehousing-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Data Warehousing Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-testing-database-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Testing Database Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-spender-per-genre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top spender per genre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#books-with-no-author" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Books with no author
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/01-setup-first-queries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & First Queries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/02-select-basics-data-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · SELECT Basics & Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/03-filtering-where/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Filtering with WHERE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/04-sorting-limiting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Sorting & Limiting Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/05-aggregates-group-by/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Aggregate Functions & GROUP BY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/06-joins-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Joins Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/07-working-with-null/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Working with NULL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/08-creating-tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Creating Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/09-insert-update-delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Inserting, Updating, Deleting Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/10-project-library-database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Library/Bookstore Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 · Intermediate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 2 · Intermediate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/01-advanced-joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Advanced Joins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/02-subqueries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Subqueries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/03-set-operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Set Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/04-string-date-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · String & Date Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/05-case-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · CASE Expressions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/06-views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/07-indexes-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Indexes Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/08-constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/09-transactions-acid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Transactions & ACID Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/10-project-ecommerce-reporting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — E-commerce Reporting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 · Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 3 · Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/01-window-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Window Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/02-ctes-recursive-queries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · CTEs & Recursive Queries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/03-query-optimization-explain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Query Optimization & EXPLAIN QUERY PLAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/04-stored-procedures-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Stored Procedures — Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/05-triggers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Triggers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/06-normalization-schema-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Normalization & Schema Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/07-json-in-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · JSON in SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/08-full-text-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Full-Text Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/09-data-migration-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Data Migration Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/10-project-normalized-schema-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project: Normalized Schema & Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 · Master
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 4 · Master
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/01-advanced-indexing-strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Advanced Indexing Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/02-performance-tuning-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Performance Tuning at Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/03-partitioning-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Partitioning Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/04-replication-backup-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Replication & Backup Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/05-security-sql-injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Security & SQL Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/06-nosql-vs-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · NoSQL vs SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/07-sql-from-application-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · SQL from Application Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/08-data-warehousing-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Data Warehousing Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/09-testing-database-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Testing Database Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Final Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-setup-first-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Setup &amp; First Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-select-basics-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · SELECT Basics &amp; Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-filtering-with-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Filtering with WHERE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-sorting-limiting-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Sorting &amp; Limiting Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-aggregate-functions-group-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Aggregate Functions &amp; GROUP BY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-joins-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Joins Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-working-with-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Working with NULL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-creating-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Creating Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-inserting-updating-deleting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Inserting, Updating, Deleting Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-librarybookstore-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Library/Bookstore Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-advanced-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Advanced Joins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Subqueries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Set Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-string-date-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · String &amp; Date Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-case-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · CASE Expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Views
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-indexes-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Indexes Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-transactions-acid-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Transactions &amp; ACID Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-e-commerce-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — E-commerce Reporting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Window Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-ctes-recursive-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · CTEs &amp; Recursive Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-query-optimization-explain-query-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Query Optimization &amp; EXPLAIN QUERY PLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-stored-procedures-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Stored Procedures — Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Triggers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-normalization-schema-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Normalization &amp; Schema Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-json-in-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · JSON in SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-full-text-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Full-Text Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-data-migration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Data Migration Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-normalized-schema-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project: Normalized Schema &amp; Analytics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-advanced-indexing-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Advanced Indexing Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-performance-tuning-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Performance Tuning at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-partitioning-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Partitioning Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-replication-backup-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Replication &amp; Backup Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-security-sql-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Security &amp; SQL Injection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-nosql-vs-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · NoSQL vs SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-sql-from-application-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · SQL from Application Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-data-warehousing-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Data Warehousing Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-testing-database-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Testing Database Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-spender-per-genre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top spender per genre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#books-with-no-author" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Books with no author
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="sql-interview-questions-and-answers">SQL Interview Questions and Answers<a class="headerlink" href="#sql-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
+<p><strong>180 questions</strong> with the correct answer and a short explanation, organised from beginner (Level 1) to advanced (Level 4). Every question comes from a lesson in the free SQL Mastery Path, so you can open the lesson to go deeper.</p>
+<div class="admonition tip">
+<p class="admonition-title">Practise, don't just read</p>
+<p>Each lesson also ends with an interactive quiz, and the <a href="../quiz/">final quiz</a> tests all four levels. Try to answer each question below before reading the answer.</p>
+</div>
+<h2 id="level-1-entry">Level 1 · Entry<a class="headerlink" href="#level-1-entry" title="Permanent link">&para;</a></h2>
+<h3 id="01-setup-first-queries"><a href="../level-1/01-setup-first-queries/">01 · Setup &amp; First Queries</a><a class="headerlink" href="#01-setup-first-queries" title="Permanent link">&para;</a></h3>
+<p><strong>Q1.</strong> How does the sqlite3 shell treat dot-commands such as .tables versus SQL statements?</p>
+<p><strong>Answer:</strong> Dot-commands need no semicolon; SQL statements end with a semicolon</p>
+<p>Dot-commands are shell-specific; SQL statements are ended by the semicolon.</p>
+<p><strong>Q2.</strong> What is a SQLite database?</p>
+<p><strong>Answer:</strong> A single file on disk</p>
+<p>There is no server to install and no accounts or network needed.</p>
+<p><strong>Q3.</strong> Which dot-command shows the CREATE TABLE statement for the students table?</p>
+<p><strong>Answer:</strong> .schema students</p>
+<p>.tables lists tables; .schema shows how a table was defined.</p>
+<p><strong>Q4.</strong> What ends a SQL statement in the shell?</p>
+<p><strong>Answer:</strong> The semicolon, not the newline</p>
+<p>Statements can span multiple lines; indentation is only for human readability.</p>
+<h3 id="02-select-basics-data-types"><a href="../level-1/02-select-basics-data-types/">02 · SELECT Basics &amp; Data Types</a><a class="headerlink" href="#02-select-basics-data-types" title="Permanent link">&para;</a></h3>
+<p><strong>Q5.</strong> Why list exact columns instead of SELECT * in application code?</p>
+<p><strong>Answer:</strong> It's explicit and doesn't break or change behavior if a column is added</p>
+<p>SELECT * is fine for quick exploration in the shell.</p>
+<p><strong>Q6.</strong> What does AS do in SELECT title AS book_title?</p>
+<p><strong>Answer:</strong> Gives the column an alias in the result</p>
+<p>AS is optional but improves readability, and aliases are essential for expressions.</p>
+<p><strong>Q7.</strong> Which query computes a 10% discounted price column?</p>
+<p><strong>Answer:</strong> SELECT title, price * 0.9 AS discounted_price FROM books;</p>
+<p>You can compute values in SELECT, not just read stored columns.</p>
+<p><strong>Q8.</strong> What does the lesson say SELECT retrieves?</p>
+<p><strong>Answer:</strong> Data, and most of SQL revolves around shaping a SELECT</p>
+<p>Getting comfortable with SELECT's anatomy pays off for the rest of the course.</p>
+<h3 id="03-filtering-with-where"><a href="../level-1/03-filtering-where/">03 · Filtering with WHERE</a><a class="headerlink" href="#03-filtering-with-where" title="Permanent link">&para;</a></h3>
+<p><strong>Q9.</strong> Which operator has higher precedence, AND or OR?</p>
+<p><strong>Answer:</strong> AND binds tighter than OR</p>
+<p>Use parentheses whenever you mix them, since relying on precedence is a common source of bugs.</p>
+<p><strong>Q10.</strong> Is BETWEEN 1960 AND 1990 inclusive?</p>
+<p><strong>Answer:</strong> Yes, both endpoints are included</p>
+<p>It equals &gt;= 1960 AND &lt;= 1990.</p>
+<p><strong>Q11.</strong> Which clause matches a column against a set of values?</p>
+<p><strong>Answer:</strong> IN ('Fantasy', 'Cyberpunk')</p>
+<p>IN is a shorthand for several OR comparisons on the same column.</p>
+<p><strong>Q12.</strong> When is WHERE evaluated?</p>
+<p><strong>Answer:</strong> Per row, before any grouping or sorting</p>
+<p>WHERE narrows the result set down to rows that match.</p>
+<h3 id="04-sorting-limiting-results"><a href="../level-1/04-sorting-limiting/">04 · Sorting &amp; Limiting Results</a><a class="headerlink" href="#04-sorting-limiting-results" title="Permanent link">&para;</a></h3>
+<p><strong>Q13.</strong> Without ORDER BY, what does SQL guarantee about row order?</p>
+<p><strong>Answer:</strong> Nothing; the order can vary between runs</p>
+<p>The database may return rows in whatever order is convenient internally.</p>
+<p><strong>Q14.</strong> What does ORDER BY genre ASC, price DESC do?</p>
+<p><strong>Answer:</strong> Sorts genres A–Z, and within each genre sorts price highest to lowest</p>
+<p>Ties in the first column are broken by the next, each with its own direction.</p>
+<p><strong>Q15.</strong> Why avoid ORDER BY 2 in real code?</p>
+<p><strong>Answer:</strong> Adding or reordering selected columns silently changes what it sorts by</p>
+<p>Sort by column name instead.</p>
+<p><strong>Q16.</strong> Where does SQLite place NULLs in ascending order?</p>
+<p><strong>Answer:</strong> First, before any real value</p>
+<p>Other databases differ: Postgres defaults to NULLS LAST for ASC.</p>
+<h3 id="05-aggregate-functions-group-by"><a href="../level-1/05-aggregates-group-by/">05 · Aggregate Functions &amp; GROUP BY</a><a class="headerlink" href="#05-aggregate-functions-group-by" title="Permanent link">&para;</a></h3>
+<p><strong>Q17.</strong> What is the difference between COUNT(*) and COUNT(genre)?</p>
+<p><strong>Answer:</strong> COUNT(*) counts all rows; COUNT(genre) counts only rows where genre is not NULL</p>
+<p>COUNT(column) ignores NULLs in that column.</p>
+<p><strong>Q18.</strong> What rule applies to non-aggregated columns in a SELECT with GROUP BY?</p>
+<p><strong>Answer:</strong> Each must appear in the GROUP BY</p>
+<p>SELECT genre, title, AVG(price) ... GROUP BY genre is invalid because SQL wouldn't know which title to show.</p>
+<p><strong>Q19.</strong> What does GROUP BY genre with COUNT(*) return?</p>
+<p><strong>Answer:</strong> One row per genre with the number of books in it</p>
+<p>It splits rows into buckets by value and computes the aggregate for each.</p>
+<p><strong>Q20.</strong> Which function returns the highest price?</p>
+<p><strong>Answer:</strong> MAX(price)</p>
+<p>The five core aggregates are COUNT, SUM, AVG, MIN and MAX.</p>
+<h3 id="06-joins-basics"><a href="../level-1/06-joins-basics/">06 · Joins Basics</a><a class="headerlink" href="#06-joins-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q21.</strong> Why is The Lathe of Heaven missing from the INNER JOIN result?</p>
+<p><strong>Answer:</strong> Its author_id is NULL, so it has no match in authors</p>
+<p>INNER JOIN returns only rows where both sides match.</p>
+<p><strong>Q22.</strong> What does LEFT JOIN do with a left row that has no match?</p>
+<p><strong>Answer:</strong> Keeps it and fills the right table's columns with NULL</p>
+<p>It keeps every row from the left table.</p>
+<p><strong>Q23.</strong> How do you find only books with no known author after a LEFT JOIN?</p>
+<p><strong>Answer:</strong> WHERE authors.id IS NULL</p>
+<p>Filtering for NULL on the right table's key exposes the unmatched rows.</p>
+<p><strong>Q24.</strong> When are table aliases required?</p>
+<p><strong>Answer:</strong> When two tables share a column name such as id, and they keep long queries readable</p>
+<p>For example, books AS b and authors AS a.</p>
+<h3 id="07-working-with-null"><a href="../level-1/07-working-with-null/">07 · Working with NULL</a><a class="headerlink" href="#07-working-with-null" title="Permanent link">&para;</a></h3>
+<p><strong>Q25.</strong> What does SELECT * FROM books WHERE price = NULL return?</p>
+<p><strong>Answer:</strong> Zero rows, always</p>
+<p>Comparing unknown to anything yields unknown, which SQL treats as not true.</p>
+<p><strong>Q26.</strong> What is the correct way to find rows with no price?</p>
+<p><strong>Answer:</strong> WHERE price IS NULL</p>
+<p>Use IS NULL and IS NOT NULL.</p>
+<p><strong>Q27.</strong> What does COALESCE(discontinued_reason, 'still in print') return for a NULL reason?</p>
+<p><strong>Answer:</strong> 'still in print'</p>
+<p>COALESCE returns the first argument that isn't NULL.</p>
+<p><strong>Q28.</strong> What does price + 1 give when price is NULL?</p>
+<p><strong>Answer:</strong> NULL</p>
+<p>NULL propagates through arithmetic instead of being treated as zero.</p>
+<h3 id="08-creating-tables"><a href="../level-1/08-creating-tables/">08 · Creating Tables</a><a class="headerlink" href="#08-creating-tables" title="Permanent link">&para;</a></h3>
+<p><strong>Q29.</strong> What does CREATE TABLE produce?</p>
+<p><strong>Answer:</strong> An empty table: the structure with no rows</p>
+<p>It defines columns, types and rules.</p>
+<p><strong>Q30.</strong> What happens on INSERT INTO books (price) VALUES (9.99) when title is NOT NULL?</p>
+<p><strong>Answer:</strong> It fails with a NOT NULL constraint error</p>
+<p>Error: NOT NULL constraint failed: books.title.</p>
+<p><strong>Q31.</strong> What is special about INTEGER PRIMARY KEY in SQLite?</p>
+<p><strong>Answer:</strong> It auto-increments and aliases the internal row ID</p>
+<p>AUTOINCREMENT is only for edge cases where IDs must never be reused.</p>
+<p><strong>Q32.</strong> What does a DEFAULT value allow?</p>
+<p><strong>Answer:</strong> Omitting the column from INSERT so SQLite fills it in</p>
+<p>For example in_stock INTEGER NOT NULL DEFAULT 1.</p>
+<h3 id="09-inserting-updating-deleting-data"><a href="../level-1/09-insert-update-delete/">09 · Inserting, Updating, Deleting Data</a><a class="headerlink" href="#09-inserting-updating-deleting-data" title="Permanent link">&para;</a></h3>
+<p><strong>Q33.</strong> What happens if you run UPDATE books SET price = 0 with no WHERE clause?</p>
+<p><strong>Answer:</strong> Every row's price becomes 0</p>
+<p>Verify with an equivalent SELECT ... WHERE first.</p>
+<p><strong>Q34.</strong> Why list column names explicitly in INSERT?</p>
+<p><strong>Answer:</strong> It is self-documenting and doesn't break if column order changes</p>
+<p>INSERT INTO books (title, author, price) is preferred over relying on column order.</p>
+<p><strong>Q35.</strong> What does DELETE FROM books; do?</p>
+<p><strong>Answer:</strong> Removes every row, but the table itself still exists</p>
+<p>The table remains, now empty.</p>
+<p><strong>Q36.</strong> What does INSERT OR REPLACE do when the primary key already exists?</p>
+<p><strong>Answer:</strong> Replaces the existing row</p>
+<p>In the settings example, theme becomes 'light'.</p>
+<h3 id="10-project-librarybookstore-database"><a href="../level-1/10-project-library-database/">10 · Project — Library/Bookstore Database</a><a class="headerlink" href="#10-project-librarybookstore-database" title="Permanent link">&para;</a></h3>
+<p><strong>Q37.</strong> Why does query 2 use LEFT JOIN?</p>
+<p><strong>Answer:</strong> Books with no known author still appear</p>
+<p>'Unknown Author Book' has a NULL author_id.</p>
+<p><strong>Q38.</strong> What does HAVING COUNT(*) &gt;= 2 do in query 4?</p>
+<p><strong>Answer:</strong> Keeps only authors with two or more books</p>
+<p>HAVING filters groups after aggregation.</p>
+<p><strong>Q39.</strong> Which tables make up the project database?</p>
+<p><strong>Answer:</strong> authors and books</p>
+<p>It's a two-table library database.</p>
+<p><strong>Q40.</strong> What does in_stock INTEGER NOT NULL DEFAULT 1 mean?</p>
+<p><strong>Answer:</strong> Every book must have a value, and it defaults to 1 (in stock)</p>
+<p>The seed data uses 0 for out-of-stock books.</p>
+<h2 id="level-2-intermediate">Level 2 · Intermediate<a class="headerlink" href="#level-2-intermediate" title="Permanent link">&para;</a></h2>
+<h3 id="01-advanced-joins"><a href="../level-2/01-advanced-joins/">01 · Advanced Joins</a><a class="headerlink" href="#01-advanced-joins" title="Permanent link">&para;</a></h3>
+<p><strong>Q41.</strong> Why does the employee/manager self-join use LEFT JOIN?</p>
+<p><strong>Answer:</strong> Alice has no manager, and INNER JOIN would drop her</p>
+<p>manager_id IS NULL for Alice.</p>
+<p><strong>Q42.</strong> What does a self-join require?</p>
+<p><strong>Answer:</strong> Two distinct aliases for the same table</p>
+<p>Without aliases SQL can't tell which copy a column belongs to.</p>
+<p><strong>Q43.</strong> Why is WHERE d.active = 1 wrong in the LEFT JOIN example?</p>
+<p><strong>Answer:</strong> It filters out unmatched rows, turning the LEFT JOIN into an INNER JOIN</p>
+<p>Alice, Carol and Frank vanished; put the active check in ON instead.</p>
+<p><strong>Q44.</strong> What is the single most common LEFT JOIN bug per the lesson?</p>
+<p><strong>Answer:</strong> The WHERE-vs-ON trap</p>
+<p>Conditions on the right table belong in ON to preserve unmatched left rows.</p>
+<h3 id="02-subqueries"><a href="../level-2/02-subqueries/">02 · Subqueries</a><a class="headerlink" href="#02-subqueries" title="Permanent link">&para;</a></h3>
+<p><strong>Q45.</strong> What is a scalar subquery?</p>
+<p><strong>Answer:</strong> One that returns exactly one row and one column</p>
+<p>If it returns more than one row, SQLite raises an error.</p>
+<p><strong>Q46.</strong> What does WHERE id IN (SELECT customer_id FROM orders) return?</p>
+<p><strong>Answer:</strong> Customers who have at least one order</p>
+<p>Dave has never ordered, so he's excluded.</p>
+<p><strong>Q47.</strong> What makes a subquery correlated?</p>
+<p><strong>Answer:</strong> It references a column from the outer query, so it runs for each outer row</p>
+<p>It can't be evaluated once up front.</p>
+<p><strong>Q48.</strong> In the AVG example, how many times does the inner query run?</p>
+<p><strong>Answer:</strong> Once; the outer query compares every amount to that single value</p>
+<p>It's uncorrelated, so it computes the average once.</p>
+<h3 id="03-set-operations"><a href="../level-2/03-set-operations/">03 · Set Operations</a><a class="headerlink" href="#03-set-operations" title="Permanent link">&para;</a></h3>
+<p><strong>Q49.</strong> How do set operations combine results compared with joins?</p>
+<p><strong>Answer:</strong> Vertically, stacking rows of two SELECTs; joins combine horizontally</p>
+<p>Set operations are the SQL equivalent of union, intersection and difference.</p>
+<p><strong>Q50.</strong> What is the rule for SELECTs combined with a set operator?</p>
+<p><strong>Answer:</strong> They must return the same number of columns with compatible types</p>
+<p>The result uses the first query's column names; mismatched counts fail with a parse error.</p>
+<p><strong>Q51.</strong> How do UNION and UNION ALL differ?</p>
+<p><strong>Answer:</strong> UNION removes duplicates; UNION ALL keeps every row</p>
+<p>UNION ALL gives accurate row counts and is faster on large sets.</p>
+<p><strong>Q52.</strong> Where must ORDER BY go in a UNION query?</p>
+<p><strong>Answer:</strong> After the last SELECT, applying to the combined result</p>
+<p>It is not attached to an individual query.</p>
+<h3 id="04-string-date-functions"><a href="../level-2/04-string-date-functions/">04 · String &amp; Date Functions</a><a class="headerlink" href="#04-string-date-functions" title="Permanent link">&para;</a></h3>
+<p><strong>Q53.</strong> Why does LENGTH('  Alice Nguyen  ') return 16 while the name looks like 12 characters?</p>
+<p><strong>Answer:</strong> Whitespace is invisible but counted</p>
+<p>TRIM brings it back to 12.</p>
+<p><strong>Q54.</strong> What does SUBSTR(string, start, length) do, and how is it indexed?</p>
+<p><strong>Answer:</strong> Extracts part of a string, 1-indexed</p>
+<p>Combined with INSTR you can pull out a first name.</p>
+<p><strong>Q55.</strong> Why normalize case with LOWER() before comparing user-entered text?</p>
+<p><strong>Answer:</strong> 'Alice' and 'alice' are different strings for = in most databases</p>
+<p>SQLite comparison is case-sensitive by default.</p>
+<p><strong>Q56.</strong> Which function strips leading and trailing whitespace?</p>
+<p><strong>Answer:</strong> TRIM</p>
+<p>LTRIM and RTRIM do one side only.</p>
+<h3 id="05-case-expressions"><a href="../level-2/05-case-expressions/">05 · CASE Expressions</a><a class="headerlink" href="#05-case-expressions" title="Permanent link">&para;</a></h3>
+<p><strong>Q57.</strong> How is a searched CASE evaluated?</p>
+<p><strong>Answer:</strong> Top to bottom, stopping at the first matching WHEN</p>
+<p>Order matters; put the narrowest condition first.</p>
+<p><strong>Q58.</strong> What does CASE return when no WHEN matches and there is no ELSE?</p>
+<p><strong>Answer:</strong> NULL</p>
+<p>Order 3 with status_code 3 shows NULL in the example.</p>
+<p><strong>Q59.</strong> When is the simple CASE form useful?</p>
+<p><strong>Answer:</strong> When every branch compares the same expression against specific values</p>
+<p>CASE status_code WHEN 1 THEN ... is equivalent to repeated equality tests.</p>
+<p><strong>Q60.</strong> Where can CASE be used?</p>
+<p><strong>Answer:</strong> In SELECT, WHERE or ORDER BY</p>
+<p>It is SQL's inline if/else.</p>
+<h3 id="06-views"><a href="../level-2/06-views/">06 · Views</a><a class="headerlink" href="#06-views" title="Permanent link">&para;</a></h3>
+<p><strong>Q61.</strong> What is a view?</p>
+<p><strong>Answer:</strong> A SELECT query saved under a name, queryable like a table</p>
+<p>It doesn't store data itself.</p>
+<p><strong>Q62.</strong> When does a view's underlying query run?</p>
+<p><strong>Answer:</strong> Every time you query the view</p>
+<p>It runs fresh against the real tables.</p>
+<p><strong>Q63.</strong> What is a key benefit of the category_revenue view?</p>
+<p><strong>Answer:</strong> The join and GROUP BY logic is defined once and can be fixed in one place</p>
+<p>Views hide complexity.</p>
+<p><strong>Q64.</strong> Why is Mechanical Keyboard missing from in_stock_products?</p>
+<p><strong>Answer:</strong> Its stock is 0 and the view filters WHERE stock &gt; 0</p>
+<p>The WHERE filter is applied automatically every time.</p>
+<h3 id="07-indexes-basics"><a href="../level-2/07-indexes-basics/">07 · Indexes Basics</a><a class="headerlink" href="#07-indexes-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q65.</strong> What does a SCAN in EXPLAIN QUERY PLAN mean?</p>
+<p><strong>Answer:</strong> SQLite checked every row in the table</p>
+<p>On 5 million rows that would be very slow; SEARCH ... USING INDEX jumps almost directly to the match.</p>
+<p><strong>Q66.</strong> What is an index, per the lesson?</p>
+<p><strong>Answer:</strong> A separate sorted structure that lets the database find rows without checking every row</p>
+<p>It is like a book's index.</p>
+<p><strong>Q67.</strong> Does the idx_&lt;table&gt;_&lt;column&gt; naming pattern affect how an index works?</p>
+<p><strong>Answer:</strong> No, it's just a common readable habit</p>
+<p>Any valid name works.</p>
+<p><strong>Q68.</strong> What does the order of columns in a composite index determine?</p>
+<p><strong>Answer:</strong> What the index is useful for</p>
+<p>The country, signup_date index suits filtering by country first, then signup_date.</p>
+<h3 id="08-constraints"><a href="../level-2/08-constraints/">08 · Constraints</a><a class="headerlink" href="#08-constraints" title="Permanent link">&para;</a></h3>
+<p><strong>Q69.</strong> What is the SQLite surprise about foreign keys?</p>
+<p><strong>Answer:</strong> They're parsed but not enforced unless you turn enforcement on</p>
+<p>The Ghost Book with author_id 999 was inserted without error.</p>
+<p><strong>Q70.</strong> How do you enable foreign key enforcement?</p>
+<p><strong>Answer:</strong> PRAGMA foreign_keys = ON; on every connection</p>
+<p>The setting isn't persisted in the database file.</p>
+<p><strong>Q71.</strong> What does ON DELETE CASCADE do?</p>
+<p><strong>Answer:</strong> Deletes child rows automatically when the parent row is deleted</p>
+<p>Deleting Asimov removed both of his books.</p>
+<p><strong>Q72.</strong> What do constraints do in general?</p>
+<p><strong>Answer:</strong> Reject bad data at insert or update time</p>
+<p>They stop bad data causing bugs later.</p>
+<h3 id="09-transactions-acid-basics"><a href="../level-2/09-transactions-acid/">09 · Transactions &amp; ACID Basics</a><a class="headerlink" href="#09-transactions-acid-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q73.</strong> What does a transaction provide?</p>
+<p><strong>Answer:</strong> An all-or-nothing unit of work across several statements</p>
+<p>It prevents inconsistent states such as money debited but never credited.</p>
+<p><strong>Q74.</strong> What does ROLLBACK do?</p>
+<p><strong>Answer:</strong> Discards every change since BEGIN</p>
+<p>It is as if the transaction never happened.</p>
+<p><strong>Q75.</strong> In SQLite's default mode, what happens when a statement fails mid-transaction due to a constraint?</p>
+<p><strong>Answer:</strong> Only that statement is aborted; the transaction stays open with earlier changes pending</p>
+<p>You must issue ROLLBACK (or handle it) yourself.</p>
+<p><strong>Q76.</strong> What happens outside an explicit BEGIN?</p>
+<p><strong>Answer:</strong> Each statement runs in its own implicit one-statement transaction</p>
+<p>This is insufficient for multi-step changes like a transfer.</p>
+<h3 id="10-project-e-commerce-reporting"><a href="../level-2/10-project-ecommerce-reporting/">10 · Project — E-commerce Reporting</a><a class="headerlink" href="#10-project-e-commerce-reporting" title="Permanent link">&para;</a></h3>
+<p><strong>Q77.</strong> Why does the schema have an order_items table?</p>
+<p><strong>Answer:</strong> One order has many products and a product appears in many orders: a many-to-many relationship via a junction table</p>
+<p>It uses a composite PRIMARY KEY of (order_id, product_id).</p>
+<p><strong>Q78.</strong> Why is unit_price stored on order_items instead of looked up from products?</p>
+<p><strong>Answer:</strong> Historical orders stay accurate if a product's price later changes</p>
+<p>The price at the time of sale is preserved.</p>
+<p><strong>Q79.</strong> Which four tables does the project use?</p>
+<p><strong>Answer:</strong> customers, products, orders and order_items</p>
+<p>The schema is realistic enough to need joins, subqueries, views, CASE and transactions.</p>
+<p><strong>Q80.</strong> What does CHECK (price &gt; 0) enforce?</p>
+<p><strong>Answer:</strong> Prices must be positive</p>
+<p>Constraints reject bad data at insert or update time.</p>
+<h2 id="level-3-advanced">Level 3 · Advanced<a class="headerlink" href="#level-3-advanced" title="Permanent link">&para;</a></h2>
+<h3 id="01-window-functions"><a href="../level-3/01-window-functions/">01 · Window Functions</a><a class="headerlink" href="#01-window-functions" title="Permanent link">&para;</a></h3>
+<p><strong>Q81.</strong> How does a window function differ from GROUP BY?</p>
+<p><strong>Answer:</strong> Each input row keeps its own line while gaining a computed column</p>
+<p>Window functions handle top-N per group, running totals and period comparisons that GROUP BY cannot express.</p>
+<p><strong>Q82.</strong> What does PARTITION BY region do?</p>
+<p><strong>Answer:</strong> Splits rows into independent windows, one per region, each restarting numbering</p>
+<p>ORDER BY inside OVER decides the order within each partition.</p>
+<p><strong>Q83.</strong> For Bob's two tied 800.0 rows in West, what do RANK and DENSE_RANK show?</p>
+<p><strong>Answer:</strong> 4 and 4 for both</p>
+<p>ROW_NUMBER still gives 4 and 5, since it always assigns unique sequential numbers.</p>
+<p><strong>Q84.</strong> What syntax marks a function as a window function?</p>
+<p><strong>Answer:</strong> OVER (...)</p>
+<p>Every window function is a normal function followed by OVER (...).</p>
+<h3 id="02-ctes-recursive-queries"><a href="../level-3/02-ctes-recursive-queries/">02 · CTEs &amp; Recursive Queries</a><a class="headerlink" href="#02-ctes-recursive-queries" title="Permanent link">&para;</a></h3>
+<p><strong>Q85.</strong> What is a CTE?</p>
+<p><strong>Answer:</strong> A named temporary result set defined with WITH and used like a table in that query</p>
+<p>CTEs make complex queries readable, naming each step instead of nesting subqueries.</p>
+<p><strong>Q86.</strong> What can a recursive CTE do that a normal one cannot?</p>
+<p><strong>Answer:</strong> Reference itself, walking hierarchies of unknown depth</p>
+<p>It is the standard SQL way to walk org charts, category trees and folders.</p>
+<p><strong>Q87.</strong> What does the self-referencing manager_id make the employees data?</p>
+<p><strong>Answer:</strong> Hierarchical rather than flat</p>
+<p>It points to another row in the same table.</p>
+<p><strong>Q88.</strong> Can CTEs reference each other in one query?</p>
+<p><strong>Answer:</strong> Yes, chained with commas, each with its own name</p>
+<p>This avoids another indentation level for each step.</p>
+<h3 id="03-query-optimization-explain-query-plan"><a href="../level-3/03-query-optimization-explain/">03 · Query Optimization &amp; EXPLAIN QUERY PLAN</a><a class="headerlink" href="#03-query-optimization-explain-query-plan" title="Permanent link">&para;</a></h3>
+<p><strong>Q89.</strong> What does EXPLAIN QUERY PLAN do?</p>
+<p><strong>Answer:</strong> Shows the plan SQLite would use without running the query</p>
+<p>It tells you whether SQLite scans many rows or uses an index.</p>
+<p><strong>Q90.</strong> What is the single most common optimization per the lesson?</p>
+<p><strong>Answer:</strong> Index the columns your WHERE clauses filter on</p>
+<p>It changes SCAN into SEARCH ... USING INDEX.</p>
+<p><strong>Q91.</strong> What does SEARCH ... USING INDEX mean?</p>
+<p><strong>Answer:</strong> A B-tree lookup instead of a full scan</p>
+<p>SQLite jumps directly to the matching rows.</p>
+<p><strong>Q92.</strong> In the join example, why did SQLite make customers the outer loop?</p>
+<p><strong>Answer:</strong> It has only 5 rows, so it scans them and searches orders by index for each match</p>
+<p>Plan order matters in joins.</p>
+<h3 id="04-stored-procedures-concepts"><a href="../level-3/04-stored-procedures-concepts/">04 · Stored Procedures — Concepts</a><a class="headerlink" href="#04-stored-procedures-concepts" title="Permanent link">&para;</a></h3>
+<p><strong>Q93.</strong> Does SQLite have stored procedures?</p>
+<p><strong>Answer:</strong> No, there is no CREATE PROCEDURE</p>
+<p>The lesson refuses to show syntax that doesn't run.</p>
+<p><strong>Q94.</strong> What does SQLite offer instead, per the lesson?</p>
+<p><strong>Answer:</strong> Transactions driven from application code and user-defined functions</p>
+<p>The transfer_funds example does this in Python.</p>
+<p><strong>Q95.</strong> Why does the 'reduce round-trips' reason mostly not apply to SQLite?</p>
+<p><strong>Answer:</strong> It is embedded and in-process, with no separate server</p>
+<p>There's no server to send a CALL to.</p>
+<p><strong>Q96.</strong> What does the transfer_funds example guarantee?</p>
+<p><strong>Answer:</strong> The debit and credit run as one atomic SQL transaction</p>
+<p>It checks the balance, updates both accounts, and commits (rolling back on failure).</p>
+<h3 id="05-triggers"><a href="../level-3/05-triggers/">05 · Triggers</a><a class="headerlink" href="#05-triggers" title="Permanent link">&para;</a></h3>
+<p><strong>Q97.</strong> Inside a trigger body, what do OLD and NEW refer to?</p>
+<p><strong>Answer:</strong> The row before the change and the row after it</p>
+<p>In the audit trigger, OLD.stock is 50 and NEW.stock is 45.</p>
+<p><strong>Q98.</strong> What does AFTER UPDATE OF stock mean?</p>
+<p><strong>Answer:</strong> The trigger fires only when the stock column changes, after the change is made</p>
+<p>Updating name alone wouldn't fire it.</p>
+<p><strong>Q99.</strong> How does the BEFORE trigger block a bad write?</p>
+<p><strong>Answer:</strong> SELECT RAISE(ABORT, 'message') when the WHEN condition is true</p>
+<p>BEFORE runs before the row is written, so it can veto the change.</p>
+<p><strong>Q100.</strong> Does SQLite support triggers?</p>
+<p><strong>Answer:</strong> Yes, fully, with real CREATE TRIGGER syntax</p>
+<p>Unlike stored procedures, triggers are natively supported.</p>
+<h3 id="06-normalization-schema-design"><a href="../level-3/06-normalization-schema-design/">06 · Normalization &amp; Schema Design</a><a class="headerlink" href="#06-normalization-schema-design" title="Permanent link">&para;</a></h3>
+<p><strong>Q101.</strong> What is the update anomaly?</p>
+<p><strong>Answer:</strong> One real-world fact needing multiple easy-to-miss writes, leaving inconsistent copies</p>
+<p>Nadia ended up with two different emails depending on the row.</p>
+<p><strong>Q102.</strong> What does 1NF require?</p>
+<p><strong>Answer:</strong> Each column holds a single atomic value</p>
+<p>No comma-separated lists crammed into one field.</p>
+<p><strong>Q103.</strong> What is normalization's goal per the lesson?</p>
+<p><strong>Answer:</strong> Store each fact in exactly one place</p>
+<p>The payoff is that updates, inserts and deletes can't silently corrupt data.</p>
+<p><strong>Q104.</strong> What does 3NF require of non-key columns?</p>
+<p><strong>Answer:</strong> They depend on the key and nothing but the key</p>
+<p>2NF requires dependence on the whole primary key.</p>
+<h3 id="07-json-in-sql"><a href="../level-3/07-json-in-sql/">07 · JSON in SQL</a><a class="headerlink" href="#07-json-in-sql" title="Permanent link">&para;</a></h3>
+<p><strong>Q105.</strong> How does SQLite store JSON?</p>
+<p><strong>Answer:</strong> As plain TEXT, parsed on demand by JSON functions</p>
+<p>SQLite has no dedicated JSON column type.</p>
+<p><strong>Q106.</strong> What does the -&gt;&gt; operator return compared with -&gt;?</p>
+<p><strong>Answer:</strong> -&gt;&gt; unquotes the result into plain SQL text; -&gt; keeps it as JSON</p>
+<p>-&gt; is useful when passing the result into another JSON function.</p>
+<p><strong>Q107.</strong> How can you guarantee well-formed JSON at write time?</p>
+<p><strong>Answer:</strong> Use json_valid() in a CHECK constraint</p>
+<p>SQLite stores text with no schema enforcement otherwise.</p>
+<p><strong>Q108.</strong> What does json_each do?</p>
+<p><strong>Answer:</strong> Turns a JSON array into one row per element</p>
+<p>It's a table-valued function, used with a comma join per source row.</p>
+<h3 id="08-full-text-search"><a href="../level-3/08-full-text-search/">08 · Full-Text Search</a><a class="headerlink" href="#08-full-text-search" title="Permanent link">&para;</a></h3>
+<p><strong>Q109.</strong> Why is LIKE '%database%' a poor choice for text search?</p>
+<p><strong>Answer:</strong> It can't rank by relevance and a leading % forces a full scan</p>
+<p>FTS5 provides word indexing, ranking, phrase and prefix queries.</p>
+<p><strong>Q110.</strong> How do you create a full-text searchable table?</p>
+<p><strong>Answer:</strong> CREATE VIRTUAL TABLE ... USING fts5(...)</p>
+<p>It looks like a normal table but is backed by an inverted index.</p>
+<p><strong>Q111.</strong> How do you query an FTS5 table for a word?</p>
+<p><strong>Answer:</strong> WHERE articles MATCH 'database'</p>
+<p>MATCH performs a real word-index lookup.</p>
+<p><strong>Q112.</strong> In FTS5's rank column, which values are more relevant?</p>
+<p><strong>Answer:</strong> More negative values</p>
+<p>ORDER BY rank without DESC gives best-match-first (BM25).</p>
+<h3 id="09-data-migration-patterns"><a href="../level-3/09-data-migration-patterns/">09 · Data Migration Patterns</a><a class="headerlink" href="#09-data-migration-patterns" title="Permanent link">&para;</a></h3>
+<p><strong>Q113.</strong> Why does ADD COLUMN with NOT NULL require a DEFAULT in SQLite?</p>
+<p><strong>Answer:</strong> SQLite must backfill existing rows with something</p>
+<p>Existing rows immediately get the default (e.g. 'active').</p>
+<p><strong>Q114.</strong> What must you do when renaming a column with RENAME COLUMN?</p>
+<p><strong>Answer:</strong> Update application code that references the old name at the same time</p>
+<p>Reads and writes against the old column name fail once the migration runs.</p>
+<p><strong>Q115.</strong> Which change still needs the table-rebuild pattern?</p>
+<p><strong>Answer:</strong> Adding a CHECK constraint to an existing table</p>
+<p>ALTER TABLE can't add a CHECK, change a column type, or add UNIQUE/FOREIGN KEY to an existing table.</p>
+<p><strong>Q116.</strong> What is the rebuild pattern's outline?</p>
+<p><strong>Answer:</strong> Create a new table in the desired shape, copy the data across, then swap names</p>
+<p>The lesson runs it inside a transaction with foreign keys temporarily off.</p>
+<h3 id="10-project-normalized-schema-analytics"><a href="../level-3/10-project-normalized-schema-analytics/">10 · Project: Normalized Schema &amp; Analytics</a><a class="headerlink" href="#10-project-normalized-schema-analytics" title="Permanent link">&para;</a></h3>
+<p><strong>Q117.</strong> Why does the project index every foreign key column?</p>
+<p><strong>Answer:</strong> Every one of them gets joined on</p>
+<p>Examples: idx_orders_customer_id and idx_order_items_product_id.</p>
+<p><strong>Q118.</strong> What is order_items' role in the schema?</p>
+<p><strong>Answer:</strong> Junction table for the many-to-many between orders and products, carrying quantity</p>
+<p>quantity is data specific to that pairing.</p>
+<p><strong>Q119.</strong> Why does the schema have a separate categories table?</p>
+<p><strong>Answer:</strong> Normalization: each category fact is stored once</p>
+<p>products reference it with category_id.</p>
+<p><strong>Q120.</strong> What does categories.name UNIQUE enforce?</p>
+<p><strong>Answer:</strong> No two categories share a name</p>
+<p>It is a constraint on the data.</p>
+<h2 id="level-4-master">Level 4 · Master<a class="headerlink" href="#level-4-master" title="Permanent link">&para;</a></h2>
+<h3 id="01-advanced-indexing-strategies"><a href="../level-4/01-advanced-indexing-strategies/">01 · Advanced Indexing Strategies</a><a class="headerlink" href="#01-advanced-indexing-strategies" title="Permanent link">&para;</a></h3>
+<p><strong>Q121.</strong> Can an index on (dept, last_name) speed up a query filtering only on last_name?</p>
+<p><strong>Answer:</strong> No, it falls back to a SCAN (leftmost-prefix rule)</p>
+<p>A B-tree is sorted by its first column first, like a phone book sorted by city then name.</p>
+<p><strong>Q122.</strong> What is a covering index?</p>
+<p><strong>Answer:</strong> An index containing all the columns the query needs, so the table is never opened</p>
+<p>SELECT dept, salary with an index on (dept, salary) shows USING COVERING INDEX.</p>
+<p><strong>Q123.</strong> What breaks a covering index?</p>
+<p><strong>Answer:</strong> Selecting a column not in the index, e.g. SELECT *</p>
+<p>The plan reverts to a normal SEARCH that also visits the table row.</p>
+<p><strong>Q124.</strong> Which column should come first in a composite index?</p>
+<p><strong>Answer:</strong> The one your queries filter on most consistently</p>
+<p>That is the leftmost-prefix rule.</p>
+<h3 id="02-performance-tuning-at-scale"><a href="../level-4/02-performance-tuning-at-scale/">02 · Performance Tuning at Scale</a><a class="headerlink" href="#02-performance-tuning-at-scale" title="Permanent link">&para;</a></h3>
+<p><strong>Q125.</strong> Why was one transaction about 239x faster than 2000 separate commits?</p>
+<p><strong>Answer:</strong> Each COMMIT forces a durable disk flush, and one transaction does it once</p>
+<p>Batching related writes is the single highest-leverage performance fix.</p>
+<p><strong>Q126.</strong> What does WAL mode change for concurrency?</p>
+<p><strong>Answer:</strong> Readers can keep reading the last-committed state while a write happens</p>
+<p>The default delete journal mode locks the database file during a write, blocking readers.</p>
+<p><strong>Q127.</strong> Does PRAGMA journal_mode=WAL matter for an in-memory database?</p>
+<p><strong>Answer:</strong> No, there is no file to journal</p>
+<p>It matters for file-backed databases under concurrent load.</p>
+<p><strong>Q128.</strong> What does cache_size control?</p>
+<p><strong>Answer:</strong> How many pages SQLite keeps cached in memory</p>
+<p>A negative value is interpreted as an amount of memory rather than a page count.</p>
+<h3 id="03-partitioning-concepts"><a href="../level-4/03-partitioning-concepts/">03 · Partitioning Concepts</a><a class="headerlink" href="#03-partitioning-concepts" title="Permanent link">&para;</a></h3>
+<p><strong>Q129.</strong> Does SQLite have built-in partitioning?</p>
+<p><strong>Answer:</strong> No; the manual pattern is separate tables presented via a view</p>
+<p>Postgres and MySQL have native support; SQLite does not.</p>
+<p><strong>Q130.</strong> Why is dropping a partition better than DELETE ... WHERE for old data?</p>
+<p><strong>Answer:</strong> It avoids finding and removing matching rows one at a time</p>
+<p>Retention becomes a drop-the-partition operation.</p>
+<p><strong>Q131.</strong> What is partition pruning?</p>
+<p><strong>Answer:</strong> The planner skipping partitions irrelevant to the query</p>
+<p>A query for this month's orders only touches this month's partition.</p>
+<p><strong>Q132.</strong> In the manual SQLite pattern, how does application code see the data?</p>
+<p><strong>Answer:</strong> As one events view built with UNION ALL over the separate tables</p>
+<p>The view hides that two tables back it, but you manage routing yourself.</p>
+<h3 id="04-replication-backup-concepts"><a href="../level-4/04-replication-backup-concepts/">04 · Replication &amp; Backup Concepts</a><a class="headerlink" href="#04-replication-backup-concepts" title="Permanent link">&para;</a></h3>
+<p><strong>Q133.</strong> What is the difference between replication and backup?</p>
+<p><strong>Answer:</strong> Replication keeps live copies in sync for availability and read scaling; backup is a restorable snapshot against data loss</p>
+<p>SQLite has no replication but supports backup well.</p>
+<p><strong>Q134.</strong> What does .backup produce?</p>
+<p><strong>Answer:</strong> A consistent point-in-time copy of the database file, safe while it's in use</p>
+<p>Rows inserted afterward do not appear in backup.db.</p>
+<p><strong>Q135.</strong> How does .dump differ from .backup?</p>
+<p><strong>Answer:</strong> It produces portable, readable SQL, but restores slower for large databases</p>
+<p>Restore with sqlite3 new.db &lt; dump.sql.</p>
+<p><strong>Q136.</strong> Which statement fits the checklist?</p>
+<p><strong>Answer:</strong> Test restores, not just backups</p>
+<p>An untested backup is an assumption, not a guarantee.</p>
+<h3 id="05-security-sql-injection"><a href="../level-4/05-security-sql-injection/">05 · Security &amp; SQL Injection</a><a class="headerlink" href="#05-security-sql-injection" title="Permanent link">&para;</a></h3>
+<p><strong>Q137.</strong> How did the attacker log in as admin with the input admin'--?</p>
+<p><strong>Answer:</strong> The quote closed the string and -- commented out the password check</p>
+<p>The database never evaluated the AND password = ... part.</p>
+<p><strong>Q138.</strong> What is the fix demonstrated?</p>
+<p><strong>Answer:</strong> Parameterized queries with ? placeholders</p>
+<p>The same malicious input returns an empty result.</p>
+<p><strong>Q139.</strong> Why does string concatenation make injection possible?</p>
+<p><strong>Answer:</strong> Input becomes literal SQL text instead of a value</p>
+<p>Anything a caller passes becomes part of the query itself.</p>
+<p><strong>Q140.</strong> Which are other injection shapes the lesson mentions?</p>
+<p><strong>Answer:</strong> ' OR '1'='1 and '; DROP TABLE users;--</p>
+<p>One matches every row; the other runs a second destructive statement.</p>
+<h3 id="06-nosql-vs-sql"><a href="../level-4/06-nosql-vs-sql/">06 · NoSQL vs SQL</a><a class="headerlink" href="#06-nosql-vs-sql" title="Permanent link">&para;</a></h3>
+<p><strong>Q141.</strong> Which describes NoSQL accurately?</p>
+<p><strong>Answer:</strong> An umbrella for document, key-value, wide-column and graph databases</p>
+<p>Each trades away parts of the relational model for something else.</p>
+<p><strong>Q142.</strong> How do relationships typically differ between SQL and document stores?</p>
+<p><strong>Answer:</strong> SQL uses JOINs across normalized tables; document stores usually embed related data (denormalized)</p>
+<p>From the lesson's comparison table.</p>
+<p><strong>Q143.</strong> What does Priya's extra preferences object show in the JSON example?</p>
+<p><strong>Answer:</strong> Per-row fields without a schema migration</p>
+<p>It's the flexibility of a document store, achieved via a JSON TEXT column.</p>
+<p><strong>Q144.</strong> Which is generally easier to scale horizontally?</p>
+<p><strong>Answer:</strong> Many NoSQL systems, designed to scale out from day one</p>
+<p>Relational systems traditionally scale up on a bigger server.</p>
+<h3 id="07-sql-from-application-code"><a href="../level-4/07-sql-from-application-code/">07 · SQL from Application Code</a><a class="headerlink" href="#07-sql-from-application-code" title="Permanent link">&para;</a></h3>
+<p><strong>Q145.</strong> What does setting conn.row_factory = sqlite3.Row allow?</p>
+<p><strong>Answer:</strong> Accessing columns by name (and dict(row) for JSON-ready output)</p>
+<p>By default sqlite3 returns plain tuples, which get unreadable fast.</p>
+<p><strong>Q146.</strong> How should values be passed into SQL from application code?</p>
+<p><strong>Answer:</strong> With ? placeholders, never string formatting</p>
+<p>It's the same parameterization from the security module.</p>
+<p><strong>Q147.</strong> What does executemany do?</p>
+<p><strong>Answer:</strong> Runs one INSERT per tuple in a list, the idiomatic way to batch inserts</p>
+<p>Still wrap it in a single transaction rather than committing after each.</p>
+<p><strong>Q148.</strong> Why does the lesson use Python's sqlite3 as the example?</p>
+<p><strong>Answer:</strong> Its patterns map onto other languages' drivers (psycopg2, JDBC, mysql2)</p>
+<p>Parameterized queries, connections/cursors and transaction handling are common patterns.</p>
+<h3 id="08-data-warehousing-concepts"><a href="../level-4/08-data-warehousing-concepts/">08 · Data Warehousing Concepts</a><a class="headerlink" href="#08-data-warehousing-concepts" title="Permanent link">&para;</a></h3>
+<p><strong>Q149.</strong> What is OLTP optimized for compared to OLAP?</p>
+<p><strong>Answer:</strong> Fast, small, frequent reads/writes; OLAP is for large scans over history</p>
+<p>OLTP: 'record this order'; OLAP: 'total revenue by region, last 8 quarters'.</p>
+<p><strong>Q150.</strong> What is the fact table in a star schema?</p>
+<p><strong>Answer:</strong> One row per measurable event, holding numeric measures and foreign keys to dimensions</p>
+<p>fact_sales holds quantity and revenue with keys to dim_customer, dim_product and dim_date.</p>
+<p><strong>Q151.</strong> What does a dimension table describe?</p>
+<p><strong>Answer:</strong> One axis you'd want to slice by, such as customer, product or date</p>
+<p>They surround the fact table, like the points of a star.</p>
+<p><strong>Q152.</strong> How does schema shape differ between OLTP and OLAP?</p>
+<p><strong>Answer:</strong> OLTP is normalized for fast writes; OLAP is denormalized (star) for scanning and aggregation</p>
+<p>Data freshness also differs: warehouses often load in batches.</p>
+<h3 id="09-testing-database-code"><a href="../level-4/09-testing-database-code/">09 · Testing Database Code</a><a class="headerlink" href="#09-testing-database-code" title="Permanent link">&para;</a></h3>
+<p><strong>Q153.</strong> Why use an in-memory SQLite database rather than a mock to test database code?</p>
+<p><strong>Answer:</strong> It's a real database that enforces constraints and transactions, so tests catch real violations</p>
+<p>A mock only tests that you call the right methods.</p>
+<p><strong>Q154.</strong> What does an in-memory database do when the connection closes?</p>
+<p><strong>Answer:</strong> It disappears, giving isolation between test runs</p>
+<p>It's fast (no disk I/O) and isolated.</p>
+<p><strong>Q155.</strong> What does transfer() do when funds are insufficient?</p>
+<p><strong>Answer:</strong> Raises ValueError after rolling back</p>
+<p>The except block calls conn.rollback() and re-raises.</p>
+<p><strong>Q156.</strong> Why does the test's setUp create the schema and seed rows each time?</p>
+<p><strong>Answer:</strong> Each test starts from a known clean state</p>
+<p>It uses sqlite3.connect(":memory:") with executescript.</p>
+<h3 id="10-capstone-project"><a href="../level-4/10-capstone-project/">10 · Capstone Project</a><a class="headerlink" href="#10-capstone-project" title="Permanent link">&para;</a></h3>
+<p><strong>Q157.</strong> Why does unit_price on order_items deliberately duplicate products.price?</p>
+<p><strong>Answer:</strong> products.price can change later, but an order must keep the price the customer paid</p>
+<p>The lesson calls this the correct call, not an oversight.</p>
+<p><strong>Q158.</strong> What does the CHECK on orders.status enforce?</p>
+<p><strong>Answer:</strong> Only pending, paid, shipped or cancelled are allowed</p>
+<p>It is a constraint with an IN list.</p>
+<p><strong>Q159.</strong> What is order_audit maintained by?</p>
+<p><strong>Answer:</strong> A trigger recording status changes</p>
+<p>The capstone includes a trigger that maintains an audit trail.</p>
+<p><strong>Q160.</strong> Which pieces does the capstone combine?</p>
+<p><strong>Answer:</strong> Normalized schema, indexes, trigger, full-text search, JSON metadata and a verified query plan</p>
+<p>It is a complete small order-management database run end to end.</p>
+<h2 id="mixed-questions-across-all-levels">Mixed questions across all levels<a class="headerlink" href="#mixed-questions-across-all-levels" title="Permanent link">&para;</a></h2>
+<p><strong>Q161.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+What does <code>SELECT COUNT(*), COUNT(author_id) FROM books;</code> return?</p>
+<p><strong>Answer:</strong> 5 and 3</p>
+<p>COUNT(*) counts all 5 rows; COUNT(author_id) skips the two NULLs.</p>
+<p><strong>Q162.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+What does <code>SELECT genre, COUNT(*) FROM books GROUP BY genre HAVING COUNT(*) &gt;= 2 ORDER BY genre;</code> return?</p>
+<p><strong>Answer:</strong> Cyber 2 and Sci-Fi 2</p>
+<p>HAVING filters groups after aggregation, dropping Fantasy (1 book).</p>
+<p><strong>Q163.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+Which books come back from a LEFT JOIN of books to authors filtered with <code>WHERE a.id IS NULL</code>?</p>
+<p><strong>Answer:</strong> Neuromancer and Snow Crash</p>
+<p>The two books with a NULL author_id have no matching author row.</p>
+<p><strong>Q164.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+How many rows does <code>SELECT * FROM books WHERE author_id = NULL;</code> return?</p>
+<p><strong>Answer:</strong> 0</p>
+<p>Comparing to NULL with = is never true; you need IS NULL.</p>
+<p><strong>Q165.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+What does <code>SELECT title FROM books WHERE price BETWEEN 7 AND 9 ORDER BY title;</code> return?</p>
+<p><strong>Answer:</strong> Foundation and Neuromancer</p>
+<p>BETWEEN is inclusive: 8.5 and 7.25 qualify; 9.99 and 6.99 do not.</p>
+<p><strong>Q166.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+What does <code>SELECT title FROM books ORDER BY price DESC LIMIT 2;</code> return?</p>
+<p><strong>Answer:</strong> Snow Crash and Dune</p>
+<p>Sorted by price descending, the top two are 10.5 and 9.99.</p>
+<p><strong>Q167.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+In <code>RANK() OVER (PARTITION BY genre ORDER BY price DESC)</code>, what rank does Neuromancer get?</p>
+<p><strong>Answer:</strong> 2</p>
+<p>Within Cyber, Snow Crash (10.5) ranks 1 and Neuromancer (7.25) ranks 2.</p>
+<p><strong>Q168.</strong> Use this data for the next questions: books(id, title, genre, price, author_id) holds Dune/Sci-Fi/9.99/1, Foundation/Sci-Fi/8.5/2, Snow Crash/Cyber/10.5/NULL, Hobbit/Fantasy/6.99/3, Neuromancer/Cyber/7.25/NULL; authors holds 1 Herbert, 2 Asimov, 3 Tolkien.
+What does <code>SELECT SUM(CASE WHEN price &gt; 8 THEN 1 ELSE 0 END) FROM books;</code> return?</p>
+<p><strong>Answer:</strong> 3</p>
+<p>Dune, Foundation and Snow Crash are above 8.</p>
+<p><strong>Q169.</strong> A report must list every customer, including those with no orders. Which join do you use?</p>
+<p><strong>Answer:</strong> LEFT JOIN from customers to orders</p>
+<p>LEFT JOIN keeps unmatched left rows, filling NULLs for the right side.</p>
+<p><strong>Q170.</strong> Your LEFT JOIN with <code>WHERE d.active = 1</code> silently drops employees whose department is inactive or missing. What is the fix?</p>
+<p><strong>Answer:</strong> Move the condition into the ON clause</p>
+<p>A WHERE on the right table turns the join into an inner join; put the filter in ON.</p>
+<p><strong>Q171.</strong> A bank transfer must debit one account and credit another, or do neither. What do you use?</p>
+<p><strong>Answer:</strong> A transaction with BEGIN ... COMMIT</p>
+<p>A transaction makes the two updates atomic; ROLLBACK undoes both on failure.</p>
+<p><strong>Q172.</strong> In SQLite, a book row references author 999, which doesn't exist, and no error appears. What did you forget?</p>
+<p><strong>Answer:</strong> PRAGMA foreign_keys = ON</p>
+<p>SQLite parses foreign keys but only enforces them when the pragma is on for the connection.</p>
+<p><strong>Q173.</strong> A query filtering <code>WHERE email = ?</code> on a 5-million-row table runs a full SCAN. What is the most direct fix?</p>
+<p><strong>Answer:</strong> CREATE INDEX on email</p>
+<p>An index turns the SCAN into a SEARCH ... USING INDEX.</p>
+<p><strong>Q174.</strong> You have an index on (dept, last_name). Which query can NOT use it effectively?</p>
+<p><strong>Answer:</strong> WHERE last_name = 'Smith'</p>
+<p>The leftmost-prefix rule: filtering only on the second column can't use the index.</p>
+<p><strong>Q175.</strong> Login code builds <code>SELECT ... WHERE username = '</code> + input + <code>'</code>. A user types <code>admin'--</code>. What happens?</p>
+<p><strong>Answer:</strong> The quote closes the string and -- comments out the rest, bypassing the password check</p>
+<p>This is SQL injection; parameterized queries pass the input as data instead.</p>
+<p><strong>Q176.</strong> 2,000 INSERTs run much faster when wrapped in one transaction instead of committing each. Why?</p>
+<p><strong>Answer:</strong> Each COMMIT forces a durable disk flush, so one transaction flushes once</p>
+<p>Batching writes is the highest-leverage performance fix.</p>
+<p><strong>Q177.</strong> A table stores customer name, email and product price on every order row, and an email change leaves two versions. Which problem is this and what is the cure?</p>
+<p><strong>Answer:</strong> An update anomaly; normalize so each fact is stored once</p>
+<p>Normalization stores each fact in one place, so one update stays consistent.</p>
+<p><strong>Q178.</strong> When should you choose a view?</p>
+<p><strong>Answer:</strong> To save a complex join/aggregate under a name so everyone reuses one definition</p>
+<p>A view stores the query, not the data; it runs fresh each time.</p>
+<p><strong>Q179.</strong> What does a trigger <code>AFTER UPDATE OF stock ON products</code> let you do?</p>
+<p><strong>Answer:</strong> Automatically write an audit row recording OLD and NEW stock</p>
+<p>Triggers run automatically on data changes, with OLD and NEW row references.</p>
+<p><strong>Q180.</strong> You need to run dashboards over years of order history without slowing the live ordering system. Which design fits?</p>
+<p><strong>Answer:</strong> A separate OLAP star schema (fact and dimension tables) loaded in batches</p>
+<p>OLTP is for fast small writes; OLAP star schemas are for large scans and aggregation.</p>
+<h2 id="practical-coding-questions">Practical coding questions<a class="headerlink" href="#practical-coding-questions" title="Permanent link">&para;</a></h2>
+<h3 id="top-spender-per-genre">Top spender per genre<a class="headerlink" href="#top-spender-per-genre" title="Permanent link">&para;</a></h3>
+<p>Given a <code>books</code> table (title, genre, price), write a query that returns each genre with its highest price, ordered by genre. Use the sample data from the questions above.</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT, genre TEXT, price REAL);
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>INSERT INTO books (title, genre, price) VALUES
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ('Dune','Sci-Fi',9.99),('Foundation','Sci-Fi',8.5),('Snow Crash','Cyber',10.5),
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  ('Hobbit','Fantasy',6.99),('Neuromancer','Cyber',7.25);
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>-- write your SELECT here
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Cyber|10.5
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Fantasy|6.99
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Sci-Fi|9.99
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+SELECT genre, MAX(price) FROM books GROUP BY genre ORDER BY genre;
+```
+
+GROUP BY genre makes one group per genre and MAX(price) takes the highest price in each.
+</code></pre></div>
+<h3 id="books-with-no-author">Books with no author<a class="headerlink" href="#books-with-no-author" title="Permanent link">&para;</a></h3>
+<p>Using <code>books</code> and <code>authors</code> (id, name), list the titles of books that have no matching author, ordered by title, using a LEFT JOIN.</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>CREATE TABLE authors (id INTEGER PRIMARY KEY, name TEXT);
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT, author_id INTEGER);
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>INSERT INTO authors VALUES (1,'Herbert'),(2,'Asimov');
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>INSERT INTO books (title, author_id) VALUES ('Dune',1),('Foundation',2),('Snow Crash',NULL),('Neuromancer',NULL);
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>-- write your SELECT here
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Neuromancer
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Snow Crash
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+SELECT b.title FROM books b LEFT JOIN authors a ON a.id = b.author_id WHERE a.id IS NULL ORDER BY b.title;
+```
+
+LEFT JOIN keeps every book; the unmatched ones have a NULL author id, which you test with IS NULL.
+</code></pre></div>
+<hr />
+<p>More free practice: the <a href="../">SQL Mastery Path</a> curriculum, the <a href="https://learnmasterypath.com/interview-pack/">Interview Prep Pack</a> and the <a href="https://learnmasterypath.com/resume/">free resume ATS check</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+  <nav class="mp-related" aria-label="Related free courses">
+    <h2>Related free courses</h2>
+    <ul>
+      <li><a href="https://learnmasterypath.com/python-mastery-path/">Python</a></li><li><a href="https://learnmasterypath.com/java-mastery-path/">Java</a></li><li><a href="https://learnmasterypath.com/javascript-mastery-path/">JavaScript</a></li><li><a href="https://learnmasterypath.com/typescript-mastery-path/">TypeScript</a></li><li><a href="https://learnmasterypath.com/csharp-mastery-path/">C#</a></li>
+      <li><a href="https://learnmasterypath.com/">All 100+ courses &rarr;</a></li>
+    </ul>
+  </nav>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cheat-sheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Cheat Sheet">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Cheat Sheet
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="mp-foot">
+    <div class="mp-foot-inner">
+      <a class="mp-foot-brand" href="https://learnmasterypath.com/"><svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg><span>Mastery Path</span></a>
+      <nav class="mp-sitelinks" aria-label="Site and legal links">
+        <a href="https://learnmasterypath.com/">All courses</a>
+        <a href="https://learnmasterypath.com/about.html">About</a>
+        <a href="https://learnmasterypath.com/contact.html">Contact</a>
+        <a href="https://learnmasterypath.com/sql-mastery-path/privacy/">Privacy Policy</a>
+        <a href="https://learnmasterypath.com/terms.html">Terms</a>
+        <a href="https://learnmasterypath.com/sql-mastery-path/license/">License</a>
+        <a href="https://learnmasterypath.com/verify/">Verify a certificate</a>
+      </nav>
+    </div>
+    <p class="mp-license-note">
+      © 2026 Vinod Kumar Sigilipelli · Except where otherwise noted, lesson content is licensed under
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code examples under the
+      <a href="https://opensource.org/license/mit">MIT License</a>.
+    </p>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.path", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../javascripts/progress-tracker.js"></script>
+      
+        <script src="../javascripts/final-quiz.js"></script>
+      
+    
+  </body>
+</html>
