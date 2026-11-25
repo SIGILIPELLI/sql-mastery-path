@@ -8,7 +8,7 @@ description: "Free SQL course from beginner to advanced -- hands-on lessons with
 A structured, module-wise SQL training program that takes you from your first
 `SELECT` to production-grade, master-level database engineering — with
 runnable queries in every module (using `sqlite3`, no server setup required)
-and a hands-on project at the end of each level.
+and a hands-on project at the end of Levels 1–3 and a capstone at the end of Level 4.
 
 ## How the program is organized
 
@@ -28,7 +28,7 @@ and a hands-on project at the end of each level.
 - Where SQLite diverges from standard/portable SQL (used by Postgres, MySQL,
   SQL Server, etc.), the pages call it out so you know what will and won't
   carry over.
-- Each level ends with a project that combines everything learned in that level.
+- Levels 1–3 each end with a project that combines everything learned in that level, and Level 4 ends with the course capstone.
 - Use the search bar (top of the page) to jump straight to a topic.
 
 Start here → [Level 1 · Entry](level-1/index.md)
